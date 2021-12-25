@@ -1,5 +1,17 @@
 @charset "utf-8";
 
+site-containder {
+  background: #ffffff;
+}
+
+//body:before {
+//  content: "";
+//
+//  background-image: url('../../../assets/images/bg.jpg');
+//
+//  background-filter: blur(8px);
+//}
+
 body {
   color: $text-color;
   background-color: $background-color;
