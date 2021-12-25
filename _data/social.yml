@@ -1,6 +1,12 @@
+- title: Hack the Box
+  url: https://app.hackthebox.com/profile/18979
+  icon: fas fa-cube
 - title: Twitter
   url: https://twitter.com/WildZarek
   icon: fab fa-twitter
 - title: GitHub
   url: https://github.com/WildZarek
   icon: fab fa-github
+- title: Twitch
+  url: https://www.twitch.tv/wildzarek
+  icon: fab fa-twitch
