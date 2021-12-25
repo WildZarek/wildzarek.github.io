@@ -1,6 +1,7 @@
 title: p3ntest1ng
 description: Artículos sobre ciberseguridad, hacking ético, resolución de CTFs, programación y mucho más.
 author: WildZarek
+  bio: "Ethical Hacker | Penetration Tester | CTF Player | **Red Team** 🔴 <br>Atenea CCN-CERT / HackTheBox"
 avatar: /assets/images/about/avatar.png
 email: 
 
@@ -33,11 +34,11 @@ exclude:
 # Jekyll SEO Tag (Optional)
 # =========================
 twitter:
-  username: DavM25
+  username: WildZarek
   card: summary
-logo: logo.png
+logo: /assets/images/about/avatar.png
 social:
-  name: DavM25
+  name: WildZarek
   links:
     - https://twitter.com/WildZarek
     - https://github.com/WildZarek
