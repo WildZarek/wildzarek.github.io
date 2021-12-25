@@ -39,7 +39,7 @@ layout: default
       <div class="post-meta">
         <i class="fas fa-folder"></i>
         <ul class="post-taxonomies post-categories">
-          {% assign categories = page.categories | sort %}
+          {% assign categories = page.categories %}
           {% for category in categories %}
             <li class="post-category">
               {% assign slugified_category = category | slugify %}
