@@ -4,7 +4,7 @@ title: Whoami
 permalink: /about/
 ---
 
-#EN CONSTRUCCIÓN
+# EN CONSTRUCCIÓN
 
 <a href="#"><img width="100%" height="auto" src="/assets/images/pentesting.gif" height="350px"/></a>
 
