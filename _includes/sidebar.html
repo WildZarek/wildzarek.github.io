@@ -14,7 +14,7 @@
     {% if site.author -%}
       <li>
         <i class="sidebar-icon fas fa-at"></i>
-        <a class="contact-info p-name" href="https://twitter.com/{{ site.author }}">{{ site.author }}</a>
+        <span class="contact-info p-name">{{ site.author | escape }}</span>
       </li>
     {%- endif %}
     {% if site.email -%}
