@@ -4,6 +4,7 @@ author: WildZarek
 bio: Ethical Hacker | Penetration Tester | CTF Player | Red Team 🔴 Atenea CCN-CERT / HackTheBox
 avatar: /assets/images/about/avatar.png
 email: 
+url: wildzarek.github.io
 
 plugins:
   - jekyll-seo-tag

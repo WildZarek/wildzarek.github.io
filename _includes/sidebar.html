@@ -14,7 +14,7 @@
     {% if site.author -%}
       <li>
         <i class="sidebar-icon fas fa-at"></i>
-        <span class="contact-info p-name">{{ site.author | escape }}</span>
+        <span class="contact-info p-name"href="https://twitter.com/{{ site.author }}">{{ site.author }}</span>
       </li>
     {%- endif %}
     {% if site.email -%}
@@ -26,7 +26,7 @@
     {% if site.location -%}
       <li>
         <i class="sidebar-icon fas fa-location-arrow"></i>
-        <a class="contact-info u-location" href="https://www.google.com/maps/search/{{ site.location }}">{{ site.location }}</a>
+        <a class="contact-info u-location">{{ site.location | escape }}</a>
       </li>
     {%- endif %}
   </ul>
