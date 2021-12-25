@@ -8,7 +8,7 @@
   url: /categories/
 - title: Etiquetas
   url: /tags/
-- title: p3ntest1ng
+- title: Write-Ups
   sublinks:
     - title: HackTheBox
       url: /htb/
