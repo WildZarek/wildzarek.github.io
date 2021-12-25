@@ -10,4 +10,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ********************************************************************************************
 
-<a href="#"><img width="100%" height="auto" src="/assets/images/pentesting.gif" height="175px"/></a>
+<a href="#"><img width="100%" height="auto" src="/assets/images/pentesting.gif" height="350px"/></a>
