@@ -1,13 +1,13 @@
 $text-color:            lightgrey !default;
 $text-color-light:      silver !default;
-$background-color:      #0D1117 !default; // 121212
+$background-color:      #00140A !default; // 121212
 $code-background-color: #202020 !default; // 49483e
 
 $border-color:          mix($text-color, $background-color, 30%) !default;
 $border-color-light:    darken($border-color, 5%) !default;
 $border-color-dark:     lighten($border-color, 10%) !default;
 
-$link-base-color:       #00b1c9 !default; //00b1c9
+$link-base-color:       #00c94d !default; // 00b1c9
 $link-visited-color:    darken($link-base-color, 5%) !default;
 
 $table-text-color:      lighten($text-color, 18%) !default;
