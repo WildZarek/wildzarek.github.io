@@ -3,7 +3,8 @@
  */
 .site-container {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: $base-font-size * 3 + 6px 1fr;
@@ -15,8 +16,8 @@
 .site-header {
   border-top: 5px solid;
   border-bottom: 1px solid;
-  min-height: $base-font-size * 3;
-  line-height: $base-font-size * 3;
+  //min-height: $base-font-size * 3;
+  //line-height: $base-font-size * 3;
   height: 50px;
 
   padding-left: 15%;
@@ -54,7 +55,7 @@
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
-
+  
   @include media-query($on-small) {
     //float: center;
     display:none;
@@ -213,24 +214,22 @@
  * Site sidebar
  */
 .site-sidebar {
-
   width: 200px;  
-  
+
   //background-color: #ffffff;
   margin-right: 0;
 
   padding: $spacing-unit;
-  
   border-right: 1px solid;
-  
+
   box-shadow: 10px 0 20px -2px rgba(0, 100, 100, .4);
-  
+
   @include relative-font-size(0.8);
 
   @include media-query($on-medium) {
     padding: $spacing-unit / 2;
-    @include relative-font-size(0.6);
-    
+    @include relative-font-size(0.6);    
+
     box-shadow: none;
   }
 
@@ -238,7 +237,7 @@
     display: none;
     border-right: 0;
     border-bottom: 1px solid;
-  
+
     margin-left: 10%;
   }
 
@@ -356,7 +355,7 @@ ul.social-icons {
   margin-left: 0;
 
   //background-color: #ffffff;
-  
+
   // Hide scrollbar for IE, Edge and Firefox
   -ms-overflow-style: none;  // IE and Edge
   scrollbar-width: none;     // Firefox

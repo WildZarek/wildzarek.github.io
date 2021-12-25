@@ -12,7 +12,7 @@ site-containder {
 //  background-filter: blur(8px);
 //}
 
-body {
+ body {
   color: $text-color;
   background-color: $background-color;
 }
@@ -49,6 +49,10 @@ pre {
   .highlighter-rouge & {
     background: $code-background-color;
   }
+}
+
+.highlight::-webkit-scrollbar {
+  display: none;
 }
 
 table {
