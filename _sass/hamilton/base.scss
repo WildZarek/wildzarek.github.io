@@ -95,22 +95,11 @@ li {
 a {
   text-decoration: none;
 
-  &:link {
-    text-decoration: none;
-  }
-
-  &:visited {
-    text-decoration: none;
-  }
-
   &:hover {
     text-decoration: underline;
     color: #00c94d;
   }
 
-  &:active {
-    text-decoration: none;
-  }
 }
 
 /**
