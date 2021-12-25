@@ -96,7 +96,9 @@ a {
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    /**text-decoration: underline;**/
+    text-decoration: none;
+    color: $link-base-color;
   }
 }
 
