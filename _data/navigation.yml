@@ -1,14 +1,16 @@
-- title: About
+- title: Inicio
+  url: /
+- title: Whoami
   url: /about/
-- title: Years
+- title: Artículos
   url: /years/
-- title: Categories
+- title: Categorías
   url: /categories/
-- title: Tags
+- title: Etiquetas
   url: /tags/
-- title: More
+- title: p3ntest1ng
   sublinks:
-    - title: FAQ
-      url: /faq/
-    - title: Docs
-      url: /docs/
+    - title: HackTheBox
+      url: /htb/
+    - title: Scripts
+      url: /scripts/
