@@ -175,6 +175,10 @@
           margin-right: 0;
         }
         margin-left: 10px;
+        
+        a:hover {
+          color: $link-base-color;
+        }
       }
 
       .dropdown-content a {
