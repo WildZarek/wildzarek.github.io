@@ -7,9 +7,8 @@ permalink: /about/
 <br/>
 
 # Sobre mí
-
 <h2 align="center">Hi <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">, I'm WildZarek</h2>
-<h4 align="center">Ethical Hacker | Penetration Tester | CTF Player | <em>Red Team</em> 🔴</h4>
+<h4 align="center">Ethical Hacker | Penetration Tester | CTF Player</h4>
 
 ```python
 whoami = {
@@ -34,5 +33,5 @@ whoami = {
 ********************************************************************************************
 
 Mi nombre es David (aka **WildZarek**). Desde siempre me ha fascinado todo lo relacionado con la informática, pero en específico la programación y la ciberseguridad. Aquí publicaré artículos sobre ciberseguridad, hacking ético, resolución de CTFs, programación y mucho más.
-<br/>
+
 <p align="center"><img src="https://visitor-badge.glitch.me/badge?page_id=WildZarek/wildzarek.github.io"></p>
