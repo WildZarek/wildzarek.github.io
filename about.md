@@ -4,8 +4,6 @@ title: Whoami
 permalink: /about/
 ---
 
-<br/>
-
 # SOBRE MÍ
 
 ```python
