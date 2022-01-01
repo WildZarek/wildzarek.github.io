@@ -6,7 +6,7 @@ permalink: /about/
 
 # SOBRE MÍ
 
-<a href="#"><img width="100%" height="500px" src="/assets/images/pentesting.gif"/></a>
+<a href="#"><img width="100%" height="auto" src="/assets/images/pentesting.gif" height="500px"/></a>
 
 ********************************************************************************************
 
