@@ -22,7 +22,7 @@ whoami = {
         ides: [ 'Visual Studio Code', 'Sublime Text' ],
         tools: [ 'git', 'github', 'gitlab' ],
         graphics: [ 'Adobe Photoshop' ]
-  }
+	}
 }
 ```
 
