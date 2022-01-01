@@ -13,7 +13,7 @@ whoami = {
         'location': 'Málaga, Spain', 
         'nick': 'WildZarek'
     },
-    interests: [ 'Computer Science', 'Cybersecurity', 'CTF', 'Pentesting', 'Programming' ],
+    interests: [ 'Ethical Hacking', 'Cybersecurity', 'CTF', 'Pentesting', 'Programming' ],
     skills: {
         systems: [ 'Parrot OS Security', 'Debian', 'Archlinux', 'Windows 10' ],
         languages: [ 'Bash', 'Python', 'JavaScript', 'PHP' ],
