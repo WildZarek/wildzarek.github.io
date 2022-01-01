@@ -8,8 +8,8 @@ permalink: /about/
 
 # Sobre mí
 
-<h2 align="center">Hi <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">, I'm WildZarek</h1>
-<h3 align="center">Ethical Hacker | Penetration Tester | CTF Player | <em>Red Team</em> 🔴</h3>
+<h2 align="center">Hi <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">, I'm WildZarek</h2>
+<h4 align="center">Ethical Hacker | Penetration Tester | CTF Player | <em>Red Team</em> 🔴</h4>
 
 ```python
 whoami = {
