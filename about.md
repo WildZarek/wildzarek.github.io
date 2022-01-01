@@ -4,9 +4,9 @@ title: Whoami
 permalink: /about/
 ---
 
-# PERFIL EN CONSTRUCCIÓN
+# SOBRE MÍ
 
-<a href="#"><img width="100%" height="auto" src="/assets/images/pentesting.gif" height="350px"/></a>
+<a href="#"><img width="auto" height="auto" src="/assets/images/pentesting.gif" height="500px"/></a>
 
 ********************************************************************************************
 
