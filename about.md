@@ -6,7 +6,7 @@ permalink: /about/
 
 <br/>
 
-# SOBRE MÍ
+# Sobre mí
 
 ```python
 whoami = {

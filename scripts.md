@@ -1,19 +1,25 @@
 ---
-layout: page
+layout: noheader
 title: Scripts
 permalink: /scripts/
 ---
 
-# SCRIPTING
+<br/>
+
+# Scripting
 
 Aquí encontrarás todos los scripts que voy creando, tanto en Bash como en Python.
 <br/>
 También puedes encontrarlos en el repositorio de Github correspondiente.
 
+********************************************************************************************
+
 ## Bash
 
-Sin contenido.
+  - Sin contenido.
+    - ...
 
 ## Python
 
-Sin contenido.
+  - Sin contenido.
+    - ...

@@ -4,6 +4,8 @@ title: HackTheBox
 permalink: /htb/
 ---
 
+<br/>
+
 # HackTheBox
 
 Aquí encontrarás contenido relacionado con la plataforma HackTheBox.
