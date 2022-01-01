@@ -25,7 +25,7 @@ whoami = {
         websites: [ 'Apache2', 'HTML5', 'CSS3' ],
         ides: [ 'Visual Studio Code', 'Sublime Text' ],
         tools: [ 'git', 'github', 'gitlab' ],
-		graphics: [ 'Adobe Photoshop' ]
+        graphics: [ 'Adobe Photoshop' ]
   }
 }
 ```
