@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: noheader
 title: Whoami
 permalink: /about/
 ---
