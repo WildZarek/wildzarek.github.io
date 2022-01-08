@@ -19,7 +19,7 @@ header:
 </p>
 
 Hace muchísimo tiempo desde que creé mi cuenta en la plataforma HackTheBox (teniendo 1499 días desde que me registré), pero por diversas razones nunca había tenido el valor -ni el conocimiento- para practicar con las máquinas que ofrecen.
-En aquel momento, no me imaginé que un futuro estaría escribiendo mi propio prodecimiento sobre cómo logré penetrar en dicha máquina, pero aquí estoy:
+En aquel momento, no me imaginé que en un futuro estaría escribiendo mi propio prodecimiento sobre cómo logré penetrar en dicha máquina, pero aquí estoy:
 
 # ESCRIBIENDO MI PRIMER WRITE-UP
 
@@ -30,23 +30,24 @@ Esta máquina está calificada como nivel fácil, se trata de una máquina de es
 
 ![Owned Date](/assets/images/htb-previse/owned_date.png)
 
-En primer lugar y como en cualquier máquina, necesitamos información sobre el mismo así que vamos a hacer un reconocimiento para identificar los posibles vectores de entrada.
+En primer lugar y como en cualquier máquina, necesitamos información sobre la misma así que vamos a hacer un reconocimiento para identificar los posibles vectores de entrada.
 
 ## Fase de Reconocimiento
 
 Asignamos un virtualhost a la máquina en nuestro archivo `/etc/hosts` por motivos de comodidad. Es una buena práctica a mi parecer.
 
-```console
+```bash
 wildzarek@p3ntest1ng:~$ sudo echo '10.10.11.104 previse.htb' >> /etc/hosts
 ```
 
-Y ahora sí, ya podemos empezar con el reconocimiento de puertos. Primero realizamos un `SYN Port Scan`
+Y ahora sí, ya podemos empezar con el reconocimiento de puertos.
+Primero realizamos un `SYN Port Scan`
 
 | Parámetro | Descripción |
 | --------- | :---------- |
 | -p-       | Escanea el rango completo de puertos (hasta el 65535)    |
 | -sS       | Realiza un escaneo de tipo SYN port scan                 |
-| --min-rate | Enviar paquetes no más lentos que 5000 por segundo |
+| --min-rate | Enviar paquetes no más lentos que 5000 por segundo      |
 | --open    | Mostrar sólo los puertos que esten abiertos              |
 | -vvv      | Triple verbose para ver en consola los resultados        |
 | -n        | No efectuar resolución DNS                               |
