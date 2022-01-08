@@ -239,7 +239,7 @@ Ahora vamos con lo realmente importante, la escalada de privilegios para obtener
 
 ![Privillege Scalation](/assets/images/htb-previse/scalation1.png)
 
-Vemos que tenemos permiso de ejecución sobre un script python, vamos a ver qué contiene y cómo está construido el script:
+Vemos que tenemos permiso de ejecución sobre un script en bash, vamos a ver qué contiene y cómo está construido el script:
 
 ![Privillege Scalation](/assets/images/htb-previse/scalation2.png)
 
