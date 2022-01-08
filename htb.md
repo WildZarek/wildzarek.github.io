@@ -18,7 +18,6 @@ Los write-up de máquinas activas estarán protegidos por contraseña.
 ## Máquinas Linux
   - Easy
     - [Previse](/htb/previse)
-    - [Horizontall](/htb/horizontall)
   - Medium
     - ...
   - Hard
