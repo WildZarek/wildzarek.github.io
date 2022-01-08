@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Previse - Hack The Box
+author: WildZarek
 permalink: /htb/previse
+excerpt: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 description: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 date: 2022-01-08
 tags: [Bypass, CTF, Nmap, OS Command Injection, PATH Hijacking]
