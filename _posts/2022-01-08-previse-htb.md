@@ -1,25 +1,15 @@
 ---
 layout: post
 title: Previse - Hack The Box
-excerpt: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
+permalink: /htb/previse
+description: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 date: 2022-01-08
-classes: wide
+tags: [Bypass, CTF, Nmap, OS Command Injection, PATH Hijacking]
+categories: [HackTheBox, BurpSuite, Pentesting, Privilege Escalation, Web Exploiting]
 header:
   teaser: /assets/images/hackthebox/previse.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories:
-  - HackTheBox
-  - BurpSuite
-  - Pentesting
-  - Privilege Escalation
-  - Web Exploiting
-tags:
-  - Bypass
-  - CTF
-  - Nmap
-  - os-injection
-  - PATH Injection
 ---
 
 <p align="center">
