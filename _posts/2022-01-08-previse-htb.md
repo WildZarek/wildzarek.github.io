@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 title: Previse - Hack The Box
 excerpt: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 date: 2022-01-08
