@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Previse - Hack The Box
+title: Previse - WriteUp
 author: WildZarek
 permalink: /htb/previse
 excerpt: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
@@ -51,7 +51,7 @@ Y ahora sí, podemos empezar con el reconocimiento de puertos con un **`TCP SYN 
 | -vvv      | Triple verbose para ver en consola los resultados        |
 | -n        | No efectuar resolución DNS                               |
 | -Pn       | No efectuar descubrimiento de hosts                      |
-| -oG       | Guarda el output en un archivo con formato grepeable para usar la funcion [extractPorts](https://pastebin.com/tYpwpauW) de [S4vitar](https://s4vitar.github.io/)
+| -oG       | Guarda el output en un archivo con formato grepeable para usar la función [extractPorts](https://pastebin.com/tYpwpauW) de [S4vitar](https://s4vitar.github.io/)
 
 ```console
 p3ntest1ng:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.104 -oG allPorts
