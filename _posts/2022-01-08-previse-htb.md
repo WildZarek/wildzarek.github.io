@@ -34,13 +34,13 @@ En primer lugar y como en cualquier máquina, necesitamos información sobre la 
 
 ## Fase de Reconocimiento
 
-Asignamos un virtualhost a la máquina en nuestro archivo `/etc/hosts` por motivos de comodidad. Es una buena práctica a mi parecer.
+Asignamos un virtualhost a la máquina en nuestro archivo **`/etc/hosts`** por motivos de comodidad. Es una buena práctica a mi parecer.
 
-```console
+```bash
 p3ntest1ng:~$ sudo echo '10.10.11.104 previse.htb' >> /etc/hosts
 ```
 
-Y ahora sí, podemos empezar con el reconocimiento de puertos con un `SYN Port Scan`
+Y ahora sí, podemos empezar con el reconocimiento de puertos con un `TCP SYN Port Scan`
 
 | Parámetro | Descripción |
 | --------- | :---------- |
@@ -53,7 +53,7 @@ Y ahora sí, podemos empezar con el reconocimiento de puertos con un `SYN Port S
 | -Pn       | No efectuar descubrimiento de hosts                      |
 | -oG       | Guarda el output en un archivo con formato grepeable para usar la funcion [extractPorts](https://pastebin.com/tYpwpauW) de [S4vitar](https://s4vitar.github.io/)
 
-```console
+```bash
 p3ntest1ng:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.104 -oG allPorts
 ```
 
@@ -61,8 +61,8 @@ p3ntest1ng:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.104 -oG a
 
 | Puerto | Descripción |
 | ------ | :---------- |
-| 22     | **[SSH](https://es.wikipedia.org/wiki/Secure_Shell)**: SSH o Secure Shell |
-| 80     | **[HTTP](https://es.wikipedia.org/wiki/Servidor_web)**: Servidor web |
+| 22     | **[SSH](https://es.wikipedia.org/wiki/Secure_Shell)** - SSH o Secure Shell |
+| 80     | **[HTTP](https://es.wikipedia.org/wiki/Servidor_web)** - Servidor web |
 
 Identificamos dos puertos abiertos, vamos a obtener más información con un escaneo específico sobre los puertos que hemos encontrado.
 
@@ -73,7 +73,7 @@ Identificamos dos puertos abiertos, vamos a obtener más información con un esc
 | -sV       | Determina la versión del servicio                      |
 | -oN       | Guarda el output en un archivo con formato normal      |
 
-```console
+```bash
 p3ntest1ng:~$ nmap -sCV -p22,80 10.10.11.104 -oN targeted
 ```
 
@@ -120,7 +120,7 @@ p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://p
 ![wfuzz de directorios](/assets/images/htb-previse/wfuzz1.png)
 
 Cuando abrimos la web en el navegador, vemos que automáticamente nos redirecciona (codigo 302) a `login.php`
-Podemos deducir que habrá más archivos de este tipo, así que vamos a fuzzear la web en busca de más archivos de este tipo.
+Podemos deducir que habrá más archivos similares, así que vamos a fuzzear la web en busca de más archivos de este tipo.
 
 ```console
 p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ.php 2>/dev/null
