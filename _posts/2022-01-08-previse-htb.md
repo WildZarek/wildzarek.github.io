@@ -208,11 +208,11 @@ p3ntest1ng:~$ mysql -h localhost -u root -p previse
 Vemos las credenciales del usuario '**m4lwhere**' en forma de hash así que toca crackear la contraseña.
 Pero antes vamos a fijarnos en un detalle del hash ya que es importante:
 
-Mientras estamos en la terminal, los caracteres detrás del segundo $ se convierten, perdiendo su identidad. Esto se debe a que estamos ante un **`Salted Hash`**
+En mi terminal, el caracter detrás del segundo $ se convierte, perdiendo su identidad. Esto se debe a que estamos ante un **`Salted Hash`**
 El hash correcto es como sigue y lo vamos a romper con **`John The Ripper`** (esto tardará un rato):
 
 ```console
-p3ntest1ng:~$ echo '$1$🧂llol$DQpmdvnb7EeuO6UaqRItf.' > hashfile
+p3ntest1ng:~$ echo "$1$🧂llol$DQpmdvnb7EeuO6UaqRItf." > hashfile
 p3ntest1ng:~$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=md5crypt-long hashfile
 
 Using default input encoding: UTF-8
