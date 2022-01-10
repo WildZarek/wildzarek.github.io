@@ -23,4 +23,4 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 
 | Easy | Medium | Hard | Insane |
 |:----:|:------:|:----:|:------:|
-| ---- | ------ | ---- | ------ |
+| --- | --- | --- | --- |
