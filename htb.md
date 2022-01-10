@@ -8,29 +8,19 @@ permalink: /htb/
 
 # HackTheBox
 
-Aquí encontrarás contenido relacionado con la plataforma HackTheBox.
-Cada write-up de las máquinas que resuelvo, activas o retiradas lo publicaré aquí.
-Los write-up de máquinas activas estarán protegidos por contraseña.
+Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox organizado por categoría y dificultad.
 
 ![HackTheBox](/assets/images/hackthebox/htb.jpg)
 
 
 ## Máquinas Linux
-  - Easy
-    - [Previse](/htb/previse)
-  - Medium
-    - ...
-  - Hard
-    - ...
-  - Insane
-    - ...
+
+| Easy | Medium | Hard | Insane |
+|:----:|:------:|:----:|:------:|
+| [Previse](/htb/previse) | --- | --- | --- |
 
 ## Máquinas Windows
-  - Easy
-    - ...
-  - Medium
-    - ...
-  - Hard
-    - ...
-  - Insane
-    - ...
+
+| Easy | Medium | Hard | Insane |
+|:----:|:------:|:----:|:------:|
+| ---- | ------ | ---- | ------ |
