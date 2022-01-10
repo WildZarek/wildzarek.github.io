@@ -14,9 +14,7 @@ header:
   icon: /assets/images/hackthebox.webp
 ---
 
-<p align="center">
-<img src="/assets/images/hackthebox/previse.png">
-</p>
+<p align="center"><img src="/assets/images/hackthebox/previse.png"></p>
 
 Hace muchísimo tiempo desde que creé mi cuenta en la plataforma HackTheBox (teniendo 1499 días desde que me registré), pero por diversas razones nunca había tenido el valor -ni el conocimiento- para practicar con las máquinas que ofrecen.
 En aquel momento, no me imaginé que en un futuro estaría escribiendo mi propio prodecimiento sobre cómo logré penetrar en dicha máquina, pero aquí estoy:
@@ -235,7 +233,7 @@ p3ntest1ng:~$ sshpass -p "ilovecody112235!" ssh m4lwhere@previse.htb
 
 Ahora vamos con lo realmente importante, la escalada de privilegios para obtener acceso como el usuario root.
 
-# Escalada de Privilegios
+## Escalada de Privilegios
 
 ![Privillege Scalation](/assets/images/htb-previse/scalation1.png)
 
@@ -262,9 +260,9 @@ Y estamos dentro. Tenemos privilegios de root y la máquina es nuestra.
 
 ![PWNED](/assets/images/htb-previse/pwned.png)
 
-## ¡Gracias por leer hasta el final!
+### ¡Gracias por leer hasta el final!
 
-### Este ha sido mi primer write-up y espero que sea el primero de muchos más.
+#### Este ha sido mi primer write-up y espero que sea el primero de muchos más.
 
 Una máquina facilita e interesante que nos enseña dos vulnerabilidades genéricas y la importancia de escribir código fuente sanitizado.
-Espero que os haya gustado y nos vemos en el siguiente :smirk:
+Espero que os haya gustado y nos vemos en el siguiente ;)
