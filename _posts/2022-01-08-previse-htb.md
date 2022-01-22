@@ -6,12 +6,12 @@ permalink: /htb/previse
 excerpt: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 description: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 date: 2022-01-08
-tags: [Bypass, CTF, Nmap, OS Command Injection, PATH Hijacking]
-categories: [HackTheBox, BurpSuite, Pentesting, Privilege Escalation, Web Exploiting]
 header:
   teaser: /assets/images/hackthebox/previse.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
+categories: [HackTheBox, BurpSuite, Pentesting, Privilege Escalation, Web Exploiting]
+tags: [Bypass, CTF, Nmap, OS Command Injection, PATH Hijacking]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/previse.png"></p>
@@ -26,7 +26,7 @@ Esta máquina está calificada como nivel fácil, se trata de una máquina de es
 
 ## Fecha de Resolución
 
-![Owned Date](/assets/images/htb-previse/owned_date.png)
+![Owned Date](/assets/images/hackthebox/previse/owned_date.png)
 
 En primer lugar y como en cualquier máquina, necesitamos información sobre la misma así que vamos a hacer un reconocimiento para identificar los posibles vectores de entrada.
 
@@ -55,7 +55,7 @@ Y ahora sí, podemos empezar con el reconocimiento de puertos con un **`TCP SYN 
 p3ntest1ng:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.104 -oG allPorts
 ```
 
-![Nmap Scan 1](/assets/images/htb-previse/nmap1.png)
+![Nmap Scan 1](/assets/images/hackthebox/previse/nmap1.png)
 
 | Puerto | Descripción |
 | ------ | :---------- |
@@ -75,7 +75,7 @@ Identificamos dos puertos abiertos, vamos a obtener más información con un esc
 p3ntest1ng:~$ nmap -sCV -p22,80 10.10.11.104 -oN targeted
 ```
 
-![Nmap Scan 2](/assets/images/htb-previse/nmap2.png)
+![Nmap Scan 2](/assets/images/hackthebox/previse/nmap2.png)
 
 Vemos que hay un servidor web corriendo bajo el puerto **80** así que vamos a tratar de obtener más información de este recurso.
 
@@ -89,22 +89,22 @@ Vemos que hay un servidor web corriendo bajo el puerto **80** así que vamos a t
 p3ntest1ng:~$ nmap --script http-enum -p80 10.10.11.104 -oN webScan
 ```
 
-![Nmap Scan 3](/assets/images/htb-previse/nmap3.png)
+![Nmap Scan 3](/assets/images/hackthebox/previse/nmap3.png)
 
 ```console
 p3ntest1ng:~$ whatweb http://previse.htb/
 ```
 
-![whatweb](/assets/images/htb-previse/whatweb.png)
+![whatweb](/assets/images/hackthebox/previse/whatweb.png)
 
 He recortado la imagen porque la parte derecha no contiene información relevante.
 Lo importante es que sabemos que existe un sistema de login, así que vamos a echarle un ojo.
 
-![Login](/assets/images/htb-previse/login.png)
+![Login](/assets/images/hackthebox/previse/login.png)
 
 Probamos a loguearnos con datos genéricos, usuario **`admin`** y password **`123456`**, sin éxito.
 
-![Login fallido](/assets/images/htb-previse/loginfailed.png)
+![Login fallido](/assets/images/hackthebox/previse/loginfailed.png)
 
 Investiguemos un poco más para intentar listar posibles directorios expuestos.
 Para ello podemos usar cualquiera de las siguientes herramientas: **gobuster**, **dirb**, **ffuf**, **wfuzz**, entre otras.
@@ -115,37 +115,43 @@ En este caso estoy utilizando un diccionario pequeño, si no encontrasemos nada 
 p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ 2>/dev/null
 ```
 
-![wfuzz de directorios](/assets/images/htb-previse/wfuzz1.png)
+![wfuzz de directorios](/assets/images/hackthebox/previse/wfuzz1.png)
 
 Cuando abrimos la web en el navegador, vemos que automáticamente nos redirecciona (codigo 302) a **`login.php`**
 Podemos deducir que habrá más archivos similares, así que vamos a fuzzear la web en busca de más archivos de este tipo.
+
+| Parámetro | Descripción |
+| --------- | :---------- |
+| -c        | Mostrar el output en formato colorizado |
+| -w        | Utiliza el diccionario especificado |
+| --hc=404  | Ocultar todos los códigos de estado 404 |
 
 ```console
 p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ.php 2>/dev/null
 ```
 
-![wfuzz de archivos](/assets/images/htb-previse/wfuzz2.png)
+![wfuzz de archivos](/assets/images/hackthebox/previse/wfuzz2.png)
 
 Vemos que existe un **`nav.php`**, he elegido este archivo porque tenemos acceso (código 200) además de contener habitualmente el menú de navegación.
 
-![nav.php](/assets/images/htb-previse/navphp.png)
+![nav.php](/assets/images/hackthebox/previse/navphp.png)
 
 ## Fase de Explotación
 
 Tras probar cada enlace, todos me redireccionan (codigo 302) a **`login.php`**. En este punto, nos fijamos en el enlace **CREATE ACCOUNT** que apunta al recurso **`accounts.php`**
 Vamos a interceptar las peticiones con **`BurpSuite`** para tratar de llegar al recurso.
 
-![BurpSuite](/assets/images/htb-previse/burp1.png)
+![BurpSuite](/assets/images/hackthebox/previse/burp1.png)
 
 Modificamos el código **302** por **200** para lograr el bypass del redireccionamiento, hacemos click en **Forward** y pa' dentro.
 
-![BurpSuite](/assets/images/htb-previse/burp2.png)
+![BurpSuite](/assets/images/hackthebox/previse/burp2.png)
 
-![Login Bypass](/assets/images/htb-previse/bypassed.png)
+![Login Bypass](/assets/images/hackthebox/previse/bypassed.png)
 
 Registramos una cuenta nueva. Yo puse como usuario **`any0ne`** y como password **`123456`**. Una vez registrado, iniciamos sesión.
 
-![Logged](/assets/images/htb-previse/logged.png)
+![Logged](/assets/images/hackthebox/previse/logged.png)
 
 Se observa que tenemos un sistema de subida de archivos y que existe un archivo llamado **`sitebackup.zip`**. Vamos a descargarlo y descomprimirlo para ver qué contiene.
 
@@ -153,26 +159,26 @@ Se observa que tenemos un sistema de subida de archivos y que existe un archivo 
 p3ntest1ng:~$ unzip siteBackup.zip
 ```
 
-![siteBackup.zip](/assets/images/htb-previse/sitebackup.png)
+![siteBackup.zip](/assets/images/hackthebox/previse/sitebackup.png)
 
 El primer archivo que me llama la atención es **`config.php`** puesto que habitualmente contiene las credenciales de conexión a la base de datos.
 
-![config.php](/assets/images/htb-previse/configphp.png)
+![config.php](/assets/images/hackthebox/previse/configphp.png)
 
 Analizando un poco más la página, haciendo click sobre **`MANAGEMENT MENU`** vemos la opción '**Log Data**' que nos lleva a la siguiente página:
 
-![file_logs.php](/assets/images/htb-previse/filelogs.png)
+![file_logs.php](/assets/images/hackthebox/previse/filelogs.png)
 
 Como tenemos el backup del sitio, vamos a analizar el archivo **`logs.php`**
 
-![logs.php](/assets/images/htb-previse/logsphp.png)
+![logs.php](/assets/images/hackthebox/previse/logsphp.png)
 
 Vemos una llamada a un script Python de nombre **`log_process.py`** mediante la función **`exec`** de PHP, que recibe un argumento mediante POST.
 Sin embargo no hay ningún tipo de validación ni sanitización respecto a qué puede contener dicho argumento, por lo que el código es vulnerable a **[OS command injection](https://portswigger.net/web-security/os-command-injection)**
 
 Capturando con **`BurpSuite`** la petición tras darle al boton **SUBMIT** vemos que está formada por el campo con nombre **`delim`** y su valor.
 
-![BurpSuite](/assets/images/htb-previse/burp6.png)
+![BurpSuite](/assets/images/hackthebox/previse/burp6.png)
 
 Volvamos a usar **`BurpSuite`** para lograr inyectar la shell reversa usando el delimitador **`comma`** mediante el método POST.
 Antes de enviarla me pongo a la escucha por el puerto **9999** con netcat (es el que yo uso habitualmente).
@@ -191,7 +197,7 @@ Vamos a mejorar un poco la shell para mayor comodidad, escribiendo lo siguiente:
 p3ntest1ng:~$ python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
 
-![Shell](/assets/images/htb-previse/shell.png)
+![Shell](/assets/images/hackthebox/previse/shell.png)
 
 Anteriormente obtuvimos credenciales de la base de datos analizando el archivo **`config.php`** así que vamos a echar un vistazo a la base de datos.
 
@@ -199,9 +205,9 @@ Anteriormente obtuvimos credenciales de la base de datos analizando el archivo *
 p3ntest1ng:~$ mysql -h localhost -u root -p previse
 ```
 
-![Database mySQL](/assets/images/htb-previse/dbconnection.png)
+![Database mySQL](/assets/images/hackthebox/previse/dbconnection.png)
 
-![Database mySQL](/assets/images/htb-previse/dbdump.png)
+![Database mySQL](/assets/images/hackthebox/previse/dbdump.png)
 
 Vemos las credenciales del usuario '**m4lwhere**' en forma de hash así que toca crackear la contraseña.
 Pero antes vamos a fijarnos en un detalle del hash ya que es importante:
@@ -229,21 +235,21 @@ Tenemos la contraseña con la cual ya podemos probar a conectarnos por SSH.
 p3ntest1ng:~$ sshpass -p "ilovecody112235!" ssh m4lwhere@previse.htb
 ```
 
-![SSH Connection](/assets/images/htb-previse/sshconnection.png)
+![SSH Connection](/assets/images/hackthebox/previse/sshconnection.png)
 
 Ahora vamos con lo realmente importante, la escalada de privilegios para obtener acceso como el usuario root.
 
 ## Escalada de Privilegios
 
-![Privillege Scalation](/assets/images/htb-previse/scalation1.png)
+![Privillege Scalation](/assets/images/hackthebox/previse/scalation1.png)
 
 Vemos que tenemos permiso de ejecución sobre un script en bash, vamos a ver qué contiene y cómo está construido el script:
 
-![Privillege Scalation](/assets/images/htb-previse/scalation2.png)
+![Privillege Scalation](/assets/images/hackthebox/previse/scalation2.png)
 
 Después de analizarlo, parece que el script es vulnerable a **`PATH Injection`** así que exportamos el PATH añadiendo **`.:`** al principio.
 
-![Privillege Scalation](/assets/images/htb-previse/scalation3.png)
+![Privillege Scalation](/assets/images/hackthebox/previse/scalation3.png)
 
 Ahora podemos crear un archivo llamado **`gzip`** en **`/tmp`** porque el script está siendo ejecutado con permisos de root utilizando la herramienta **gzip**.
 Vamos a suplantar dicha herramienta para que lo que ejecute el script **`access_backup.sh`** sea nuestro falso **gzip**, que contendrá nuestra shell reversa.
@@ -258,7 +264,7 @@ m4lwhere@previse:/tmp$ sudo /opt/scripts/access_backup.sh
 
 Y estamos dentro. Tenemos privilegios de root y la máquina es nuestra.
 
-![PWNED](/assets/images/htb-previse/pwned.png)
+![PWNED](/assets/images/hackthebox/previse/pwned.png)
 
 ### ¡Gracias por leer hasta el final!
 
