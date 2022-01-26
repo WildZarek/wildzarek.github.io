@@ -26,7 +26,7 @@ Esta máquina está calificada como nivel fácil, se trata de una máquina de es
 
 ## Fecha de Resolución
 
-![Owned Date](/assets/images/hackthebox/previse/owned_date.png)
+<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/373"><img src="/assets/images/hackthebox/previse/pwned_date.png"></a></p>
 
 En primer lugar y como en cualquier máquina, necesitamos información sobre la misma así que vamos a hacer un reconocimiento para identificar los posibles vectores de entrada.
 
