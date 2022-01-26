@@ -174,7 +174,7 @@ Como tenemos el backup del sitio, vamos a analizar el archivo **`logs.php`**
 ![logs.php](/assets/images/hackthebox/previse/logsphp.png)
 
 Vemos una llamada a un script Python de nombre **`log_process.py`** mediante la función **`exec`** de PHP, que recibe un argumento mediante POST.
-Sin embargo no hay ningún tipo de validación ni sanitización respecto a qué puede contener dicho argumento, por lo que el código es vulnerable a **[OS command injection](https://portswigger.net/web-security/os-command-injection)**
+Sin embargo no hay ningún tipo de validación ni sanitización respecto a qué puede contener dicho argumento, por lo que el código es vulnerable a [OS command injection](https://portswigger.net/web-security/os-command-injection)
 
 Capturando con **`BurpSuite`** la petición tras darle al boton **SUBMIT** vemos que está formada por el campo con nombre **`delim`** y su valor.
 
