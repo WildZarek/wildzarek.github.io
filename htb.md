@@ -17,7 +17,7 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 
 | Easy | Medium | Hard | Insane |
 |:----:|:------:|:----:|:------:|
-| [Previse](/htb/previse) | [Forge](/htb/forge) | --- | --- |
+| [Previse](/htb/previse)         | [Forge](/htb/forge) | --- | --- |
 | [Horizontall](/htb/horizontall) | --- | --- | --- |
 
 ## Máquinas Windows
