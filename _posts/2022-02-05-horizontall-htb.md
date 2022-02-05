@@ -215,6 +215,8 @@ any0ne@Pentesting:~$ python3 exploit-CVE-2019-18818.py http://api-prod.horizonta
 
 ![Strapi Exploited](/assets/images/hackthebox/horizontall/strapi_exploit.png)
 
+> NOTA: En la imagen se ven otros nombres porque yo cambié los nombres a los exploits por comodidad.
+
 Ahora que tenemos acceso como administrador, vamos a iniciar sesión y ver qué nos encontramos.
 
 ![Strapi Admin](/assets/images/hackthebox/horizontall/strapi_admin.png)
