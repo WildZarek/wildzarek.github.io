@@ -3,8 +3,8 @@ layout: post
 title: Horizontall - WriteUp
 author: WildZarek
 permalink: /htb/horizontall
-excerpt: "Una máquina Linux muy facilita, donde lo más interesante es el Port-Forwarding. Explotamos varias vulnerabilidades tirando de exploits existentes con sus respectivos CVE's. Muy recomendable para aprender si estás empezando en la plataforma y tienes pocas máquinas realizadas."
-description: "Una máquina Linux muy facilita, donde lo más interesante es el Port-Forwarding. Explotamos varias vulnerabilidades tirando de exploits existentes con sus respectivos CVE's. Muy recomendable para aprender si estás empezando en la plataforma y tienes pocas máquinas realizadas."
+excerpt: "Una máquina Linux muy facilita, donde lo más interesante es el Port-Forwarding. Nos aprovechamos de varias vulnerabilidades tirando de exploits existentes con sus respectivos CVE's. Muy recomendable para aprender si estás empezando en la plataforma y tienes pocas máquinas realizadas."
+description: "Una máquina Linux muy facilita, donde lo más interesante es el Port-Forwarding. Nos aprovechamos de varias vulnerabilidades tirando de exploits existentes con sus respectivos CVE's. Muy recomendable para aprender si estás empezando en la plataforma y tienes pocas máquinas realizadas."
 date: 2022-02-05
 header:
   teaser: /assets/images/hackthebox/horizontall.png
