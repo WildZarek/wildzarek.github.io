@@ -11,7 +11,7 @@ header:
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, BurpSuite, Pentesting, Privilege Escalation, Web Exploiting]
-tags: [Bypass, CTF, OS Command Injection, PATH Hijacking]
+tags: [BYPASS, CTF LIKE, OS COMMAND INJECTION, PATH HIJACKING]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/previse.png"></p>
