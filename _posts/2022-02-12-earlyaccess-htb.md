@@ -10,7 +10,7 @@ header:
   teaser: /assets/images/hackthebox/earlyaccess.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories: [HTB, PENTESTING, PRIVESC, WEB]
+categories: [HTB, Pentesting, Privesc, Web]
 tags: [WEAK PASSWORD, SOURCE CODE REVIEW, PASSWORD REUSE, API, DOCKER, RCE, LFI, SUID, SQLI, COOKIE HIJACKING]
 ---
 
@@ -178,7 +178,7 @@ De momento volvamos a fijarnos en el apartado **`Messaging`**, vemos que tenemos
 ![ContactUs](/assets/images/hackthebox/earlyaccess/contactus.png)
 
 Podemos probar [XSS Injection](https://owasp.org/www-community/attacks/xss/) aprovechando este apartado para tratar de secuestrar la cookie de sesión del administrador.
-Para ello primero necesitamos levantar un servidor HTTPS en nuestra máquina, esto podemos hacerlo con python3.
+Para ello primero necesitamos levantar un servidor HTTPS en nuestra máquina, esto podemos hacerlo con Python3.
 Os dejo el script [https_server.py](../scripts/python/https_server.py) para que podáis utilizarlo, pero primero tenemos que crear un certificado SSL.
 
 ```console
@@ -232,8 +232,8 @@ Vemos que el menú ha cambiado y ahora tenemos acceso a funciones administrativa
 ![Admin](/assets/images/hackthebox/earlyaccess/admin2.png)
 
 Aquí tenemos disponible para descargar un script escrito en Python, que podemos utilizar para validar claves del juego,
-según explica el administrador, esto lo ha puesto para cuando la API no responde que el resto de administradores puedan validar las claves de los usuarios.
-Podemos validar las claves en el siguiente enlace https://earlyaccess.htb/key o bien con este script.
+según explica el administrador, esto lo ha puesto para cuando la API no responda, que el resto de administradores puedan validar las claves de los usuarios.
+Podemos validar las claves en el siguiente enlace **https://earlyaccess.htb/key** o bien con este script.
 
 Necesitamos un keygen para obtener claves válidas, podríamos analizar el script **`validate.py`** que nos hemos descargado previamente,
 y crear uno nosotros, en este caso yo lo que hice fue utilizar uno que ya había escrito otra persona:
@@ -302,7 +302,7 @@ p3ntest1ng:~$ python3 bruteforce_keys.py
 Your key is KEY84-0F1O4-XPCZ9-GAMM4-01363
 ```
 
-Verificamos en la página https://earlyaccess.htb/key y nos dice que es válida.
+Verificamos en la página **https://earlyaccess.htb/key** y nos dice que es válida.
 
 ![Valid Key](/assets/images/hackthebox/earlyaccess/validkey.png)
 
@@ -356,8 +356,10 @@ Tenemos los hashes de los usuarios, en este caso vemos dos diferentes para el us
 
 ![Cracked Passwords](/assets/images/hackthebox/earlyaccess/crackedpass.png)
 
-Con estas credenciales podemos iniciar sesión como el administrador y echarle un ojo a **`dev.earlyaccess.htb`**, pero antes necesitamos tener su cookie establecida en el navegador.
-> NOTA: A estas alturas es posible que las cookies hayan cambiado, por lo que necesitamos volver a secuestrar la sesión del administrador una vez más.
+Con estas credenciales podemos iniciar sesión como el administrador y echarle un ojo a **`dev.earlyaccess.htb`**
+> NOTA: Si no carga bien el recurso, es posible que haya quedado cacheado en el navegador, prueba con Ctrl+F5 o limpia la caché.
+
+![Dev](/assets/images/hackthebox/earlyaccess/dev.png)
 
 Apliquemos un poco de fuzzing sobre este subdominio para ver si encontramos algo interesante:
 
@@ -426,8 +428,6 @@ Requests/sec.: 88.44467
 
 Hemos encontrado 4 archivos, de los cuales me llaman la atención **`file.php`** y **`hash.php`**, veamos qué contienen.
 
-![Dev](/assets/images/hackthebox/earlyaccess/dev.png)
-
 ![HashingTools](/assets/images/hackthebox/earlyaccess/hashtools.png)
 
 ![FileTools](/assets/images/hackthebox/earlyaccess/filetools.png)
@@ -473,7 +473,7 @@ también se utiliza **`password`** como variable para el valor a codificar. Toda
 Si capturamos la petición con **`BurpSuite`** podemos ver cada uno de los parámetros que se utilizan en la consulta POST.
 Con esta información podemos crear un script en python que nos automatice la conexión de una shell inversa a nuestra máquina.
 
-Os dejo el script [autorevsh.py](../scripts/python/autorevsh.py) para que lo podáis copiar en vuestra máquina. Una vez lo tenemos, nos ponemos en escucha con netcat y lo ejecutamos en otra terminal:
+Os dejo el script [autorevsh.py](../scripts/python/autorevsh.py) para que lo descarguéis en vuestra máquina. Una vez lo tenemos, nos ponemos en escucha con netcat y lo ejecutamos en otra terminal:
 
 ```console
 p3ntest1ng:~$ nc -nlvp 9999
@@ -535,7 +535,7 @@ www-adm@webserver:/var/www/earlyaccess.htb/dev/actions$ hostname -I
 172.18.0.102
 ```
 
-Tenemos que escapar del contenedor, pero para ello necesitamos enumerar un poco más el sistema para encontrar información útil:
+Tenemos que escapar del contenedor, pero para ello necesitamos enumerar un poco más el sistema para encontrar información útil.
 Si retrocedemos dos directorios hacia atrás, vemos los directorios **`dev`** y **`game`**, y dentro de estos un directorio **`includes`**
 donde se encuentra el archivo **`config.php`** con credenciales de acceso a la base de datos.
 
@@ -814,7 +814,6 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 game-tester@game-server:~$ id
 uid=1001(game-tester) gid=1001(game-tester) groups=1001(game-tester)
-game-tester@game-server:~$ ls
 game-tester@game-server:~$ ls -la
 total 24
 drwxr-xr-x 1 game-tester game-tester 4096 Jul 14  2021 .
@@ -922,7 +921,7 @@ game-tester@game-server:/tmp/wildzarek$ ./chisel client 10.10.16.29:8000 R:127.0
 2022/02/13 02:41:23 client: Connected (Latency 113.972594ms)
 ```
 
-Si vamos al navegador en nuestra máquina y abrimos http://127.0.0.1:9999/ encontramos un entorno de pruebas para un juego.
+Si vamos al navegador en nuestra máquina y abrimos **http://127.0.0.1:9999/** encontramos un entorno de pruebas para un juego.
 En el apartado autoplay podemos simular un total de N partidas, pero si ponemos un número negativo, 
 se produce un fallo en la aplicación y ésta se reinicia pasado un minuto aprox. Aprovecharemos esto para meter una shell inversa.
 
@@ -953,7 +952,7 @@ tail -f /dev/null
 ```
 
 Básicamente aquí lo que está haciendo es buscar cualquier archivo en **`/docker-entrypoint.d/`** y lo ejecuta.
-Por último hace **`tail -f`** al **`/dev/null`** esto es para prevenir que el script termine y que el contenedor se esté ejecutando continuamente.
+Por último hace **`tail -f`** al **`/dev/null`** para prevenir que el script termine y que el contenedor se esté ejecutando continuamente.
 Dentro del directorio de montaje de Docker hay un script **`node-server.sh`**:
 
 ```console
