@@ -10,7 +10,7 @@ header:
   teaser: /assets/images/hackthebox/earlyaccess.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories: [HTB, Pentesting, Privesc, Web]
+categories: [HTB, Pentesting, Privilege Escalation, Web]
 tags: [WEAK PASSWORD, SOURCE CODE REVIEW, PASSWORD REUSE, API, DOCKER, RCE, LFI, SUID, SQLI, COOKIE HIJACKING]
 ---
 
