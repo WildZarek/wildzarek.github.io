@@ -22,4 +22,4 @@ También puedes encontrarlos en el repositorio de Github correspondiente.
 ## Python
 
   - [Python HTTPS Server](https://github.com/WildZarek/wildzarek.github.io/blob/master/scripts/python/https_server.py)
-  - [Auto Reverse Shell para EarlyAccess (HTB)](https://github.com/WildZarek/wildzarek.github.io/blob/master/scripts/python/autorevsh.py)
+  - [Reverse Shell para EarlyAccess (HTB)](https://github.com/WildZarek/wildzarek.github.io/blob/master/scripts/python/revsh_earlyaccess.py)

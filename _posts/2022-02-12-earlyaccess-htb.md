@@ -473,7 +473,7 @@ también se utiliza **`password`** como variable para el valor a codificar. Toda
 Si capturamos la petición con **`BurpSuite`** podemos ver cada uno de los parámetros que se utilizan en la consulta POST.
 Con esta información podemos crear un script en python que nos automatice la conexión de una shell inversa a nuestra máquina.
 
-Os dejo el script [autorevsh.py](https://github.com/WildZarek/wildzarek.github.io/blob/master/scripts/python/autorevsh.py) para que lo descarguéis en vuestra máquina. Una vez lo tenemos, nos ponemos en escucha con netcat y lo ejecutamos en otra terminal:
+Os dejo el script [revsh_earlyaccess.py](https://github.com/WildZarek/wildzarek.github.io/blob/master/scripts/python/revsh_earlyaccess.py) para que lo descarguéis en vuestra máquina. Una vez lo tenemos, nos ponemos en escucha con netcat y lo ejecutamos en otra terminal:
 
 ```console
 p3ntest1ng:~$ nc -nlvp 9999

