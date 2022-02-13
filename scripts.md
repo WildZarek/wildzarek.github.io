@@ -21,4 +21,5 @@ También puedes encontrarlos en el repositorio de Github correspondiente.
 
 ## Python
 
-  - #### Auto Reverse Shell para EarlyAccess (HTB)
+  - [Python HTTPS Server](/scripts/python/https_server.py)
+  - [Auto Reverse Shell para EarlyAccess (HTB)](/scripts/python/autorevsh.py)

@@ -15,10 +15,10 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 
 ## Máquinas Linux
 
-| Easy                            | Medium                          | Hard | Insane |
-|:-------------------------------:|:-------------------------------:|:----:|:------:|
-| [Previse](/htb/previse)         | [Forge](/htb/forge)             | ---- | ------ |
-| [Horizontall](/htb/horizontall) | [EarlyAccess](/htb/earlyaccess) | ---- | ------ |
+| Easy                            | Medium                          | Hard                            | Insane |
+|:-------------------------------:|:-------------------------------:|:-------------------------------:|:------:|
+| [Previse](/htb/previse)         | [Forge](/htb/forge)             | [EarlyAccess](/htb/earlyaccess) | ------ |
+| [Horizontall](/htb/horizontall) | ------------------------------- | ------------------------------- | ------ |
 
 ## Máquinas Windows
 
