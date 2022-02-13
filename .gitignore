@@ -4,3 +4,6 @@
 .sass-cache
 _site
 Gemfile.lock
+# Ignoring directories
+# Both the directory itself and its contents will be ignored.
+assets/images/hackthebox/boxlogo/

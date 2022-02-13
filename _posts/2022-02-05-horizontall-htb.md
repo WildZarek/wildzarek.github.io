@@ -278,7 +278,7 @@ $ find \-perm -4000 2>/dev/null
 No parece haber nada, tampoco hay suerte buscando GUID. Sólo se me ocurre buscar puertos locales que no hayamos podido ver con Nmap.
 
 Para ello ejecutamos **`netstat -tulpn | grep LISTEN`** para ver qué puertos tenemos abiertos en la máquina.
-Vemos que está el puerto **8000** abierto pero no es accesible desde el exterior, necesitamos hacer **`Port-Forwarding`**
+Vemos que está el puerto **8000** abierto pero no es accesible desde el exterior, necesitamos hacer [Port-Forwarding](https://es.wikipedia.org/wiki/Redirecci%C3%B3n_de_puertos)
 Nos situamos bajo el directorio **`/opt/strapi`** y ejecutamos el comando **`ssh-keygen`**
 
 ```console
@@ -324,7 +324,7 @@ $ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCyL7ekPUOothGSU6kZyM1Hlmaz9ZUrPhif
 $ 
 ```
 
-Ya estamos listos para iniciar nuestro **`Port-Forwarding`**. Básicamente nuestro puerto **8000** estará redirigido al puerto **8000** de la máquina Horizontall.
+Ya estamos listos para iniciar nuestro [Port-Forwarding](https://es.wikipedia.org/wiki/Redirecci%C3%B3n_de_puertos). Básicamente nuestro puerto **8000** estará redirigido al puerto **8000** de la máquina Horizontall.
 De ese modo podemos navegar a nuestro localhost y ver qué se está ejecutando en este puerto.
 
 ```console

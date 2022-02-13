@@ -21,5 +21,4 @@ También puedes encontrarlos en el repositorio de Github correspondiente.
 
 ## Python
 
-  - Sin contenido.
-    - ...
+  - #### Auto Reverse Shell para EarlyAccess (HTB)
