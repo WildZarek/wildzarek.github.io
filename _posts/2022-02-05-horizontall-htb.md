@@ -11,7 +11,7 @@ header:
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, Pentesting, Port-Forwarding, Privilege Escalation, Web Exploiting]
-tags: [API, CMS, CVE, JWT, Nmap, RCE]
+tags: [API, CMS, CVE, JWT, RCE]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/horizontall.png"></p>
