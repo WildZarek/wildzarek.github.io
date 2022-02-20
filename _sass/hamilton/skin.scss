@@ -64,11 +64,11 @@ pre {
 }
 
 .highlight::-webkit-scrollbar-thumb {
-  background: #444;
+  background: #353535;
 }
 
-.highlight::-webkit-scrollbar-hover {
-  background: #5b5b5b;
+.highlight::-webkit-scrollbar-thumb:hover {
+  background: #4c4c4c;
 }
 
 table {
