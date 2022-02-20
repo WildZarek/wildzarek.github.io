@@ -52,6 +52,7 @@ pre {
 }
 
 .highlight::-webkit-scrollbar {
+  overflow-x: auto; /* Show horizontal scrollbar */
   display: none;
 }
 
