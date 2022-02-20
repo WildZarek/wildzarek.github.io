@@ -72,10 +72,10 @@ $subscribe-color:       tomato !default;
   color: #999999;
 }
 .highlight .go {
-  color: #888888;
+  color: #4ba04b; // #888888
 }
 .highlight .gp {
-  color: #014c10; // #555555
+  color: #6ee66e; // #6ee66e #4a00fe #014c10
 }
 .highlight .gs {
   font-weight: bold;
@@ -165,7 +165,7 @@ $subscribe-color:       tomato !default;
   color: #e6db74;
 }
 .highlight .s1 {
-  color: #e6db74;
+  color: #e6db74; // #e6db74
 }
 .highlight .ss {
   color: #e6db74;
@@ -199,7 +199,7 @@ $subscribe-color:       tomato !default;
   color: #f8f8f2;
 }
 .highlight .nb {
-  color: #f8f8f2;
+  color: #00be00; // #f8f8f2
 }
 .highlight .ni {
   color: #f8f8f2;
@@ -217,7 +217,7 @@ $subscribe-color:       tomato !default;
   color: #f8f8f2;
 }
 .highlight .nv, .highlight .vm {
-  color: #f8f8f2;
+  color: #e6db74; // #f8f8f2
 }
 .highlight .w {
   color: #f8f8f2;
@@ -227,9 +227,9 @@ $subscribe-color:       tomato !default;
   font-weight: bold;
 }
 .highlight .nt {
-  color: #f92672;
+  color: #2b772b; // #f92672
 }
 .highlight {
-  color: #f8f8f2;
+  color: #00be00; // #f8f8f2
   background-color: #49483e;
 }
