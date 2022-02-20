@@ -596,7 +596,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: 'nmap'
 
-nmap    100%[========================>]   5.67M  1.61MB/s    in 3.5s    
+nmap    100%[=====================================>]   5.67M  1.61MB/s    in 3.5s    
 
 2022-02-13 00:58:39 (1.61 MB/s) - 'nmap' saved [5944464/5944464]
 
@@ -766,7 +766,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: ‘nmap’
 
-nmap 100%[========================>]   5.67M  2.23MB/s    in 2.5s    
+nmap 100%[=====================================>]   5.67M  2.23MB/s    in 2.5s    
 
 2022-02-13 02:43:19 (2.23 MB/s) - ‘nmap’ saved [5944464/5944464]
 
@@ -842,7 +842,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: 'nmap'
 
-nmap 100%[========================>]   5.67M  1.29MB/s    in 5.9s    
+nmap 100%[=====================================>]   5.67M  1.29MB/s    in 5.9s    
 
 2022-02-13 02:07:14 (984 KB/s) - 'nmap' saved [5944464/5944464]
 
@@ -898,7 +898,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 8077312 (7.7M) [application/octet-stream]
 Saving to: 'chisel'
 
-chisel 100%[========================>]   7.70M  2.15MB/s    in 3.7s    
+chisel 100%[=====================================>]   7.70M  2.15MB/s    in 3.7s    
 
 2022-02-13 02:37:35 (2.06 MB/s) - 'chisel' saved [8077312/8077312]
 game-tester@game-server:/tmp/wildzarek$ chmod +x chisel
@@ -907,7 +907,7 @@ game-tester@game-server:/tmp/wildzarek$ chmod +x chisel
 Finalmente ya estamos listos para utilizar Chisel, primero en nuestra máquina levantamos el servidor tunelizado:
 
 ```console
-chisel server -p 8000 --reverse
+p3ntest1ng:~$ chisel server -p 8000 --reverse
 2022/02/13 03:21:28 server: Reverse tunnelling enabled
 2022/02/13 03:21:28 server: Fingerprint 2+d8X0xkeeLGtxsA6wkXXNU/M4H6IiHyghQ9WVo7Xx0=
 2022/02/13 03:21:28 server: Listening on http://0.0.0.0:8000
