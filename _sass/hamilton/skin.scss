@@ -37,6 +37,7 @@ blockquote {
 pre,
 code {
   background-color: $code-background-color;
+  color: #00be00;
 }
 
 pre {
@@ -48,7 +49,6 @@ pre {
 
   .highlighter-rouge & {
     background: $code-background-color;
-    color: #007800;
   }
 }
 
