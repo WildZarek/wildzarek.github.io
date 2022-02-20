@@ -72,7 +72,7 @@ Identificamos dos puertos abiertos, vamos a obtener más información con un esc
 | -oN       | Guarda el output en un archivo con formato normal      |
 
 ```console
-p3ntest1ng:~$ nmap -sCV -p22,80 10.10.11.104 -oN targeted
+p3ntest1ng:~$ nmap -sCV -p 22,80 10.10.11.104 -oN targeted
 ```
 
 ![Nmap Scan 2](/assets/images/hackthebox/previse/nmap2.png)
@@ -86,7 +86,7 @@ Vemos que hay un servidor web corriendo bajo el puerto **80** así que vamos a t
 | -oN       | Guarda el output en un archivo con formato normal |
 
 ```console
-p3ntest1ng:~$ nmap --script http-enum -p80 10.10.11.104 -oN webScan
+p3ntest1ng:~$ nmap --script http-enum -p 80 10.10.11.104 -oN webScan
 ```
 
 ![Nmap Scan 3](/assets/images/hackthebox/previse/nmap3.png)
@@ -112,7 +112,7 @@ Puedes usar la que más te guste, yo personalmente prefiero **`wfuzz`**. Yo acos
 En este caso estoy utilizando un diccionario pequeño, si no encontrasemos nada tiraremos de otro más grande.
 
 ```console
-p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc 404 http://previse.htb/FUZZ 2>/dev/null
 ```
 
 ![wfuzz de directorios](/assets/images/hackthebox/previse/wfuzz1.png)
@@ -127,7 +127,7 @@ Podemos deducir que habrá más archivos similares, así que vamos a fuzzear la 
 | --hc=404  | Ocultar todos los códigos de estado 404 |
 
 ```console
-p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://previse.htb/FUZZ.php 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc 404 http://previse.htb/FUZZ.php 2>/dev/null
 ```
 
 ![wfuzz de archivos](/assets/images/hackthebox/previse/wfuzz2.png)
