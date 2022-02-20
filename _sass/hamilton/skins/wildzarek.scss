@@ -1,7 +1,7 @@
 $text-color:            lightgrey !default; // lightgrey
 $text-color-light:      silver !default;    // silver
 $background-color:      #00140A !default;   // #121212
-$code-background-color: #141414 !default;   // #202020
+$code-background-color: #001e00 !default;   // #202020
 
 $border-color:          mix($text-color, $background-color, 30%) !default;
 $border-color-light:    darken($border-color, 5%) !default;
@@ -16,7 +16,7 @@ $table-header-bg-color: mix($background-color, $border-color-light, 5%) !default
 $table-header-border:   lighten($border-color, 30%) !default;
 $table-border-color:    lighten($border-color, 20%) !default;
 
-$pre-shadow:            0 0 4px rgba(255,255,255,0.4) inset !default;
+$pre-shadow:            0 0 4px rgba(0,145,75,0.4) inset !default;
 $dropdown-shadow:       0px 8px 16px 0px rgba(255,255,255,0.2) !default;
 
 $subscribe-color:       tomato !default;
