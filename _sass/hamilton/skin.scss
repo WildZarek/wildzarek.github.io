@@ -59,8 +59,16 @@ pre {
   display: solid;
 }
 
+.highlight::-webkit-scrollbar-track {
+  background: $code-background-color;
+}
+
 .highlight::-webkit-scrollbar-thumb {
-  background: #424242;
+  background: #444;
+}
+
+.highlight::-webkit-scrollbar-hover {
+  background: #5b5b5b;
 }
 
 table {
