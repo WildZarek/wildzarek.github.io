@@ -39,7 +39,7 @@ Empezamos con el reconocimiento de puertos lanzando un **`TCP SYN Port Scan`**
 
 ```console
 p3ntest1ng:~$ sudo nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.110 -oG allPorts
- 
+
 Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-02-04 00:13 CET
 Initiating SYN Stealth Scan at 00:13
@@ -81,6 +81,7 @@ Vamos a obtener más información con un escaneo específico sobre los puertos q
 
 ```console
 p3ntest1ng:~$ nmap -sCV -p 22,80,443 10.10.11.110 -oN targeted
+
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-02-04 00:15 CET
 Nmap scan report for 10.10.11.110
 Host is up (0.066s latency).
