@@ -59,6 +59,10 @@ pre {
   display: solid;
 }
 
+.highlight::-webkit-scrollbar-thumb {
+  background: #424242;
+}
+
 table {
   color: $table-text-color;
   border-color: $table-border-color;
