@@ -27,7 +27,7 @@ Saludos pentesters, en esta ocasión volvemos a la carga con una máquina Linux 
 Empezamos con el reconocimiento de puertos lanzando un **`TCP SYN Port Scan`**
 
 | Parámetro | Descripción |
-| --------- | :---------- |
+| :-------- | :---------- |
 | -p-       | Escanea el rango completo de puertos (hasta el 65535)    |
 | -sS       | Realiza un escaneo de tipo SYN port scan                 |
 | --min-rate | Enviar paquetes no más lentos que 5000 por segundo      |
@@ -65,7 +65,7 @@ Nmap done: 1 IP address (1 host up) scanned in 12.88 seconds
 Identificamos estos puertos abiertos:
 
 | Puerto | Descripción |
-| ------ | :---------- |
+| :----- | :---------- |
 | 22     | **[SSH](https://es.wikipedia.org/wiki/Secure_Shell)** - SSH o Secure Shell |
 | 80     | **[HTTP](https://es.wikipedia.org/wiki/Servidor_web)** - Servidor web |
 | 443    | **[HTTPS](https://es.wikipedia.org/wiki/Protocolo_seguro_de_transferencia_de_hipertexto)** - Protocolo seguro de transferencia de hipertexto |
@@ -73,7 +73,7 @@ Identificamos estos puertos abiertos:
 Vamos a obtener más información con un escaneo específico sobre los puertos que hemos encontrado.
 
 | Parámetro | Descripción |
-| --------- | :---------- |
+| :-------- | :---------- |
 | -p        | Escanea sobre los puertos especificados                |
 | -sC       | Muestra todos los scripts relacionados con el servicio |
 | -sV       | Determina la versión del servicio                      |
@@ -365,7 +365,7 @@ Con estas credenciales podemos iniciar sesión como el administrador y echarle u
 Apliquemos un poco de fuzzing sobre este subdominio para ver si encontramos algo interesante:
 
 | Parámetro | Descripción |
-| --------- | :---------- |
+| :-------- | :---------- |
 | -c        | Muestra el output en formato colorizado |
 | -w        | Utiliza el diccionario especificado |
 | --hc 404  | Oculta todos los códigos de estado 404 |
@@ -596,7 +596,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 5944464 (5.7M) [application/octet-stream]
 Saving to: 'nmap'
 
-nmap    100%[=====================================>]   5.67M  1.61MB/s    in 3.5s    
+nmap    100%[=====================================>]   5.67M  1.61MB/s    in 3.5s
 
 2022-02-13 00:58:39 (1.61 MB/s) - 'nmap' saved [5944464/5944464]
 
