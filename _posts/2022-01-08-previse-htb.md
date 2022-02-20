@@ -35,7 +35,7 @@ En primer lugar y como en cualquier máquina, necesitamos información sobre la 
 Asignamos un virtualhost a la máquina en nuestro archivo **`/etc/hosts`** por motivos de comodidad. Es una buena práctica a mi parecer.
 
 ```console
-p3ntest1ng:~$ sudo echo '10.10.11.104 previse.htb' >> /etc/hosts
+p3ntest1ng:~$ echo '10.10.11.104 previse.htb' | sudo tee -a /etc/hosts
 ```
 
 Y ahora sí, podemos empezar con el reconocimiento de puertos con un **`TCP SYN Port Scan`**
@@ -268,7 +268,7 @@ Y estamos dentro. Tenemos privilegios de root y la máquina es nuestra.
 
 ### ¡Gracias por leer hasta el final!
 
-#### Este ha sido mi primer write-up y espero que sea el primero de muchos más.
-
 Una máquina facilita e interesante que nos enseña dos vulnerabilidades genéricas y la importancia de escribir código fuente sanitizado.
 Espero que os haya gustado y nos vemos en el siguiente ;)
+
+#### Este ha sido mi primer write-up y espero que sea el primero de muchos más.
