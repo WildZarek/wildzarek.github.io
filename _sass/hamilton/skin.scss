@@ -52,8 +52,11 @@ pre {
 }
 
 .highlight::-webkit-scrollbar {
+  width: 10px;
+  background: #1c1c1c;
   overflow-x: auto; /* Show horizontal scrollbar */
-  display: none;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  display: solid;
 }
 
 table {
