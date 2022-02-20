@@ -44,6 +44,10 @@ pre {
   box-shadow: $pre-shadow;
 }
 
+code {
+    padding: 4px 6px;
+}
+
 .highlight {
   background: $code-background-color;
 
