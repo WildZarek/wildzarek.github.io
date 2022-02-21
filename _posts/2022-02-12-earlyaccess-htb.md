@@ -126,7 +126,7 @@ https://earlyaccess.htb/ [200 OK] Apache[2.4.38], Bootstrap, Cookies[XSRF-TOKEN,
 Podemos ver si existen subdominios con wfuzz, en este caso me estoy saltando el fuzz de directorios porque no encontré nada interesante.
 
 | Parámetro  | Descripción |
-| ---------- | :---------- |
+| :--------- | :---------- |
 | -c         | Mostrar el output en formato colorizado |
 | -w         | Utiliza el diccionario especificado |
 | --hw 28,53 | Oculta los resultados con 28 y 53 palabras para evitar falsos positivos |
