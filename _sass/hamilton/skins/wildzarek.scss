@@ -5,8 +5,8 @@ $code-background-color: #001400 !default;   // #202020
 
                         /* mix($text-color, $background-color, 30%) !default; */
 $border-color:          mix(#00c94d, $code-background-color, 50%) !default;
-$border-color-light:    darken($border-color, 30%) !default;
-$border-color-dark:     lighten($border-color, 5%) !default;
+$border-color-light:    darken($border-color, 20%) !default;
+$border-color-dark:     lighten($border-color, 10%) !default;
 
 $link-base-color:       #00c94d !default; // 00b1c9
 $link-visited-color:    darken($link-base-color, 5%) !default;
