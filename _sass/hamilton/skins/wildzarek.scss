@@ -11,7 +11,7 @@ $border-color-dark:     lighten($border-color, 10%) !default;
 $link-base-color:       #00c94d !default; // 00b1c9
 $link-visited-color:    darken($link-base-color, 5%) !default;
 
-$table-text-color:      lighten(#00c94d, 60%) !default;
+$table-text-color:      darken(#00c94d, 5%) !default;
 $table-zebra-color:     mix($background-color, $border-color-light, 50%) !default;
 $table-header-bg-color: mix($background-color, $border-color-light, 5%) !default;
 $table-header-border:   lighten($border-color, 30%) !default;
