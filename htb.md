@@ -22,6 +22,6 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 
 ## Máquinas Windows
 
-| Easy | Medium | Hard | Insane |
-|:----:|:------:|:----:|:------:|
-| ... | ... | ... | ... |
+| Easy                  | Medium | Hard | Insane |
+|:---------------------:|:------:|:----:|:------:|
+| [Driver](/htb/driver) | ------ | ---- | ------ |
