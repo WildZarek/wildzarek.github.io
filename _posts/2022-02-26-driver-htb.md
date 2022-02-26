@@ -3,8 +3,8 @@ layout: post
 title: Driver - WriteUp
 author: WildZarek
 permalink: /htb/driver
-excerpt: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE para escalar privilegios."
-description: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE para escalar privilegios."
+excerpt: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE que nos permite crear un usuario con privilegios."
+description: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE que nos permite crear un usuario con privilegios."
 date: 2022-02-26
 header:
   teaser: /assets/images/hackthebox/driver.png
@@ -348,9 +348,10 @@ que se encarga de gestionar la cola de impresión y se encarga de manejar la int
 Buscando en Google sobre este servicio, encontramos rápidamente información de una vulnerabilidad conocida como [Print Nightmare](https://cybersync.org/blogs-en/exploitation_of_the_print_nightmare_vulnerability)
 
 En la página referenciada hablan de dos vulnerabilidades similares, nos centraremos en [CVE-2021-1675](https://www.incibe-cert.es/alerta-temprana/vulnerabilidades/cve-2021-1675)
-Vemos que es posible provocar un [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html) para ganar acceso como **`NT AUTHORITY\SYSTEM`**
+Vemos que incluso es posible provocar un [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html) como usuario privilegiado.
 
-Una vez más, realizando una búsqueda rápida en Google encontramos un repositorio en Github con un script escrito en PowerShell. Vamos a clonarlo a nuestra máquina.
+Una vez más, realizando una búsqueda rápida en Google encontramos un repositorio en Github con un script escrito en PowerShell.
+Este script nos permite la creación de un nuevo usuario con privilegios en el sistema. Vamos a clonarlo a nuestra máquina.
 
 ```console
 p3ntest1ng:~$ git clone https://github.com/calebstewart/CVE-2021-1675
