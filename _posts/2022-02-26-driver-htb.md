@@ -67,8 +67,8 @@ Identificamos los siguientes puertos abiertos:
 
 | Puerto | Descripción |
 | :----- | :---------- |
-| 80     | **[HTTP](https://es.wikipedia.org/wiki/Servidor_web)** - Servidor web |
-| 135    | **[MSRPC](https://es.wikipedia.org/wiki/Llamada_a_procedimiento_remoto)** - Microsoft RPC services |
+| 80     | **[HTTP](https://es.wikipedia.org/wiki/Servidor_web)** - Servidor Web |
+| 135    | **[MSRPC](https://es.wikipedia.org/wiki/Llamada_a_procedimiento_remoto)** - Microsoft RPC Services |
 | 445    | **[SMB](https://es.wikipedia.org/wiki/Server_Message_Block)** - Server Message Block |
 | 5985   | **[WINRM](https://docs.microsoft.com/es-es/windows/win32/winrm/portal?redirectedfrom=MSDN)** - Windows Remote Management |
 
