@@ -161,7 +161,7 @@ IconFile=\\10.10.16.25\share\test.ico
 Command=ToggleDesktop
 ```
 
-##### ¿Por qué ponemos el @ delante del nombre del archivo?
+#### ¿Por qué ponemos el @ delante del nombre del archivo?
 
 Añadiendo este símbolo al comienzo del nombre, el archivo será colocado por encima del resto en el recurso compartido.
 
