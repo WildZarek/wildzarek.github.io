@@ -345,10 +345,11 @@ Ahora ya podemos ejecutar el binario, pero debemos tener en cuenta que hay que p
 ![Services](/assets/images/hackthebox/driver/services.png)
 
 De entre toda la información que obtenemos, vemos varias cosas interesantes pero nos vamos a centrar en el servicio **`spoolsv`**
-que se encarga de gestionar la cola de impresión y se encarga de manejar la interacción con la impresora.
+que se encarga de gestionar la cola de impresión y de manejar la interacción con la impresora.
 Buscando en Google sobre este servicio, encontramos rápidamente información de una vulnerabilidad conocida como [Print Nightmare](https://cybersync.org/blogs-en/exploitation_of_the_print_nightmare_vulnerability)
 
 En la página referenciada hablan de dos vulnerabilidades similares, nos centraremos en [CVE-2021-1675](https://www.incibe-cert.es/alerta-temprana/vulnerabilidades/cve-2021-1675)
+
 Vemos que incluso es posible provocar un [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html) como usuario privilegiado.
 
 Una vez más, realizando una búsqueda rápida en Google encontramos un repositorio en Github con un script escrito en PowerShell.
