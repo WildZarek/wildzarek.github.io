@@ -348,7 +348,7 @@ De entre toda la información que obtenemos, vemos varias cosas interesantes per
 que se encarga de gestionar la cola de impresión y de manejar la interacción con la impresora.
 Buscando en Google sobre este servicio, encontramos rápidamente información de una vulnerabilidad conocida como [Print Nightmare](https://cybersync.org/blogs-en/exploitation_of_the_print_nightmare_vulnerability)
 
-En la página referenciada hablan de dos vulnerabilidades similares, nos centraremos en [CVE-2021-1675](https://www.incibe-cert.es/alerta-temprana/vulnerabilidades/cve-2021-1675)
+En la página referenciada hablan de dos vulnerabilidades similares, nosotros nos centraremos en el [CVE-2021-1675](https://www.incibe-cert.es/alerta-temprana/vulnerabilidades/cve-2021-1675)
 
 Vemos que incluso es posible provocar un [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html) como usuario privilegiado.
 
@@ -417,7 +417,7 @@ Restricted
 Unrestricted
 ```
 
-Como vimo anteriormente, con ayuda de este script podemos crear un nuevo usuario con privilegios de administrador.
+Como vimos anteriormente, con ayuda de este script podemos crear un nuevo usuario con privilegios de administrador.
 
 ```console
 *Evil-WinRM* PS C:\Windows\Temp\Privesc> Import-Module ./pn.ps1
