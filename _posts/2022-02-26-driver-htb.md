@@ -3,8 +3,8 @@ layout: post
 title: Driver - WriteUp
 author: WildZarek
 permalink: /htb/driver
-excerpt: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE que nos permite crear un usuario con privilegios."
-description: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE que nos permite crear un usuario con privilegios."
+excerpt: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE usando un script en PowerShell que nos permite crear un usuario con privilegios."
+description: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE usando un script en PowerShell que nos permite crear un usuario con privilegios."
 date: 2022-02-26
 header:
   teaser: /assets/images/hackthebox/driver.png
@@ -415,7 +415,7 @@ Restricted
 Unrestricted
 ```
 
-Con ayuda de este script podemos crear un nuevo usuario con privilegios de administrador.
+Como vimo anteriormente, con ayuda de este script podemos crear un nuevo usuario con privilegios de administrador.
 
 ```console
 *Evil-WinRM* PS C:\Windows\Temp\Privesc> Import-Module ./pn.ps1
