@@ -281,7 +281,7 @@ p3ntest1ng:~$ wget https://github.com/carlospolop/PEASS-ng/releases/download/202
 
 ...[snip]...
 
-winPEASx64.exe    100%[========================================>]   1,84M  --.-KB/s    en 0,1s    
+winPEASx64.exe    100%[================================>]   1,84M  --.-KB/s    en 0,1s    
 
 2022-02-25 16:17:05 (13,3 MB/s) - «winPEASx64.exe» guardado [1931776/1931776]
 ```
