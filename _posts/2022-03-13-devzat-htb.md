@@ -88,7 +88,7 @@ Realizamos un escaneo específico sobre los puertos abiertos que hemos encontrad
 | -oN       | Guarda el output en un archivo con formato normal      |
 
 ```console
-p3ntest1ng:~$ nmap -sCV -p22,80,8000 10.10.11.118 -oN targeted
+p3ntest1ng:~$ nmap -sCV -p 22,80,8000 10.10.11.118 -oN targeted
 
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-01-03 21:31 CET
 Nmap scan report for devzat.htb (10.10.11.118)
@@ -128,7 +128,7 @@ Además, ya sabemos que el puerto **8000** en realidad es un aplicativo corriend
 | -oN       | Guarda el output en un archivo con formato normal |
 
 ```console
-p3ntest1ng:~$ sudo nmap --script http-enum -p80 10.10.11.118 -oN webScan
+p3ntest1ng:~$ sudo nmap --script http-enum -p 80 10.10.11.118 -oN webScan
 
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-01-03 21:34 CET
 Nmap scan report for devzat.htb (10.10.11.118)
