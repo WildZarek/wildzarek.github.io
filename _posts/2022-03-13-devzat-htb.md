@@ -349,7 +349,7 @@ func loadCharacter(species string) string {
 
 No entiendo mucho de Go, pero el código se puede entender fácilmente si has manejado otros lenguajes como Python.
 Básicamente en esta función vemos que se ejecuta un comando a nivel de sistema, haciendo uso de la librería **`os/exec`** importada al inicio del script.
-Vemos que con **`exec.Command`** se lanza el comando **`sh -c cat characteristics/** seguido del valor **`species`**, que es básicamente un string en formato JSON.
+Vemos que con **`exec.Command`** se lanza el comando **`sh -c cat characteristics/`** seguido del valor **`species`**, que es básicamente un string en formato JSON.
 Lo interesante de esto es que podría ser vulnerable a [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html), vamos a enviar una petición POST maliciosa para tratar de obtener una shell inversa.
 Primero vamos a codificar nuestro comando en Base64 para evadir posibles filtros:
 
