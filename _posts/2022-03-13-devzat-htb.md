@@ -20,7 +20,7 @@ Saludos pentesters, volvemos a la carga con otra máquina Linux de dificultad me
 
 ## Fecha de Resolución
 
-<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/398"><img src="/assets/images/hackthebox/owned_date.png"></a></p>
+<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/398"><img src="/assets/images/hackthebox/devzat/owned_date.png"></a></p>
 
 ## Fase de Reconocimiento
 
@@ -152,11 +152,11 @@ http://devzat.htb/ [200 OK] Apache[2.4.41], Country[RESERVED][ZZ], Email[patrick
 
 **`patrick`** podría ser un usuario potencial, lo tendremos en cuenta. Veamos la página en el navegador para ver si podemos encontrar algún posible vector de entrada.
 
-![Website](/assets/images/htb-devzat/website.png)
+![Website](/assets/images/hackthebox/devzat/website.png)
 
 Llegando al final de la página observamos que nos dan un acceso al proyecto, el cual se trata de un chat sobre SSH bajo el puerto 8000.
 
-![Conexión](/assets/images/htb-devzat/connection.png)
+![Conexión](/assets/images/hackthebox/devzat/connection.png)
 
 Así que vamos a conectarnos para ver qué podemos hacer.
 
@@ -250,11 +250,11 @@ Requests/sec.: 380.7974
 
 Encontramos un subdominio accesible así que lo añadimos a nuestro archivo **`/etc/hosts`** para poder acceder al mismo.
 
-![Subdominio](/assets/images/htb-devzat/subdomain.png)
+![Subdominio](/assets/images/hackthebox/devzat/subdomain.png)
 
 Parece que podemos guardar una nueva mascota en este inventario. Veamos cómo se envía la petición con **`BurpSuite`**
 
-![BurpSuite](/assets/images/htb-devzat/burpsuite1.png)
+![BurpSuite](/assets/images/hackthebox/devzat/burpsuite1.png)
 
 La petición se realiza mediante **POST** al endpoint **`/api/pet`** en formato **JSON**:
 
@@ -296,7 +296,7 @@ Requests/sec.: 102.4015
 
 Encuentro un directorio **`.git`**, podemos descargarlo con **`wget`** a nuestra máquina para analizarlo.
 
-![Git](/assets/images/htb-devzat/git.png)
+![Git](/assets/images/hackthebox/devzat/git.png)
 
 ```console
 p3ntest1ng:~$ wget --recursive --no-parent http://pets.devzat.htb/.git/
@@ -376,7 +376,7 @@ listening on [any] 9999 ...
 
 Le damos a **`Forward`** y nos debería entablar la conexión...
 
-![BurpSuite](/assets/images/htb-devzat/burpsuite2.png)
+![BurpSuite](/assets/images/hackthebox/devzat/burpsuite2.png)
 
 ```console
 p3ntest1ng:~$ nc -nlvp 9999
@@ -389,7 +389,7 @@ patrick@devzat:~/pets$
 
 Como curiosidad, si observamos la página vemos que se ha producido un error al tramitar nuestra petición:
 
-![JSON Error](/assets/images/htb-devzat/json_error.png)
+![JSON Error](/assets/images/hackthebox/devzat/json_error.png)
 
 Vamos a realizar un tratamiento a la shell para mayor comodidad, recordad que esto siempre es recomendable hacerlo:
 
