@@ -20,7 +20,7 @@ Saludos pentesters, volvemos a la carga con otra máquina Linux de dificultad me
 
 ## Fecha de Resolución
 
-<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/398"><img src="/assets/images/hackthebox/devzat/owned_date.png"></a></p>
+<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/398"><img src="/assets/images/hackthebox/devzat/pwned_date.png"></a></p>
 
 ## Fase de Reconocimiento
 
