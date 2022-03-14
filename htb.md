@@ -4,8 +4,6 @@ title: HackTheBox
 permalink: /htb/
 ---
 
-<br/>
-
 # HackTheBox
 
 Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox organizado por categoría y dificultad.
@@ -17,9 +15,9 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 
 | Easy                            | Medium                          | Hard                            | Insane |
 |:-------------------------------:|:-------------------------------:|:-------------------------------:|:------:|
-| [Previse](/htb/previse)         | [Forge](/htb/forge)             | [EarlyAccess](/htb/earlyaccess) | --- |
-| [Horizontall](/htb/horizontall) | [Bolt](/htb/bolt)               | --- | --- |
-| ---                             | [Devzat](/htb/devzat)           | --- | --- |
+| [Previse](/htb/previse)         | [Forge](/htb/forge)             | [EarlyAccess](/htb/earlyaccess) | ---    |
+| [Horizontall](/htb/horizontall) | [Bolt](/htb/bolt)               | ---                             | ---    |
+| ---                             | [Devzat](/htb/devzat)           | ---                             | ---    |
 
 ## Máquinas Windows
 
