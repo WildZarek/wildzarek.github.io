@@ -19,7 +19,7 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 |:-------------------------------:|:-------------------------------:|:-------------------------------:|:------:|
 | [Previse](/htb/previse)         | [Forge](/htb/forge)             | [EarlyAccess](/htb/earlyaccess) | ------ |
 | [Horizontall](/htb/horizontall) | [Bolt](/htb/bolt)               | --- | --- |
-| --- | [Devzat](/htb/devzat)           | --- | --- |
+| ------------------------------- | [Devzat](/htb/devzat)           | --- | --- |
 
 ## Máquinas Windows
 
