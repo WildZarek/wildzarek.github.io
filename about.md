@@ -26,12 +26,16 @@ whoami = {
         ides: [ 'Visual Studio Code', 'Sublime Text' ],
         tools: [ 'git', 'github', 'gitlab' ],
         graphics: [ 'Adobe Photoshop' ]
+    },
+    cve's: {
+        CVE-2022-23242: [ 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-23242' ]
     }
 }
 ```
 
 ********************************************************************************************
 
-Mi nombre es David (aka **WildZarek**). Desde siempre me ha fascinado todo lo relacionado con la informática, pero en específico la programación y la ciberseguridad. Aquí publicaré artículos sobre ciberseguridad, hacking ético, resolución de CTFs, programación y mucho más.
+Mi nombre es David (aka **WildZarek**). Desde siempre me ha fascinado todo lo relacionado con la informática, pero en específico la programación y la ciberseguridad.
+Aquí publicaré artículos sobre ciberseguridad, hacking ético, resolución de CTFs, programación y mucho más.
 
 <p align="center"><img src="https://visitor-badge.glitch.me/badge?page_id=WildZarek/wildzarek.github.io"></p>
