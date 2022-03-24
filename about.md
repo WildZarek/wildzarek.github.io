@@ -27,8 +27,8 @@ whoami = {
         tools: [ 'git', 'github', 'gitlab' ],
         graphics: [ 'Adobe Photoshop' ]
     },
-    cve's: {
-        CVE-2022-23242: [ 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-23242' ]
+    cve: {
+        CVE-2022-23242: [ "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-23242" ]
     }
 }
 ```
