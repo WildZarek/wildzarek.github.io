@@ -14,9 +14,11 @@ categories: [HackTheBox, Challenges, OSINT]
 tags: [DNS, DMARC, dig-command, Phishing]
 ---
 
-<p align="center"><img src="/assets/images/hackthebox/htb_logo.jpeg" width="640" height="360"></p>
+# Fecha de Resolución
 
-Saludos pentesters, en esta ocasión vamos a resolver un nuevo desafío de HackTheBox.
+<p align="center"><img src="/assets/images/hackthebox/challenges/osint/easyphish/pwned_date.png"></p>
+
+Saludos pentesters, en esta ocasión vamos a resolver un desafío (cortito) de HackTheBox.
 
 # Easy Phish
 
