@@ -307,10 +307,11 @@ Vemos que en el último commit eliminaron el token hardcodeado. Teniendo el **TO
 ![API User Login](/assets/images/hackthebox/secret/notverified.png)
 
 Hemos obtenido mucha información así que vamos a ir poniendo en claro lo que sabemos:
-Tenemos una API a la que podemos lanzar consultas, lo primero sería intentar registrarnos como usuario, recordemos cómo se debe hacer la consulta.
+Tenemos una API a la que podemos lanzar consultas, lo primero es registrarnos como usuario.
 
-Necesitamos lanzar una consulta mediante POST al endpoint **http://secret.htb:3000/api/user/register**, para ello podemos hacerlo con **`curl`**
-El JSON debe estar construido de este modo:
+Necesitamos lanzar una petición POST al endpoint **http://secret.htb:3000/api/user/register**, podemos hacerlo con **`curl`**
+<br/>
+El JSON tiene que estar formado así:
 
 ```json
   {
@@ -409,10 +410,11 @@ p3ntest1ng:~$ curl -s -X GET "http://secret.htb:3000/api/priv" \
 }
 ```
 
-Perfecto, el sistema nos reconoce como administrador. Vamos a analizar otro JavaScript, el archivo **`private.js`**
+Perfecto, el sistema nos reconoce como administrador. Vamos a analizar otro JavaScript.
 <br/>
 Si nos fijamos en esta parte, vemos que la ruta **`/logs`** es vulnerable a [Remote Code Execution](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html):
 
+**`private.js`**
 ```javascript
 ...[snip]...
 router.get('/logs', verifytoken, (req, res) => {
