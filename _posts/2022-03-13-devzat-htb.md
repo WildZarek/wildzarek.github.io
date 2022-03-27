@@ -11,7 +11,7 @@ header:
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, Pentesting, BurpSuite, Exploiting, Port Forwarding, Pivoting, Privilege Escalation]
-tags: [API, GIT, RCE, SSH, INFLUXDB, CVE, BYPASS, SQL]
+tags: [API, GIT, SOURCE CODE REVIEW, RCE, SSH, INFLUXDB, CVE, BYPASS, SQL]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/machines/devzat.png"></p>
