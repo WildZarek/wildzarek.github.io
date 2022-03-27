@@ -3,8 +3,8 @@ layout: post
 title: Easy Phish (Reto) - WriteUp
 author: WildZarek
 permalink: /htb/challenges/osint/easyphish
-excerpt: "Desafío OSINT de HackTheBox en el que aprendemos sobre DMARC y registros DNS."
-description: "Desafío OSINT de HackTheBox en el que aprendemos sobre DMARC y registros DNS."
+excerpt: "Reto OSINT de HackTheBox en el que aprendemos sobre DMARC y registros DNS."
+description: "Reto OSINT de HackTheBox en el que aprendemos sobre DMARC y registros DNS."
 date: 2022-03-27
 header:
   teaser: /assets/images/hackthebox/challenges/osint/easyphish/pwned_date.png
