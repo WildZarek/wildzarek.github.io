@@ -7,18 +7,18 @@ excerpt: "Máquina Windows de nivel fácil, en la que veremos sobre Directorio A
 description: "Máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE usando un script en PowerShell que nos permite crear un usuario con privilegios."
 date: 2022-02-26
 header:
-  teaser: /assets/images/hackthebox/driver.png
+  teaser: /assets/images/hackthebox/machines/driver.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories: [HackTheBox, Pentesting, Web, Password Guessing, Privilege Escalation]
+categories: [HackTheBox, Pentesting, Web Exploitation, Password Guessing, Privilege Escalation]
 tags: [ACTIVE-DIRECTORY, SCF, CVE, PRINT-NIGHTMARE, WEAK PASSWORD, RCE]
 ---
 
-<p align="center"><img src="/assets/images/hackthebox/driver.png"></p>
+<p align="center"><img src="/assets/images/hackthebox/machines/driver.png"></p>
 
 ## Fecha de Resolución
 
-<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/387"><img src="/assets/images/hackthebox/driver/pwned_date.png"></a></p>
+<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/387"><img src="/assets/images/hackthebox/machines/driver/pwned_date.png"></a></p>
 
 ## Fase de Reconocimiento
 
@@ -135,17 +135,17 @@ Veamos directamente lo que tenemos en la página web, pero antes vamos a añadir
 p3ntest1ng:~$ echo '10.10.11.106 driver.htb' | sudo tee -a /etc/hosts
 ```
 
-![Login](/assets/images/hackthebox/driver/login.png)
+![Login](/assets/images/hackthebox/machines/driver/login.png)
 
 ## Fase de Explotación
 
 Lo primero que nos encontramos es un login pidiéndonos credenciales de acceso al sitio, en este caso pruebo **`admin:admin`** y...¡Funciona!.
 
-![Website](/assets/images/hackthebox/driver/website.png)
+![Website](/assets/images/hackthebox/machines/driver/website.png)
 
 En esta página sólo funciona el menú **`Firmware Updates`**:
 
-![Updates](/assets/images/hackthebox/driver/updates.png)
+![Updates](/assets/images/hackthebox/machines/driver/updates.png)
 
 Aquí vemos que podemos subir un nuevo firmware para la impresora.
 Sabemos que el servidor tiene SMB habilitado, por lo que podemos crear un archivo 
@@ -342,7 +342,7 @@ Ahora ya podemos ejecutar el binario, pero debemos tener en cuenta que hay que p
 *Evil-WinRM* PS C:\Windows\Temp\Privesc> C:\Windows\Temp\Privesc\winpeas.exe
 ```
 
-![Services](/assets/images/hackthebox/driver/services.png)
+![Services](/assets/images/hackthebox/machines/driver/services.png)
 
 De entre toda la información que obtenemos, vemos varias cosas interesantes pero nos vamos a centrar en el servicio **`spoolsv`**
 que se encarga de gestionar la cola de impresión y de manejar la interacción con la impresora.

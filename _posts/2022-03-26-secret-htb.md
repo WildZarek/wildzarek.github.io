@@ -7,20 +7,20 @@ excerpt: "Máquina Linux de nivel fácil en la que estaremos jugando con tokens 
 description: "Máquina Linux de nivel fácil en la que estaremos jugando con tokens JWT en la API alojada en el servidor web, analizamos varios archivos javascript y el código fuente de un binario escrito en C para finalmente lograr explotar la funcionalidad CoreDump para escalar privilegios."
 date: 2022-03-26
 header:
-  teaser: /assets/images/hackthebox/secret.png
+  teaser: /assets/images/hackthebox/machines/secret.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, Pentesting, Web Exploiting, Privilege Escalation]
 tags: [API, JWT, CODE ANALYSIS, SUID, CORE DUMP]
 ---
 
-<p align="center"><img src="/assets/images/hackthebox/secret.png"></p>
+<p align="center"><img src="/assets/images/hackthebox/machines/secret.png"></p>
 
 Saludos pentesters, en esta ocasión vamos a resolver la máquina de HackTheBox llamada **`Secret`**.
 
 ## Fecha de Resolución
 
-<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/408"><img src="/assets/images/hackthebox/secret/pwned_date.png"></a></p>
+<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/408"><img src="/assets/images/hackthebox/machines/secret/pwned_date.png"></a></p>
 
 ## Fase de Reconocimiento
 
@@ -159,7 +159,7 @@ Requests/sec.: 0
 
 Tenemos algo interesante, vemos un directorio **`api`**, así que vamos a revisar la página web para obtener más información.
 
-![Website](/assets/images/hackthebox/secret/website.png)
+![Website](/assets/images/hackthebox/machines/secret/website.png)
 
 Una vez dentro lo primero que me llama la atención es que podemos descargar un archivo con nombre **`files.zip`**,
 también nos hablan de una [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones) y de tokens [JWT](https://es.wikipedia.org/wiki/JSON_Web_Token).
@@ -290,21 +290,21 @@ TOKEN_SECRET = secret
 
 Vemos que en el último commit eliminaron el token hardcodeado. Teniendo el **TOKEN_SECRET** analicemos la sección **Register user** en la web, donde nos explican el funcionamiento de la API.
 
-![API User Register](/assets/images/hackthebox/secret/howtoregister.png)
+![API User Register](/assets/images/hackthebox/machines/secret/howtoregister.png)
 
-![API User Login](/assets/images/hackthebox/secret/howtologin1.png)
+![API User Login](/assets/images/hackthebox/machines/secret/howtologin1.png)
 
-![API User Login](/assets/images/hackthebox/secret/howtologin2.png)
+![API User Login](/assets/images/hackthebox/machines/secret/howtologin2.png)
 
-![API User Login](/assets/images/hackthebox/secret/howtologin3.png)
+![API User Login](/assets/images/hackthebox/machines/secret/howtologin3.png)
 
-![API User Login](/assets/images/hackthebox/secret/accessprivateroute.png)
+![API User Login](/assets/images/hackthebox/machines/secret/accessprivateroute.png)
 
-![API User Login](/assets/images/hackthebox/secret/whenadmin.png)
+![API User Login](/assets/images/hackthebox/machines/secret/whenadmin.png)
 
-![API User Login](/assets/images/hackthebox/secret/whenuser.png)
+![API User Login](/assets/images/hackthebox/machines/secret/whenuser.png)
 
-![API User Login](/assets/images/hackthebox/secret/notverified.png)
+![API User Login](/assets/images/hackthebox/machines/secret/notverified.png)
 
 Hemos obtenido mucha información así que vamos a ir poniendo en claro lo que sabemos:
 Tenemos una API a la que podemos lanzar consultas, lo primero es registrarnos como usuario.
@@ -389,12 +389,12 @@ Podemos hacer todo esto en la página **https://jwt.io/**
 <br/>
 Veamos cómo está construido nuestro JWT (algo que ya vimos en la documentación de la web).
 
-![JSON Web Token](/assets/images/hackthebox/secret/jwt_token.png)
+![JSON Web Token](/assets/images/hackthebox/machines/secret/jwt_token.png)
 
 Podemos modificar nuestro token para cambiar nuestro usuario a **`theadmin`**, que sabemos que existe en la API y tiene privilegios.
 Finalmente firmamos el nuevo token con el TOKEN_SECRET y copiamos el JWT generado.
 
-![JWT Signed](/assets/images/hackthebox/secret/jwt_signed.png)
+![JWT Signed](/assets/images/hackthebox/machines/secret/jwt_signed.png)
 
 Volvamos a probar con este nuevo token para ver si es válido y nos loguea con privilegios.
 

