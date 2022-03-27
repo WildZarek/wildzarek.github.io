@@ -8,9 +8,9 @@
   url: /categories/
 - title: Etiquetas
   url: /tags/
-- title: Write-Ups
+- title: WriteUps
   sublinks:
     - title: HackTheBox
-      url: /htb/
+      url: /hackthebox/
     - title: Scripts
       url: /scripts/
