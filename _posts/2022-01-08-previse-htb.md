@@ -10,7 +10,7 @@ header:
   teaser: /assets/images/hackthebox/previse.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories: [HackTheBox, BurpSuite, Pentesting, Privilege Escalation, Web Exploiting]
+categories: [HackTheBox, Pentesting, Web Exploiting, BurpSuite, Privilege Escalation]
 tags: [BYPASS, CTF LIKE, OS COMMAND INJECTION, PATH HIJACKING]
 ---
 

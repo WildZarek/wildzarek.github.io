@@ -10,8 +10,8 @@ header:
   teaser: /assets/images/hackthebox/devzat.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories: [HackTheBox, BurpSuite, Exploiting, Pentesting, Port-Forwarding, Privilege Escalation, Pivoting]
-tags: [API, Git, Nmap, RCE, SSH, InfluxDB, CVE, Chisel, Bypass, SQL]
+categories: [HackTheBox, Pentesting, BurpSuite, Exploiting, Port Forwarding, Pivoting, Privilege Escalation]
+tags: [API, GIT, RCE, SSH, INFLUXDB, CVE, CHISEL, BYPASS, SQL]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/devzat.png"></p>
@@ -712,7 +712,7 @@ Serving HTTP on 0.0.0.0 port 9999 (http://0.0.0.0:9999/) ...
 10.10.15.113 - - [24/Jan/2022 08:13:24] "GET /devzat-main.zip HTTP/1.1" 200 -
 ```
 
-Veamos las diferencias entre estas dos ramas:
+Veamos las diferencias entre estas dos ramas (recomiendo abrir la imagen en una nueva pestaña para verla mejor):
 
 ![Git Diff](/assets/images/hackthebox/devzat/git_diff.png)
 

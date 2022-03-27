@@ -3,15 +3,15 @@ layout: post
 title: Driver - WriteUp
 author: WildZarek
 permalink: /htb/driver
-excerpt: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE usando un script en PowerShell que nos permite crear un usuario con privilegios."
-description: "Una máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE usando un script en PowerShell que nos permite crear un usuario con privilegios."
+excerpt: "Máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE usando un script en PowerShell que nos permite crear un usuario con privilegios."
+description: "Máquina Windows de nivel fácil, en la que veremos sobre Directorio Activo vulnerando el gestor de actualizaciones de firmware mediante la web y posteriormente aprovechando un CVE usando un script en PowerShell que nos permite crear un usuario con privilegios."
 date: 2022-02-26
 header:
   teaser: /assets/images/hackthebox/driver.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
-categories: [HackTheBox, Pentesting, Privilege Escalation, Web Exploiting]
-tags: [ACTIVE-DIRECTORY, CVE, WEAK PASSWORD, RCE]
+categories: [HackTheBox, Pentesting, Web, Password Guessing, Privilege Escalation]
+tags: [ACTIVE-DIRECTORY, SCF, CVE, PRINT-NIGHTMARE, WEAK PASSWORD, RCE]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/driver.png"></p>
