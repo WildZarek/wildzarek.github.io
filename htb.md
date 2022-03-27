@@ -26,3 +26,11 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 | Easy                  | Medium | Hard | Insane |
 |:---------------------:|:------:|:----:|:------:|
 | [Driver](/htb/driver) | ------ | ---- | ------ |
+
+## Desafíos
+
+### OSINT
+
+| Easy                         | Medium | Hard | Insane |
+|:----------------------------:|:------:|:----:|:------:|
+| [Easy Phish](/htb/easyphish) | ------ | ---- | ------ |

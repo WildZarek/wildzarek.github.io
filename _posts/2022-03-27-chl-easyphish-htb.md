@@ -1,8 +1,8 @@
 ---
 layout: post
-title: HTB Challenge - Easy Phish
+title: Easy Phish (Reto) - WriteUp
 author: WildZarek
-permalink: /htb/challenges/osint/easy-phish
+permalink: /htb/challenges/osint/easyphish
 excerpt: "Desafío OSINT de HackTheBox en el que aprendemos sobre DMARC y registros DNS."
 description: "Desafío OSINT de HackTheBox en el que aprendemos sobre DMARC y registros DNS."
 date: 2022-03-27
