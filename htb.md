@@ -12,7 +12,7 @@ Aquí encontrarás todo el contenido relacionado con la plataforma **`HackTheBox
 Si alguno de estos documentos te ayudó, considera dejarme un Respect en la plataforma visitando mi perfil:
 
 <p align="center">
-	<a href="http://www.hackthebox.eu/badge/image/18979" target="_blank">
+	<a href="https://app.hackthebox.com/users/18979" target="_blank">
         <img src="http://www.hackthebox.eu/badge/image/18979" alt="HackTheBox">
     </a>
 </p>

@@ -16,7 +16,11 @@ tags: [DNS, DMARC, dig-command, Phishing]
 
 # Fecha de Resolución
 
-<p align="center"><img src="/assets/images/hackthebox/challenges/osint/easyphish/pwned_date.png"></p>
+<p align="center">
+  <a href="https://www.hackthebox.com/achievement/challenge/18979/79">
+    <img src="/assets/images/hackthebox/challenges/osint/easyphish/pwned_date.png">
+  </a>
+</p>
 
 Saludos pentesters, en esta ocasión vamos a resolver un desafío (cortito) de HackTheBox.
 
