@@ -31,6 +31,6 @@ Aquí encontrarás todo el contenido relacionado con la plataforma HackTheBox or
 
 ### OSINT
 
-| Easy                         | Medium | Hard | Insane |
-|:----------------------------:|:------:|:----:|:------:|
-| [Easy Phish](/htb/easyphish) | ------ | ---- | ------ |
+| Easy                                          | Medium | Hard | Insane |
+|:---------------------------------------------:|:------:|:----:|:------:|
+| [Easy Phish](/htb/challenges/osint/easyphish) | ------ | ---- | ------ |
