@@ -22,7 +22,7 @@ Saludos pentesters, en esta ocasión vamos a resolver un desafío (cortito) de H
 
 # Easy Phish
 
-Se trata de un desafío OSINT de nivel fácil. La descripción nos indica lo siguente:
+Se trata de un desafío **`OSINT`** de nivel fácil. La descripción nos indica lo siguente:
 
 > Customers of secure-startup.com have been recieving some very convincing phishing emails, can you figure out why?
 
@@ -42,7 +42,7 @@ Parece que el dominio existe, vamos a echarle un vistazo en nuestro navegador.
 
 ![Easy Phish Web](/assets/images/hackthebox/challenges/osint/easyphish/domain.png)
 
-Se trata de un [dominio aparcado](https://neoattack.com/neowiki/parking-de-dominios/) en GoDaddy.com
+Se trata de un [dominio aparcado](https://neoattack.com/neowiki/parking-de-dominios/) en **GoDaddy.com**
 
 Volviendo a la descripción del reto, nos dice que los clientes del supuesto sitio web han estado recibiendo correo electrónico con phishing.
 Realizando una búsqueda rápida en google, encuentro este resultado:
