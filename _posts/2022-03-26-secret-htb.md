@@ -11,7 +11,7 @@ header:
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, Pentesting, Web Exploiting, Privilege Escalation]
-tags: [API, JWT, CODE ANALYSIS, SUID, CORE DUMP]
+tags: [API, JWT, GIT, SOURCE CODE REVIEW, SUID, CORE DUMP]
 ---
 
 <p align="center"><img src="/assets/images/hackthebox/machines/secret.png"></p>
