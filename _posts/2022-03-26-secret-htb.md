@@ -16,7 +16,7 @@ tags: [API, JWT, SUID]
 
 <p align="center"><img src="/assets/images/hackthebox/secret.png"></p>
 
-Saludos pentesters, en esta ocasión vamos a resolver la máquina recién retirada de HackTheBox llamada Secret.
+Saludos pentesters, en esta ocasión vamos a resolver la máquina de HackTheBox llamada **`Secret`**.
 
 ## Fecha de Resolución
 
