@@ -14,8 +14,6 @@ categories: [HackTheBox, Challenges, OSINT]
 tags: [Ethereum]
 ---
 
-<p align="center"><img src="/assets/images/hackthebox/challenges/osint/moneyflowz/pwned_date.png"></p>
-
 # Fecha de Resolución
 
 <p align="center">
