@@ -38,6 +38,7 @@ Si alguno de estos documentos te ayudó, considera dejarme un Respect en la plat
 
 ### OSINT
 
-| Easy                                          | Medium | Hard | Insane |
-|:---------------------------------------------:|:------:|:----:|:------:|
-| [Easy Phish](/htb/challenges/osint/easyphish) | ---    | ---  | ---    |
+| Easy                                            | Medium | Hard | Insane |
+|:-----------------------------------------------:|:------:|:----:|:------:|
+| [Easy Phish](/htb/challenges/osint/easyphish)   | ---    | ---  | ---    |
+| [Money Flowz](/htb/challenges/osint/moneyflowz) | ---    | ---  | ---    |

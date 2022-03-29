@@ -77,6 +77,6 @@ p3ntest1ng:~$ dig TXT secure-startup.com _dmarc.secure-startup.com
 
 ### ¡Gracias por leer hasta el final!
 
-Este desafío me ha resultado entretenido por la parte de investigación ya que no conocía DMARC y siempre viene bien aprender algo nuevo.
+Este reto me ha resultado entretenido por la parte de investigación ya que no conocía DMARC y siempre viene bien aprender algo nuevo.
 
 #### Nos vemos en un próximo. ¡Feliz hacking! ☠
