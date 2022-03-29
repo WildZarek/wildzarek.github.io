@@ -72,6 +72,6 @@ Encontramos datos en formato hexadecimal, si le damos al boton **`View Input As`
 
 ### ¡Gracias por leer hasta el final!
 
-Este desafío me ha resultado bastante tedioso de realizar y en mi opinión muy enrevesado para ser un OSINT catalogado como fácil, por tener que analizar los movimientos de una wallet Ethereum.
+Este desafío me ha resultado algo tedioso de realizar y en mi opinión un poco enrevesado para ser un OSINT catalogado como fácil por tener que analizar los movimientos de una wallet Ethereum.
 
 #### Nos vemos en un próximo. ¡Feliz hacking! ☠
