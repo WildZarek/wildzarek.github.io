@@ -27,6 +27,7 @@ Si alguno de estos documentos te ayudó, considera dejarme un Respect en la plat
 | [Previse](/htb/previse)         | [Forge](/htb/forge)             | [EarlyAccess](/htb/earlyaccess) | ---    |
 | [Horizontall](/htb/horizontall) | [Bolt](/htb/bolt)               | ---                             | ---    |
 | [Secret](/htb/secret)           | [Devzat](/htb/devzat)           | ---                             | ---    |
+| ---                             | [Shibboleth](/htb/shibboleth)   | ---                             | ---    |
 
 ## Máquinas Windows
 
