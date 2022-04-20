@@ -7,14 +7,14 @@ excerpt: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccion
 description: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 date: 2022-01-08
 header:
-  teaser: /assets/images/hackthebox/machines/previse.png
+  teaser: https://raw.githubusercontent.com/WildZarek/wildzarek.github.io/master/assets/images/hackthebox/machines/previse/card.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: https://raw.githubusercontent.com/WildZarek/wildzarek.github.io/master/assets/images/hackthebox/machines/previse/card.png
 categories: [HackTheBox, Pentesting, Web Exploiting, BurpSuite, Privilege Escalation]
 tags: [BYPASS, CTF LIKE, OS COMMAND INJECTION, PATH HIJACKING]
 ---
 
-<p align="center"><img src="/assets/images/hackthebox/machines/previse.png"></p>
+<img class="machine-info" src="/assets/images/hackthebox/machines/previse/card.png"/>
 
 Hace muchísimo tiempo desde que creé mi cuenta en la plataforma HackTheBox (teniendo 1499 días desde que me registré), pero por diversas razones nunca había tenido el valor -ni el conocimiento- para practicar con las máquinas que ofrecen.
 En aquel momento, no me imaginé que en un futuro estaría escribiendo mi propio prodecimiento sobre cómo logré penetrar en dicha máquina, pero aquí estoy:
@@ -26,7 +26,11 @@ Esta máquina está calificada como nivel fácil, se trata de una máquina de es
 
 ## Fecha de Resolución
 
-<p align="center"><a href="https://www.hackthebox.com/achievement/machine/18979/373"><img src="/assets/images/hackthebox/machines/previse/pwned_date.png"></a></p>
+<p align="center">
+  <a href="https://www.hackthebox.com/achievement/machine/18979/373">
+    <img src="/assets/images/hackthebox/machines/previse/pwned_date.png"/>
+  </a>
+</p>
 
 En primer lugar y como en cualquier máquina, necesitamos información sobre la misma así que vamos a hacer un reconocimiento para identificar los posibles vectores de entrada.
 
