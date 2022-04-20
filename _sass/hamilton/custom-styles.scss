@@ -16,7 +16,7 @@ ul.post-tags li {
 }
 
 img {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .machine-info {
@@ -27,5 +27,7 @@ img {
 }
 
 .pwned_date {
+  display: block;
+  margin: auto;
   width: 50%;
 }
