@@ -8,7 +8,7 @@ permalink: /about/
 
 # Sobre mí
 <h2 align="center">Hi <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">, I'm WildZarek</h2>
-<h4 align="center">Ethical Hacker | Penetration Tester | CTF Player</h4>
+<h4 align="center">Cybersecurity Analyst | Pentester | CTF Player</h4>
 
 ```python
 whoami = {
