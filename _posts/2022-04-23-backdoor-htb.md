@@ -337,7 +337,7 @@ http://backdoor.htb/wp-content/plugins/ebook-download/filedownload.php?ebookdown
 
 Sin embargo esto no funciona, tal vez no tenemos permisos, probemos otra cosa. 
 Si volvemos a fijarnos en los puertos encontrados, vemos que el **1337** está cerrado. Este puerto es utilizado por [GDB Server](https://www.man7.org/linux/man-pages/man1/gdbserver.1.html)
-Buscando un poco en Google, he encontrado este exploit para la versión **`9.2`**: https://www.exploit-db.com/exploits/50539
+Buscando un poco en Google, he encontrado este exploit para la versión **`9.2`**: [https://www.exploit-db.com/exploits/50539](https://www.exploit-db.com/exploits/50539)
 Vamos a descargarlo en nuestra máquina y comprobemos si es vulnerable. En primer lugar debemos utilizar **`msfvenom`** para generar el payload.
 
 ```console
