@@ -189,7 +189,7 @@ Requests/sec.: 0
 ```
 
 Podemos ver el panel de login, en el cual he probado si es vulnerable a SQL Injection sin éxito:
-![wp-login.php](/assets/images/hackthebox/backdoor/wplogin.png)
+![wp-login](/assets/images/hackthebox/machines/backdoor/wplogin.png)
 
 Alternativamente, podemos realizar un análisis más profundo con **`wpscan`**:
 
@@ -292,7 +292,7 @@ A pesar de toda la información, no he logrado acceso al panel de administració
 
 Podemos tratar de ver los plugins instalados en la web:
 
-![plugins](/assets/images/hackthebox/backdoor/plugins.png)
+![plugins](/assets/images/hackthebox/machines/backdoor/plugins.png)
 
 Vemos que tienen instalado el plugin **`ebook-download`**, busquemos alguna vulnerabilidad y su correspondiente exploit.
 
