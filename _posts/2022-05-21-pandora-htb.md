@@ -650,7 +650,7 @@ xterm-256color
 matt@pandora:~$ export TERM=xterm
 ```
 
-Anteriormente vimos que existe un binario con permisos SUID que podemos ejecutar siendo el usuario **`matt`**, veamos que hace este binario.
+Anteriormente vimos que existe un binario con permisos SUID que podemos ejecutar siendo el usuario **`matt`**, veamos qué hace.
 
 ```console
 matt@pandora:~$ which ltrace
