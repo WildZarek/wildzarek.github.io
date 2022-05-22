@@ -14,7 +14,7 @@ categories: [HackTheBox, Pentesting, Port Forwarding, Privilege Escalation]
 tags: [UDP, SNMP, USER PIVOTING, PANDORA FMS, SQLI, CVE, COOKIE HIJACKING, RCE, PATH HIJACKING]
 ---
 
-<img clas="machine_info" src="/assets/images/hackthebox/machines/pandora.png"/>
+<p align="center"><img src="/assets/images/hackthebox/machines/pandora.png"></p>
 
 ## Fecha de Resolución
 

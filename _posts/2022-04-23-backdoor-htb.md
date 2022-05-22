@@ -14,7 +14,7 @@ categories: [HackTheBox, Pentesting, Privilege Escalation]
 tags: [CVE, WordPress, PATH Traversal, GDB Server, RCE, Screen]
 ---
 
-<img clas="machine_info" src="/assets/images/hackthebox/machines/backdoor.png"/>
+<p align="center"><img src="/assets/images/hackthebox/machines/backdoor.png"></p>
 
 ## Fecha de Resolución
 
