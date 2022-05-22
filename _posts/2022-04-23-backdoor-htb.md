@@ -11,7 +11,7 @@ header:
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories: [HackTheBox, Pentesting, Privilege Escalation]
-tags: [Nmap, CVE, WordPress, PATH Traversal, GDB Server, RCE, Screen]
+tags: [CVE, WordPress, PATH Traversal, GDB Server, RCE, Screen]
 ---
 
 <img clas="machine_info" src="/assets/images/hackthebox/machines/backdoor.png"/>
@@ -315,7 +315,7 @@ Lo primero que podemos hacer es descargarnos una copia del archivo **`wp-config.
 http://backdoor.htb/wp-content/plugins/ebook-download/filedownload.php?ebookdownloadurl=../../../wp-config.php
 ```
 
-En este caso encontramos el usuario **`worpressuser`** y el hash de la contraseña. No he logrado indentificar el tipo de hash.
+En este caso encontramos el usuario **`worpressuser`** y la contraseña **`MQYBJSaD#DxG6qbm`**.
 Podemos descargar el archivo **`/etc/passwd`** para listar los usuarios existentes en el sistema.
 
 ```
