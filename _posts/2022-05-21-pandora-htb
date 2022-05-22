@@ -3,8 +3,8 @@ layout: post
 title: Pandora - WriteUp
 author: WildZarek
 permalink: /htb/pandora
-excerpt: "Máquina Linux de dificultad fácil, en la que haremos una enumeración detallada del servicio SNMP para leakear información del sistema, haremos port-forwarding para lograr acceso al panel de administración en el que nos aprovecharemos de SQL Injection. Finalmente lograremos ejecución remota de comandos en el panel y secuestraremos el PATH de un binario para escalar privilegios."
-description: "Máquina Linux de dificultad fácil, en la que haremos una enumeración detallada del servicio SNMP para leakear información del sistema, haremos port-forwarding para lograr acceso al panel de administración en el que nos aprovecharemos de SQL Injection. Finalmente lograremos ejecución remota de comandos en el panel y secuestraremos el PATH de un binario para escalar privilegios."
+excerpt: "Máquina Linux de dificultad fácil, en la que enumeraremos el servicio SNMP para leakear información del sistema, haremos port-forwarding para lograr acceso al panel de administración en el que nos aprovecharemos de SQL Injection. Finalmente lograremos ejecución remota de comandos en el panel y secuestraremos el PATH de un binario para escalar privilegios."
+description: "Máquina Linux de dificultad fácil, en la que enumeraremos el servicio SNMP para leakear información del sistema, haremos port-forwarding para lograr acceso al panel de administración en el que nos aprovecharemos de SQL Injection. Finalmente lograremos ejecución remota de comandos en el panel y secuestraremos el PATH de un binario para escalar privilegios."
 date: 2022-05-21
 header:
   teaser: /assets/images/hackthebox/machines/pandora.png
