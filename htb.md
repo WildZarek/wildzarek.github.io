@@ -9,12 +9,12 @@ permalink: /hackthebox/
 # HackTheBox
 
 Aquí encontrarás todo el contenido relacionado con la plataforma **`HackTheBox`** organizado por tipos, sistemas y dificultad.
-Si alguno de estos documentos te ayudó, considera dejarme un Respect en la plataforma visitando mi perfil:
+Si alguno de estos documentos te ayudó, considera darme Respect en la plataforma visitando mi perfil:
 
 <p align="center">
-	<a href="https://app.hackthebox.com/users/18979" target="_blank">
-        <img src="http://www.hackthebox.eu/badge/image/18979" alt="HackTheBox">
-    </a>
+  <a href="https://app.hackthebox.com/users/18979" target="_blank">
+    <img src="http://www.hackthebox.eu/badge/image/18979" alt="HackTheBox">
+  </a>
 </p>
 
 ![HackTheBox](/assets/images/hackthebox/htb.jpg)
@@ -43,3 +43,9 @@ Si alguno de estos documentos te ayudó, considera dejarme un Respect en la plat
 |:-----------------------------------------------:|:------:|:----:|:------:|
 | [Easy Phish](/htb/challenges/osint/easyphish)   | ---    | ---  | ---    |
 | [Money Flowz](/htb/challenges/osint/moneyflowz) | ---    | ---  | ---    |
+
+## CTF's
+
+### CyberApocalypse 2022
+
+Muy pronto :)
