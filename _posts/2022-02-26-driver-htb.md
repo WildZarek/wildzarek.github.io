@@ -9,7 +9,7 @@ date: 2022-02-26
 header:
   teaser: /assets/images/hackthebox/machines/driver.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Web Exploitation, Password Guessing, Privilege Escalation]
 tags: [ACTIVE-DIRECTORY, SCF, CVE, PRINT-NIGHTMARE, WEAK PASSWORD, RCE]
 ---

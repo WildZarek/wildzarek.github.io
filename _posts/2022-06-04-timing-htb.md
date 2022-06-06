@@ -9,7 +9,7 @@ date: 2022-06-04
 header:
   teaser: /assets/images/hackthebox/machines/timing.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Web Exploiting, Privilege Escalation]
 tags: [LFI, RCE, SOURCE CODE REVIEW, GIT, JAR FILE]
 ---

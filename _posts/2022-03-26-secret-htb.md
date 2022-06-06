@@ -9,7 +9,7 @@ date: 2022-03-26
 header:
   teaser: /assets/images/hackthebox/machines/secret.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Web Exploiting, Privilege Escalation]
 tags: [API, JWT, GIT, SOURCE CODE REVIEW, SUID, CORE DUMP]
 ---

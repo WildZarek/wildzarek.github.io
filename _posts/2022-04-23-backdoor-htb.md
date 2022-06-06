@@ -9,7 +9,7 @@ date: 2022-04-23
 header:
   teaser: /assets/images/hackthebox/backdoor.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Privilege Escalation]
 tags: [CVE, WordPress, PATH Traversal, GDB Server, RCE, Screen]
 ---

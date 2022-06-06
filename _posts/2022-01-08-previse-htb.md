@@ -7,9 +7,9 @@ excerpt: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccion
 description: "Máquina de estilo CTF con nivel fácil, donde bypasseamos redireccionamiento url, inyectamos comandos en peticiones POST, rompemos un hash y efectuamos PATH Hijacking para ejecutar comandos privilegiados en el sistema."
 date: 2022-01-08
 header:
-  teaser: https://raw.githubusercontent.com/WildZarek/wildzarek.github.io/master/assets/images/hackthebox/machines/previse/previse.png
+  teaser: /assets/images/hackthebox/machines/previse.png
   teaser_home_page: true
-  icon: https://raw.githubusercontent.com/WildZarek/wildzarek.github.io/master/assets/images/hackthebox/machines/previse/previse.png
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Web Exploiting, BurpSuite, Privilege Escalation]
 tags: [BYPASS, CTF LIKE, OS COMMAND INJECTION, PATH HIJACKING]
 ---

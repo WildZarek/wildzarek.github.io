@@ -9,7 +9,7 @@ date: 2022-04-02
 header:
   teaser: /assets/images/hackthebox/machines/shibboleth.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Web Exploiting, Privilege Escalation]
 tags: [UDP, IPMI, ZABBIX, RCE, MYSQL, MARIADB, CVE, PIVOTING]
 ---

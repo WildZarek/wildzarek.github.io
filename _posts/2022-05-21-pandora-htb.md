@@ -9,7 +9,7 @@ date: 2022-05-21
 header:
   teaser: /assets/images/hackthebox/machines/pandora.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Port Forwarding, Privilege Escalation]
 tags: [UDP, SNMP, USER PIVOTING, PANDORA FMS, SQLI, CVE, COOKIE HIJACKING, RCE, PATH HIJACKING]
 ---

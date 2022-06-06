@@ -9,7 +9,7 @@ date: 2022-03-13
 header:
   teaser: /assets/images/hackthebox/machines/devzat.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, BurpSuite, Exploiting, Port Forwarding, Pivoting, Privilege Escalation]
 tags: [API, GIT, SOURCE CODE REVIEW, RCE, SSH, INFLUXDB, CVE, BYPASS, SQL]
 ---

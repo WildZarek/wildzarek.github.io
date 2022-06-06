@@ -9,7 +9,7 @@ date: 2022-02-13
 header:
   teaser: /assets/images/hackthebox/machines/earlyaccess.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Pentesting, Web Exploiting, Pivoting, Port Forwarding, Privilege Escalation]
 tags: [WEAK PASSWORD, SOURCE CODE REVIEW, PASSWORD REUSE, API, DOCKER, RCE, LFI, SUID, SQLI, COOKIE HIJACKING, XSS]
 ---

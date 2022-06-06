@@ -9,7 +9,7 @@ date: 2022-03-28
 header:
   teaser: /assets/images/hackthebox/challenges/osint/moneyflowz/pwned_date.png
   teaser_home_page: true
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/hackthebox/htb_icon_original.png
 categories: [HackTheBox, Challenges, OSINT]
 tags: [Ethereum]
 ---
