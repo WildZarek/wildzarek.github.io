@@ -20,7 +20,6 @@ def exit_handler(sig, frame):
 signal.signal(signal.SIGINT, exit_handler)
 
 target = "http://10.10.11.135"
-lport = 9999
 
 s = requests.Session()
 
