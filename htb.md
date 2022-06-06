@@ -28,6 +28,7 @@ Si alguno de estos documentos te ayudó, considera darme Respect en la plataform
 | [Horizontall](/htb/horizontall) | [Bolt](/htb/bolt)               | ---                             | ---    |
 | [Secret](/htb/secret)           | [Devzat](/htb/devzat)           | ---                             | ---    |
 | [Pandora](/htb/pandora)         | [Shibboleth](/htb/shibboleth)   | ---                             | ---    |
+| ---                             | [Timing](/htb/timing)           | ---                             | ---    |
 
 ## Máquinas Windows
 
