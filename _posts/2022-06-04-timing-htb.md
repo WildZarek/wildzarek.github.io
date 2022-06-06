@@ -766,7 +766,7 @@ User aaron may run the following commands on timing:
     (ALL) NOPASSWD: /usr/bin/netutils
 ```	
 
-Veamos que tenemos permisos de ejecución sobre un script, miremos a ver qué contiene:
+Vemos que tenemos permisos de ejecución sobre un script, miremos a ver qué contiene:
 
 ```console
 aaron@timing:~$ cat /usr/bin/netutils
