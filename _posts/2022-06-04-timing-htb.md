@@ -18,7 +18,7 @@ tags: [LFI, RCE, SOURCE CODE REVIEW, GIT, JAR FILE]
 
 ## Fecha de Resolución
 
-<a href="https://www.hackthebox.com/achievement/machine/">
+<a href="https://www.hackthebox.com/achievement/machine/18979/421">
   <img src="/assets/images/hackthebox/machines/timing/pwned_date.png">
 </a>
 
