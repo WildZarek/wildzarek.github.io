@@ -17,6 +17,7 @@ tags: [AnyRun, Triage, VirusTotal]
 <p align="center"><img src="/assets/images/blog/tlauncher/tlauncher.png"></p>
 
 Antes de nada, me gustaría desearos a todos una feliz Navidad y un próspero año nuevo.
+<br>
 Dicho esto, vamos al lío con lo que nos interesa.
 
 ## Introducción
@@ -38,13 +39,14 @@ Para analizar el instalador de **TLauncher** se ha procedido a instalar la versi
 gracias a esto se puede comprobar de forma segura qué es lo que hace dicho software a la hora de instalarlo en nuestro equipo.
 
 Os dejo el primer análisis realizado en [Triage](https://tria.ge/): [https://tria.ge/221227-yx4dmsbc8z/behavioral1](https://tria.ge/221227-yx4dmsbc8z/behavioral1)
+<br>
 Aunque vamos a centrarnos en el segundo análisis realizado en [AnyRun](https://app.any.run/): [https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/](https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/)
 
-Primero vamos a recopilar el resultado del análisis y posteriormente iremos explicando lo más relevante.
+Primero vamos a recopilar los resultados y posteriormente iremos explicando lo más relevante.
 
 ![InfoBinario](/assets/images/blog/tlauncher/tlauncher_pup.png)
 
-Y la larga lista de indicadores de comportamiento (IOC's) que lo delatan como un programa malicioso según la **`MITRE ATT&CK™ MATRIX`**
+Y la larga lista de indicadores de comportamiento (IOC's) que lo delatan como un programa malicioso basándonos en la **`MITRE ATT&CK™ MATRIX`**
 <br>
 Para quien no sepa qué es esto de Mitre, se trata de una base global de conocimiento del comportamiento basado en técnicas de ataque observadas en amenazas reales.
 
@@ -60,11 +62,11 @@ Hasta aquí todo normal, hemos ejecutado el instalador y aún no ha sucedido nad
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher1.png)
 
-En esta nueva imagen, vemos que comienza el proceso de instalación, para lo cual lo primero que hace **TLauncher**
-es descargarse y depositar en una carpeta local de nuestro sistema el binario **`irsetup.exe`**.
-La descarga de este archivo se hace desde los servidores de TLauncher.
-Una vez se ha ejecutado, inmediatamente hace una petición GET a un servidor para descargarse un binario llamado **TLauncher-2.871.exe**.
-Lo que parece indicar que sobreescribe el binario original por uno infectado con malware. Tal y como veremos en las próximas líneas.
+En esta nueva imagen, vemos que el instalador comienza a descargarse y depositar en una carpeta temporal de nuestro sistema varios archivos,
+entre ellos el binario **`irsetup.exe`** todo esto sucede aunque no le hayamos dado al botón "Continue".
+La descarga del archivo ejecutable se hace desde los servidores de TLauncher.
+Una vez se ejecuta, inmediatamente hace una petición GET a un servidor para descargarse otro binario llamado **TLauncher-2.871.exe**.
+Lo que parece indicar que sobreescribe al binario original por uno infectado con malware. Tal y como veremos en las próximas líneas.
 
 ¿Pero a qué servidor hace la petición?
 <br>
@@ -82,15 +84,15 @@ Damnant quod non intellegunt
 -->
 ```
 
-Vacía. El código fuente reza una frase, que traducida (por el traductor de Google) significa "Condenan lo que no entienden".
+Vacía. El código fuente contiene un comentario que reza una frase en latín, que traducida (por el traductor de Google) significa "Condenan lo que no entienden".
 Yo no sé latín y no sé hasta que punto es de fiar la traducción, pero es cuanto menos perturbador.
 
 ¿Y qué hace este binario?
 <br>
 Pues bien, he pasado este archivo por [VirusTotal](https://www.virustotal.com/) y aunque a priori no es detectado como malware por ningún antivirus,
-si nos fijamos en la tabla Mitre vemos que este binario hace cosas muy extrañas y peligrosas.
+si nos fijamos en la tabla Mitre vemos que este binario hace cosas muy extrañas y peligrosas. Os dejo el resultado del análisis [AQUÍ](https://www.virustotal.com/gui/file/765cab48564743844b057e21eab768d5d84194a635b09d02d9d2909f632f5714/detection)
 
-Os dejo el resultado del análisis [AQUÍ](https://www.virustotal.com/gui/file/765cab48564743844b057e21eab768d5d84194a635b09d02d9d2909f632f5714/detection)
+Vamos a detallar algunos de los comportamientos sospechosos del binario:
 
 ![PUP](/assets/images/blog/tlauncher/tlauncher_pup1.png)
 ![PUP](/assets/images/blog/tlauncher/tlauncher_pup2.png)
@@ -121,7 +123,7 @@ El instalador continúa con su proceso y nos invita a instalar el navegador **Op
 sin embargo este tipo de propuestas suele considerarse como Adware, ya que por lo general el usuario no quiere instalar software adicional.
 Más adelante veremos algo relacionado con este punto.
 
-Pero antes, nos fijamos en las alertas de arriba a la derecha, donde vemos que nos descarga dos archivos con extensión **`.LMD`**
+Nos fijamos en las alertas de arriba a la derecha, y vemos que nos descarga dos archivos con extensión **`.LMD`**
 
 ¿Qué es la extensión [LMD](https://www.fileviewpro.com/es/file-extension-lmd)?
 
@@ -402,6 +404,7 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'http://repo.tlauncher.org/update/downloa
 ```
 
 Todos estos servidores son rusos, aunque están en el apartado 'removedServers'...Otra curiosidad.
+<br>
 Otra de las peticiones se realiza contra el servidor de **`Mojang`**, con esto se comprueban todas las versiones existentes:
 
 ```console
@@ -541,9 +544,12 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'http://advancedrepository.com/update/lch
       ],
 ```
 
-¿Os habéis fijado que a los rusos les instalan el Yandex directamente de la web oficial (o eso parece), y al resto nos instalan un Opera que tienen
-alojado en su propio servidor bajo el nombre **installer-2.exe**?. Extraño, si no hubieran rumores de que todo esto de TLauncher lo ha 
-orquestado un grupo de ciberdelincuentes rusos que ha engañado a todo el mundo. Además de que está claro que todo esto apunta a Rusia.
+¿Os habéis fijado que a los rusos les instalan el Yandex descargándolo de la web oficial (o eso parece),
+<br>
+y al resto nos instalan un Opera que tienen alojado en su propio servidor bajo el nombre **installer-2.exe**?.
+<br>
+Extraño, si no hubieran rumores de que todo esto de TLauncher lo ha orquestado un grupo de ciberdelincuentes rusos que ha engañado a todo el mundo. Además de que está claro que todo esto apunta a Rusia.
+<br>
 Por desgracia no he podido descargarme el binario del supuesto Opera para analizarlo:
 
 ```console
