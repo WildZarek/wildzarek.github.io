@@ -29,6 +29,7 @@ Si alguno de estos documentos te ayudó, considera darme Respect en la plataform
 | [Secret](/htb/secret)           | [Devzat](/htb/devzat)           | ---                             | ---    |
 | [Pandora](/htb/pandora)         | [Shibboleth](/htb/shibboleth)   | ---                             | ---    |
 | ---                             | [Timing](/htb/timing)           | ---                             | ---    |
+| ---                             | [Meta](/htb/meta)               | ---                             | ---    |
 
 ## Máquinas Windows
 
