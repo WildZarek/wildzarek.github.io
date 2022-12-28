@@ -23,6 +23,7 @@ Dicho esto, vamos al lío con lo que nos interesa.
 
 Mucho se ha hablado estos días sobre **TLauncher**, el famoso lanzador multiversiones de **Minecraft**.
 Desde hace aproximadamente un mes o mes y medio, se rumoreaba que dicho software escondía un terrible secreto...
+
 Aunque las sospechas comenzaron mucho antes, hace unos 10 meses en Reddit ya se comenzó a cuestionar la fiabilidad de TLauncher.
 Y a raíz de todo ello han surgido diferentes análisis, dando como resultado lo que ya se sospechaba tiempo atrás.
 
@@ -36,15 +37,16 @@ al mismo tiempo que analizamos cada acción realizada por el instalador oficial 
 Para analizar el instalador de **TLauncher** se ha procedido a instalar la versión más reciente en un entorno controlado,
 gracias a esto se puede comprobar de forma segura qué es lo que hace dicho software a la hora de instalarlo en nuestro equipo.
 
-Os dejo el primer análisis realizado en **Tri.age**: https://tria.ge/221227-yx4dmsbc8z/behavioral1
-Aunque vamos a centrarnos en el segundo análisis realizado en **AnyRun**: https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/
+Os dejo el primer análisis realizado en [Triage](https://tria.ge/): [https://tria.ge/221227-yx4dmsbc8z/behavioral1](https://tria.ge/221227-yx4dmsbc8z/behavioral1)
+Aunque vamos a centrarnos en el segundo análisis realizado en [AnyRun](https://app.any.run/): [https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/](https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/)
 
-En primer lugar, vamos a recopilar el resultado del análisis y posteriormente iremos explicando lo más relevante.
+Primero vamos a recopilar el resultado del análisis y posteriormente iremos explicando lo más relevante.
 
 ![InfoBinario](/assets/images/blog/tlauncher/tlauncher_pup.png)
 
-Y la larga lista de indicadores de comportamiento (IOC) que lo delatan como un programa malicioso según la **`MITRE ATT&CK™ MATRIX`**
-Para quien no sepa qué es esto de Mitre, es una base global de conocimiento del comportamiento basado en técnicas de ataque observadas en amenazas reales.
+Y la larga lista de indicadores de comportamiento (IOC's) que lo delatan como un programa malicioso según la **`MITRE ATT&CK™ MATRIX`**
+<br>
+Para quien no sepa qué es esto de Mitre, se trata de una base global de conocimiento del comportamiento basado en técnicas de ataque observadas en amenazas reales.
 
 ![InfoBinario](/assets/images/blog/tlauncher/tlauncher_pup0.png)
 ![InfoBinario](/assets/images/blog/tlauncher/tlauncher_pup00.png)
@@ -54,7 +56,7 @@ por lo cual el binario queda marcado como potencialmente peligroso. Veamos en qu
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher0.png)
 
-Hasta aquí todo normal, hemos ejecutado el instalador y aún no ha sucedido nada extraño. Sigamos.
+Hasta aquí todo normal, hemos ejecutado el instalador y aún no ha sucedido nada extraño. Sigamos...
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher1.png)
 
@@ -65,6 +67,7 @@ Una vez se ha ejecutado, inmediatamente hace una petición GET a un servidor par
 Lo que parece indicar que sobreescribe el binario original por uno infectado con malware. Tal y como veremos en las próximas líneas.
 
 ¿Pero a qué servidor hace la petición?
+<br>
 La petición se lanza contra el servidor **advancedrepository.com**, un dominio registrado en 2019 y que aparentemente no contiene nada.
 Por no hablar de lo raro que resulta que se descarguen archivos de un servidor distinto al de TLauncher. Lo cual ocurre en repetidas ocasiones.
 
@@ -79,14 +82,15 @@ Damnant quod non intellegunt
 -->
 ```
 
-Vacía. El código fuente reza una frase, que traducida (por Google) significa "Condenan lo que no entienden".
+Vacía. El código fuente reza una frase, que traducida (por el traductor de Google) significa "Condenan lo que no entienden".
 Yo no sé latín y no sé hasta que punto es de fiar la traducción, pero es cuanto menos perturbador.
 
 ¿Y qué hace este binario?
+<br>
 Pues bien, he pasado este archivo por [VirusTotal](https://www.virustotal.com/) y aunque a priori no es detectado como malware por ningún antivirus,
 si nos fijamos en la tabla Mitre vemos que este binario hace cosas muy extrañas y peligrosas.
 
-Os dejo el resultado del análisis aquí: https://www.virustotal.com/gui/file/765cab48564743844b057e21eab768d5d84194a635b09d02d9d2909f632f5714/detection
+Os dejo el resultado del análisis [AQUÍ](https://www.virustotal.com/gui/file/765cab48564743844b057e21eab768d5d84194a635b09d02d9d2909f632f5714/detection)
 
 ![PUP](/assets/images/blog/tlauncher/tlauncher_pup1.png)
 ![PUP](/assets/images/blog/tlauncher/tlauncher_pup2.png)
@@ -105,25 +109,26 @@ aunque desactualizado, pues la versión más reciente es la 5.4. Esto podría se
 Lo siguiente que vemos en el punto 2 es que se crea un proceso COM++ embebido, algo común en muchísimas aplicaciones,
 ya que esto se utiliza con el propósito de ejecutar objetos COM aparte de los procesos originales que los solicitan.
 Para simplificarlo bastante más, digamos que es necesario para utilizar paralelismo (ejecutar dos acciones al mismo tiempo de forma independiente).
+<br>
 No vamos a entrar más en detalle respecto a esto, pues es algo más técnico de explicar. Lo que debemos tener en cuenta es que **DllHost.exe**,
-un binario legítimo de Windows, es utilizado a menudo por diversos tipos de malware, llegando a ocupar el 100% de uso tanto de la memoria RAM como de la CPU.
+un binario legítimo de Windows, es utilizado a menudo por diversos tipos de malware, llegando a ocupar el 100% de uso tanto de la RAM como de la CPU.
 
 Sigamos...
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher3.png)
 
-En este punto, el instalador continúa con su proceso y nos invita a instalar el navegador **Opera**, algo que podría ser normal,
+El instalador continúa con su proceso y nos invita a instalar el navegador **Opera**, algo que podría ser normal,
 sin embargo este tipo de propuestas suele considerarse como Adware, ya que por lo general el usuario no quiere instalar software adicional.
 Más adelante veremos algo relacionado con este punto.
 
 Pero antes, nos fijamos en las alertas de arriba a la derecha, donde vemos que nos descarga dos archivos con extensión **`.LMD`**
 
-¿Qué es la extensión [LMD](https://www.fileviewpro.com/es/file-extension-lmd?
+¿Qué es la extensión [LMD](https://www.fileviewpro.com/es/file-extension-lmd)?
 
-> Es un tipo de archivo Abbyy Finereader Sprint File desarrollado para el software ABBYY FineReader, desarrollado por ABBYY.
-> Los archivos Abbyy Finereader Sprint File son los más populares entre los usuarios de **China**.
+> Es un tipo de archivo **Abbyy Finereader Sprint File** desarrollado para el software ABBYY FineReader, desarrollado por ABBYY.
+> Estos archivos son muy populares entre los usuarios de **China**.
 
-Un poco raro...pero lo más preocupante es que uno de ellos se llama **Wow64.lmd** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **wow64.exe".
+Un poco raro...pero lo más preocupante es que uno de ellos se llama **Wow64.lmd** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **wow64.exe**.
 
 ¿Qué es WOW64 en Windows?
 
@@ -151,9 +156,10 @@ true
 MSTL
 true
 ES
-154127%                                                                                                                                                                     ```
+154127
+```
 
-Parece que se hace una comprobación de algunos datos que no sé qué son exactamente y finalmente nuestro idioma.
+Parece que se hace una comprobación de algunos datos, entre ellos la versión del binario y otros que no sé qué son exactamente, finalmente se comprueba nuestro idioma.
 Es la curiosidad la que me lleva a comprobar estas cosas, con la esperanza de descubrir algo interesante.
 
 En otra de las peticiones encontramos una lista de servidores de Minecraft:
@@ -396,7 +402,7 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'http://repo.tlauncher.org/update/downloa
 ```
 
 Todos estos servidores son rusos, aunque están en el apartado 'removedServers'...Otra curiosidad.
-Otra de las peticiones se realiza contra el servidor de **Mojang**, con esto se comprueban todas las versiones existentes:
+Otra de las peticiones se realiza contra el servidor de **`Mojang`**, con esto se comprueban todas las versiones existentes:
 
 ```console
 wildzarek@p3ntest1ng:~$ curl -s -X GET 'https://launchermeta.mojang.com/mc/game/version_manifest.json' | jq
