@@ -17,18 +17,19 @@ tags: [AnyRun, Triage, VirusTotal]
 <p align="center"><img src="/assets/images/blog/tlauncher/tlauncher.png"></p>
 
 Antes de nada, me gustaría desearos a todos una feliz Navidad y un próspero año nuevo.
+Sé que llevo tiempo sin crear contenido para mi página, pero en 2023 prometo que volveré a escribir WriteUps de máquinas.
 <br>
-Dicho esto, vamos al lío con lo que nos interesa.
+Dicho esto, vamos al lío con lo que nos interesa en el día de hoy...
 
 ## Introducción
 
 Mucho se ha hablado estos días sobre **TLauncher**, el famoso lanzador multiversiones de **Minecraft**.
-Desde hace aproximadamente un mes o mes y medio, se rumoreaba que dicho software escondía un terrible secreto...
+Desde hace aproximadamente un mes y medio se rumoreaba que dicho software escondía un terrible secreto...
 
 Aunque las sospechas comenzaron mucho antes, hace unos 10 meses en Reddit ya se comenzó a cuestionar la fiabilidad de TLauncher.
 Y a raíz de todo ello han surgido diferentes análisis, dando como resultado lo que ya se sospechaba tiempo atrás.
 
-Sí, ¡TLauncher contiene malware y spyware!
+**Sí, ¡TLauncher contiene malware y spyware!**
 
 Afirmar esto sin pruebas sería algo estúpido, por ello voy a ir explicando los resultados de las mismas, 
 al mismo tiempo que analizamos cada acción realizada por el instalador oficial del software mencionado.
@@ -39,7 +40,6 @@ Para analizar el instalador de **TLauncher** se ha procedido a instalar la versi
 gracias a esto se puede comprobar de forma segura qué es lo que hace dicho software a la hora de instalarlo en nuestro equipo.
 
 Os dejo el primer análisis realizado en [Triage](https://tria.ge/): [https://tria.ge/221227-yx4dmsbc8z/behavioral1](https://tria.ge/221227-yx4dmsbc8z/behavioral1)
-<br>
 Aunque vamos a centrarnos en el segundo análisis realizado en [AnyRun](https://app.any.run/): [https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/](https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/)
 
 Primero vamos a recopilar los resultados y posteriormente iremos explicando lo más relevante.
@@ -63,15 +63,16 @@ Hasta aquí todo normal, hemos ejecutado el instalador y aún no ha sucedido nad
 ![Instalador](/assets/images/blog/tlauncher/tlauncher1.png)
 
 En esta nueva imagen, vemos que el instalador comienza a descargarse y depositar en una carpeta temporal de nuestro sistema varios archivos,
-entre ellos el binario **`irsetup.exe`** todo esto sucede aunque no le hayamos dado al botón "Continue".
+entre ellos el binario **`irsetup.exe`**, todo esto sucede aunque no le hayamos dado al botón "Continue".
 La descarga del archivo ejecutable se hace desde los servidores de TLauncher.
-Una vez se ejecuta, inmediatamente hace una petición GET a un servidor para descargarse otro binario llamado **TLauncher-2.871.exe**.
+Una vez se ejecuta, inmediatamente hace una petición GET a un servidor para descargarse otro binario llamado **`TLauncher-2.871.exe`**
+<br>
 Lo que parece indicar que sobreescribe al binario original por uno infectado con malware. Tal y como veremos en las próximas líneas.
 
 ¿Pero a qué servidor hace la petición?
 <br>
 La petición se lanza contra el servidor **advancedrepository.com**, un dominio registrado en 2019 y que aparentemente no contiene nada.
-Por no hablar de lo raro que resulta que se descarguen archivos de un servidor distinto al de TLauncher. Lo cual ocurre en repetidas ocasiones.
+Por no hablar de lo raro que resulta que se descarguen archivos desde un servidor distinto al de TLauncher. Lo cual ocurre en repetidas ocasiones.
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher1_1.png)
 
@@ -85,7 +86,7 @@ Damnant quod non intellegunt
 ```
 
 Vacía. El código fuente contiene un comentario que reza una frase en latín, que traducida (por el traductor de Google) significa "Condenan lo que no entienden".
-Yo no sé latín y no sé hasta que punto es de fiar la traducción, pero es cuanto menos perturbador.
+Yo no sé latín y no sé hasta que punto es de fiar la traducción, pero es una frase curiosa y enigmática.
 
 ¿Y qué hace este binario?
 <br>
@@ -99,14 +100,14 @@ Vamos a detallar algunos de los comportamientos sospechosos del binario:
 ![PUP](/assets/images/blog/tlauncher/tlauncher_pup3.png)
 ![PUP](/assets/images/blog/tlauncher/tlauncher_pup4.png)
 
-Como vemos en las imagenes, este archivo realiza una serie de acciones bastantes sospechosas y peligrosas que ponen en jaque la seguridad de nuestro sistema.
+Como vemos en las imágenes, este archivo realiza una serie de acciones bastantes sospechosas y peligrosas que ponen en jaque la seguridad de nuestro sistema.
 
 Sigamos con la instalación...
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher2.png)
 
-En este punto, el programa continua con su instalación, para ello descarga un archivo DLL relacionado con el lenguaje de programación **Lua**,
-aunque desactualizado, pues la versión más reciente es la 5.4. Esto podría ser normal dado que mucho de los mods para Minecraft usan este lenguaje en parte de su código, aunque generalmente están escritos en **Java**.
+En este punto, el programa continua con la descarga de archivos, uno de ellos es un DLL relacionado con el lenguaje de programación **Lua**,
+aunque desactualizado, pues la versión más reciente es la 5.4. Esto podría ser normal dado que muchos de los mods para Minecraft usan este lenguaje en parte de su código, aunque generalmente están escritos en **Java**.
 
 Lo siguiente que vemos en el punto 2 es que se crea un proceso COM++ embebido, algo común en muchísimas aplicaciones,
 ya que esto se utiliza con el propósito de ejecutar objetos COM aparte de los procesos originales que los solicitan.
@@ -119,18 +120,18 @@ Sigamos...
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher3.png)
 
-El instalador continúa con su proceso y nos invita a instalar el navegador **Opera**, algo que podría ser normal,
-sin embargo este tipo de propuestas suele considerarse como Adware, ya que por lo general el usuario no quiere instalar software adicional.
+Le damos a "Continue" y se nos invita a instalar el navegador **Opera**, algo que podría ser normal,
+sin embargo este tipo de propuestas suelen considerarse como Adware, ya que por lo general el usuario no quiere instalar software adicional.
 Más adelante veremos algo relacionado con este punto.
 
-Nos fijamos en las alertas de arriba a la derecha, y vemos que nos descarga dos archivos con extensión **`.LMD`**
+En las alertas de arriba a la derecha vemos que nos descarga dos archivos con la extensión **`.LMD`**
 
 ¿Qué es la extensión [LMD](https://www.fileviewpro.com/es/file-extension-lmd)?
 
 > Es un tipo de archivo **Abbyy Finereader Sprint File** desarrollado para el software ABBYY FineReader, desarrollado por ABBYY.
 > Estos archivos son muy populares entre los usuarios de **China**.
 
-Un poco raro...pero lo más preocupante es que uno de ellos se llama **Wow64.lmd** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **wow64.exe**.
+Un poco raro...uno de ellos se llama **Wow64.lmd** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **wow64.exe**.
 
 ¿Qué es WOW64 en Windows?
 
@@ -141,10 +142,10 @@ Sin duda se trata de un binario crítico de Windows. Pero sigamos con el anális
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher4.png)
 
-Aquí termina la instalación y como vemos en la imagen, lo primero que hace es ejecutar el binario **TLauncher-2.871.exe** descargado previamente,
+Aquí termina la instalación y como vemos en la imagen, lo primero que hace es ejecutar el binario **`TLauncher-2.871.exe`** descargado previamente,
 y que como ya vimos contiene toda una serie de comportamientos de dudosa fiabilidad. Aquí en este punto ya estaríamos infectados.
 
-Veamos algunas de las peticiones HTTP que ha realizado el instalador a lo largo del proceso de instalación:
+Veamos algunas de las peticiones HTTP que se han realizado durante el proceso de instalación:
 
 ![Peticiones](/assets/images/blog/tlauncher/tlauncher_requests.png)
 
@@ -405,7 +406,7 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'http://repo.tlauncher.org/update/downloa
 
 Todos estos servidores son rusos, aunque están en el apartado 'removedServers'...Otra curiosidad.
 <br>
-Otra de las peticiones se realiza contra el servidor de **`Mojang`**, con esto se comprueban todas las versiones existentes:
+Otra de las peticiones se realiza contra el servidor de **`Mojang`** para comprobar todas las versiones existentes:
 
 ```console
 wildzarek@p3ntest1ng:~$ curl -s -X GET 'https://launchermeta.mojang.com/mc/game/version_manifest.json' | jq
@@ -447,7 +448,7 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'https://launchermeta.mojang.com/mc/game/
 ---[SNIP]---
 ```
 
-He recortado el resultado porque sería muy largo y tampoco interesa, simplemente esto es otra curiosidad más.
+He recortado el resultado porque sería muy largo y tampoco nos interesa, simplemente esto es otra curiosidad más.
 Y otra más de las peticiones, que no tienen mucho sentido más allá de un "control" de respuesta por parte del servidor:
 
 ```console
@@ -461,7 +462,7 @@ Si nos fijamos, hay varias peticiones de descarga de archivos que no están en l
 estas peticiones apuntan al servidor **advancedrepository.com** mencionado anteriormente.
 En una de ellas se descarga un archivo comprimido relacionado con Java 8 de nombre **`jre-8u281-windows-x64.zip`** directamente desde los servidores de TLauncher.
 
-Java es de pago y esto podría entenderse como que te están facilitando una versión pirata de Java, pero existen alternativas gratuitas que podrían haber utilizado,
+Java es de pago y esto podría entenderse como que te están facilitando una versión pirata de Java, pero existen alternativas que podrían haber utilizado,
 sin embargo han usado una versión de Java que no sabemos de dónde procede. Aunque como veremos en la próxima imagen, este Java hace cosas raras.
 
 En el análisis del instalador se detectó lo siguiente:
@@ -544,12 +545,17 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'http://advancedrepository.com/update/lch
       ],
 ```
 
-¿Os habéis fijado que a los rusos les instalan el Yandex descargándolo de la web oficial (o eso parece),
+¿Os habéis fijado en un detalle?:
 <br>
-y al resto nos instalan un Opera que tienen alojado en su propio servidor bajo el nombre **installer-2.exe**?.
+Si eres ruso te ofrecen instalar Yandex y lo descargan de la web oficial (o eso parece),
 <br>
-Extraño, si no hubieran rumores de que todo esto de TLauncher lo ha orquestado un grupo de ciberdelincuentes rusos que ha engañado a todo el mundo. Además de que está claro que todo esto apunta a Rusia.
+al resto nos ofrecen Opera y lo descargan del servidor de TLauncher con nombre **`installer-2.exe`**
+
+
+Extraño, si no existiesen rumores de que todo esto lo ha orquestado un grupo de ciberdelincuentes rusos que ha engañado a todo el mundo.
 <br>
+Además de que está claro que todo esto apunta a Rusia.
+
 Por desgracia no he podido descargarme el binario del supuesto Opera para analizarlo:
 
 ```console
@@ -563,33 +569,35 @@ Petición HTTP enviada, esperando respuesta... 404 Not Found
 ```
 
 Siguiendo con las peticiones, encontramos también que se envían dos peticiones a **https://stat.fastrepo.org/save/run/tlauncher/unique/month**,
-aunque no sabemos qué tipo de información se ha enviado a dicha URL. Puntualizar que estas peticiones las hace el binario **javaw.exe**
+aunque no sabemos qué tipo de información se ha enviado a dicha URL. Puntualizar que estas peticiones las hace el binario **`javaw.exe`**
 
-Extraño que un binario oficial de Java haga esas peticiones, lo normal sería que hiciera peticiones a servidores de Oracle, empresa propietaria de Java.
+Extraño que un binario oficial de Java haga esas peticiones, lo normal sería que hiciera peticiones a servidores de **`Oracle`**, empresa propietaria de Java.
 Por lo tanto, este binario no es lo que dice ser...
 
 # Conclusiones
 
-Ante todas estas pruebas y análisis, ha quedado demostrado que TLauncher es un software potencialmente peligroso y no deseado,
-al ser catalogado como malware; Especialmente como spyware, troyano y adware. Sin duda los resultados arrojados nos alertan de que
-debemos desinstalarlo cuanto antes de nuestro sistema operativo. El problema es que como hemos visto, eliminar el malware no va a ser tan fácil
-como desinstalar TLauncher, ya que hemos podido comprobar que utiliza técnicas de persistencia muy avanzadas. Esto significa que aunque borremos TLauncher,
-el malware seguirá en nuestro sistema, por desgracia librarnos de este malware no va a ser algo fácil que podamos hacer con dos clicks.
+Ante todas estas pruebas y análisis, creo que ha quedado demostrado que **`TLauncher`** es un software potencialmente peligroso,
+al ser catalogado como malware; Especialmente considerado spyware. Sin duda los resultados obtenidos nos alertan de que
+debemos desinstalarlo cuanto antes de nuestro sistema operativo. El problema es que como hemos visto, deshacernos del malware no va a ser tan simple
+como desinstalar TLauncher, ya que hemos visto que utiliza técnicas de persistencia muy avanzadas. Esto significa que aunque elimines TLauncher,
+el malware seguirá en el sistema y por desgracia librarnos por completo no es algo que podamos hacer con dos clicks.
 
 
 # Recomendaciones
 
-Debido a la persistencia generada por el malware, la única opción viable para que nos libremos por completo de él es formatear el sistema.
-De este modo podremos borrar todo rastro del malware y empezar con una nueva instalación completamente limpia de Windows.
+Debido a la persistencia generada por el malware, lo ideal es formatear el disco duro.
+De este modo podremos comenzar con una nueva instalación de Windows completamente limpia.
 Para ello es recomendable que previamente hagamos una copia de seguridad de todos nuestros datos y archivos personales.
 
-Si quieres jugar a Minecraft, lo más seguro es que adquieras el juego oficial comprándolo en tiendas oficiales, aunque si esto no es posible 
-por cualquier motivo, existen otros lanzadores de Minecraft como puede ser **`MultiMC`**, que es gratuito y además de código abierto.
-Esto es un punto a favor de este lanzador ya que la comunidad puede analizar el código fuente del software en cualquier momento.
-Sin embargo, este tipo de lanzadores infringen los derechos de autor al utilizar un software privado como lo es Minecraft.
-Usarlos queda bajo tu propia responsabilidad...
+Si quieres jugar a Minecraft, deberías adquirir el juego oficial comprándolo en Microsoft Store o tiendas autorizadas,
+aunque si esto no es posible por cualquier motivo, existen otros lanzadores de Minecraft como puede ser **`MultiMC`**,
+que es gratuito y además de código abierto. Un buen punto a favor de este lanzador,
+ya que la comunidad puede analizar el código fuente del software en cualquier momento.
 
-Bueno, eso ha sido todo por esta vez.
+Sin embargo, este tipo de lanzadores infringen los derechos de autor al utilizar un software privado como lo es Minecraft.
+Utilizarlos queda bajo tu entera responsabilidad...
+
+Bueno, eso ha sido todo por esta vez. Nos leeremos muy pronto.
 
 ### ¡Gracias por leer hasta el final!
 
