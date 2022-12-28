@@ -17,14 +17,15 @@ tags: [AnyRun, Triage, VirusTotal]
 <p align="center"><img src="/assets/images/blog/tlauncher/tlauncher.png"></p>
 
 Antes de nada, me gustaría desearos a todos una feliz Navidad y un próspero año nuevo.
-Sé que llevo tiempo sin crear contenido para mi página, pero en 2023 prometo que volveré a escribir WriteUps de máquinas.
 <br>
+Sé que llevo tiempo sin crear contenido, pero en 2023 prometo volver a escribir WriteUps de máquinas.
+
 Dicho esto, vamos al lío con lo que nos interesa en el día de hoy...
 
 ## Introducción
 
 Mucho se ha hablado estos días sobre **TLauncher**, el famoso lanzador multiversiones de **Minecraft**.
-Desde hace aproximadamente un mes y medio se rumoreaba que dicho software escondía un terrible secreto...
+Desde hace mes y medio se rumoreaba que dicho software escondía un terrible secreto...
 
 Aunque las sospechas comenzaron mucho antes, hace unos 10 meses en Reddit ya se comenzó a cuestionar la fiabilidad de TLauncher.
 Y a raíz de todo ello han surgido diferentes análisis, dando como resultado lo que ya se sospechaba tiempo atrás.
@@ -40,13 +41,14 @@ Para analizar el instalador de **TLauncher** se ha procedido a instalar la versi
 gracias a esto se puede comprobar de forma segura qué es lo que hace dicho software a la hora de instalarlo en nuestro equipo.
 
 Os dejo el primer análisis realizado en [Triage](https://tria.ge/): [https://tria.ge/221227-yx4dmsbc8z/behavioral1](https://tria.ge/221227-yx4dmsbc8z/behavioral1)
+<br>
 Aunque vamos a centrarnos en el segundo análisis realizado en [AnyRun](https://app.any.run/): [https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/](https://app.any.run/tasks/458bd25d-e4e7-43b2-9ebd-f051a8ed24ab/)
 
 Primero vamos a recopilar los resultados y posteriormente iremos explicando lo más relevante.
 
 ![InfoBinario](/assets/images/blog/tlauncher/tlauncher_pup.png)
 
-Y la larga lista de indicadores de comportamiento (IOC's) que lo delatan como un programa malicioso basándonos en la **`MITRE ATT&CK™ MATRIX`**
+A continuación, la larga lista de indicadores de comportamiento (IOC's) que lo delatan como un programa malicioso basándonos en la **`MITRE ATT&CK™ MATRIX`**
 <br>
 Para quien no sepa qué es esto de Mitre, se trata de una base global de conocimiento del comportamiento basado en técnicas de ataque observadas en amenazas reales.
 
@@ -102,18 +104,18 @@ Vamos a detallar algunos de los comportamientos sospechosos del binario:
 
 Como vemos en las imágenes, este archivo realiza una serie de acciones bastantes sospechosas y peligrosas que ponen en jaque la seguridad de nuestro sistema.
 
-Sigamos con la instalación...
+Sigamos con el análsis...
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher2.png)
 
-En este punto, el programa continua con la descarga de archivos, uno de ellos es un DLL relacionado con el lenguaje de programación **Lua**,
+En este punto, el programa continúa con la descarga de archivos, uno de ellos es un DLL relacionado con el lenguaje de programación **Lua**,
 aunque desactualizado, pues la versión más reciente es la 5.4. Esto podría ser normal dado que muchos de los mods para Minecraft usan este lenguaje en parte de su código, aunque generalmente están escritos en **Java**.
 
 Lo siguiente que vemos en el punto 2 es que se crea un proceso COM++ embebido, algo común en muchísimas aplicaciones,
 ya que esto se utiliza con el propósito de ejecutar objetos COM aparte de los procesos originales que los solicitan.
 Para simplificarlo bastante más, digamos que es necesario para utilizar paralelismo (ejecutar dos acciones al mismo tiempo de forma independiente).
 <br>
-No vamos a entrar más en detalle respecto a esto, pues es algo más técnico de explicar. Lo que debemos tener en cuenta es que **DllHost.exe**,
+No vamos a entrar más en detalle respecto a esto, pues es algo más técnico de explicar. Lo que debemos tener en cuenta es que **`DllHost.exe`**,
 un binario legítimo de Windows, es utilizado a menudo por diversos tipos de malware, llegando a ocupar el 100% de uso tanto de la RAM como de la CPU.
 
 Sigamos...
@@ -122,16 +124,16 @@ Sigamos...
 
 Le damos a "Continue" y se nos invita a instalar el navegador **Opera**, algo que podría ser normal,
 sin embargo este tipo de propuestas suelen considerarse como Adware, ya que por lo general el usuario no quiere instalar software adicional.
-Más adelante veremos algo relacionado con este punto.
+Más adelante veremos algo relacionado con esto.
 
 En las alertas de arriba a la derecha vemos que nos descarga dos archivos con la extensión **`.LMD`**
 
 ¿Qué es la extensión [LMD](https://www.fileviewpro.com/es/file-extension-lmd)?
 
-> Es un tipo de archivo **Abbyy Finereader Sprint File** desarrollado para el software ABBYY FineReader, desarrollado por ABBYY.
+> Es un tipo de archivo **Abbyy Finereader Sprint File** creado para el software ABBYY FineReader desarrollado por ABBYY.
 > Estos archivos son muy populares entre los usuarios de **China**.
 
-Un poco raro...uno de ellos se llama **Wow64.lmd** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **wow64.exe**.
+Un poco raro...uno de ellos se llama **`Wow64.lmd`** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **`wow64.exe`**
 
 ¿Qué es WOW64 en Windows?
 
@@ -143,7 +145,7 @@ Sin duda se trata de un binario crítico de Windows. Pero sigamos con el anális
 ![Instalador](/assets/images/blog/tlauncher/tlauncher4.png)
 
 Aquí termina la instalación y como vemos en la imagen, lo primero que hace es ejecutar el binario **`TLauncher-2.871.exe`** descargado previamente,
-y que como ya vimos contiene toda una serie de comportamientos de dudosa fiabilidad. Aquí en este punto ya estaríamos infectados.
+el cual vimos que contiene una serie de comportamientos de dudosa fiabilidad. Aquí en este punto ya estaríamos infectados.
 
 Veamos algunas de las peticiones HTTP que se han realizado durante el proceso de instalación:
 
@@ -406,7 +408,7 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'http://repo.tlauncher.org/update/downloa
 
 Todos estos servidores son rusos, aunque están en el apartado 'removedServers'...Otra curiosidad.
 <br>
-Otra de las peticiones se realiza contra el servidor de **`Mojang`** para comprobar todas las versiones existentes:
+Otra de las peticiones se realiza contra el servidor de **`Mojang`** para comprobar las versiones existentes:
 
 ```console
 wildzarek@p3ntest1ng:~$ curl -s -X GET 'https://launchermeta.mojang.com/mc/game/version_manifest.json' | jq
@@ -448,8 +450,8 @@ wildzarek@p3ntest1ng:~$ curl -s -X GET 'https://launchermeta.mojang.com/mc/game/
 ---[SNIP]---
 ```
 
-He recortado el resultado porque sería muy largo y tampoco nos interesa, simplemente esto es otra curiosidad más.
-Y otra más de las peticiones, que no tienen mucho sentido más allá de un "control" de respuesta por parte del servidor:
+He recortado el output por ser muy largo y de poco interés, pero como curiosidad ahí está.
+Y otra más de las peticiones, que no tiene mucha utilidad más allá de un "control" de respuesta por parte del servidor:
 
 ```console
 wldzarek@p3ntest1ng:~$ curl -s -X GET 'https://dl2.fastrepo.org/not_remove_test_file.txt'
@@ -463,9 +465,8 @@ estas peticiones apuntan al servidor **advancedrepository.com** mencionado anter
 En una de ellas se descarga un archivo comprimido relacionado con Java 8 de nombre **`jre-8u281-windows-x64.zip`** directamente desde los servidores de TLauncher.
 
 Java es de pago y esto podría entenderse como que te están facilitando una versión pirata de Java, pero existen alternativas que podrían haber utilizado,
-sin embargo han usado una versión de Java que no sabemos de dónde procede. Aunque como veremos en la próxima imagen, este Java hace cosas raras.
-
-En el análisis del instalador se detectó lo siguiente:
+sin embargo han usado una versión de Java que no sabemos de dónde procede.
+Aunque como veremos en la próxima imagen, este Java hace cosas raras. En el análisis del instalador se detectó lo siguiente:
 
 ![JavaThreats](/assets/images/blog/tlauncher/tlauncher_java_threats.png)
 
@@ -552,9 +553,8 @@ Si eres ruso te ofrecen instalar Yandex y lo descargan de la web oficial (o eso 
 al resto nos ofrecen Opera y lo descargan del servidor de TLauncher con nombre **`installer-2.exe`**
 
 
-Extraño, si no existiesen rumores de que todo esto lo ha orquestado un grupo de ciberdelincuentes rusos que ha engañado a todo el mundo.
-<br>
-Además de que está claro que todo esto apunta a Rusia.
+Extraño, si no existiesen rumores de que todo esto lo ha orquestado un grupo de ciberdelincuentes
+rusos que ha engañado a todo el mundo. Cada detalle que encuentro apunta a Rusia.
 
 Por desgracia no he podido descargarme el binario del supuesto Opera para analizarlo:
 
@@ -572,15 +572,15 @@ Siguiendo con las peticiones, encontramos también que se envían dos peticiones
 aunque no sabemos qué tipo de información se ha enviado a dicha URL. Puntualizar que estas peticiones las hace el binario **`javaw.exe`**
 
 Extraño que un binario oficial de Java haga esas peticiones, lo normal sería que hiciera peticiones a servidores de **`Oracle`**, empresa propietaria de Java.
-Por lo tanto, este binario no es lo que dice ser...
+Por tanto, este binario no es lo que dice ser...
 
 # Conclusiones
 
-Ante todas estas pruebas y análisis, creo que ha quedado demostrado que **`TLauncher`** es un software potencialmente peligroso,
+Con estos análisis y pruebas, creo que ha quedado demostrado que **`TLauncher`** es un software potencialmente peligroso,
 al ser catalogado como malware; Especialmente considerado spyware. Sin duda los resultados obtenidos nos alertan de que
 debemos desinstalarlo cuanto antes de nuestro sistema operativo. El problema es que como hemos visto, deshacernos del malware no va a ser tan simple
 como desinstalar TLauncher, ya que hemos visto que utiliza técnicas de persistencia muy avanzadas. Esto significa que aunque elimines TLauncher,
-el malware seguirá en el sistema y por desgracia librarnos por completo no es algo que podamos hacer con dos clicks.
+el malware seguirá en el sistema y por desgracia librarnos por completo no es algo que podamos hacer con dos clics.
 
 
 # Recomendaciones
