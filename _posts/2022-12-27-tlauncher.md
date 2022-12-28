@@ -23,12 +23,13 @@ Dicho esto, vamos al lío con lo que nos interesa.
 
 Mucho se ha hablado estos días sobre **TLauncher**, el famoso lanzador multiversiones de **Minecraft**.
 Desde hace aproximadamente un mes o mes y medio, se rumoreaba que dicho software escondía un terrible secreto...
-Y a raíz de ello han surgido diferentes análisis al mismo, dando como resultado lo que ya se sospechaba.
+Aunque las sospechas comenzaron mucho antes, hace unos 10 meses en Reddit ya se comenzó a cuestionar la fiabilidad de TLauncher.
+Y a raíz de todo ello han surgido diferentes análisis, dando como resultado lo que ya se sospechaba tiempo atrás.
 
-¡TLauncher contiene malware y spyware!
+Sí, ¡TLauncher contiene malware y spyware!
 
-Afirmar esto sin pruebas sería algo estúpido, por ello os voy a ir explicando los resultados de las mismas, 
-indicando la importancia de cada acción realizada por el instalador oficial del software mencionado.
+Afirmar esto sin pruebas sería algo estúpido, por ello voy a ir explicando los resultados de las mismas, 
+al mismo tiempo que analizamos cada acción realizada por el instalador oficial del software mencionado.
 
 ## Análisis de TLauncher
 
