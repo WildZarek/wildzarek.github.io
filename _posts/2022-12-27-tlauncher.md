@@ -104,7 +104,7 @@ Vamos a detallar algunos de los comportamientos sospechosos del binario:
 
 Como vemos en las imágenes, este archivo realiza una serie de acciones bastantes sospechosas y peligrosas que ponen en jaque la seguridad de nuestro sistema.
 
-Sigamos con el análsis...
+Sigamos con el análisis...
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher2.png)
 
@@ -571,17 +571,13 @@ Petición HTTP enviada, esperando respuesta... 404 Not Found
 Siguiendo con las peticiones, encontramos también que se envían dos peticiones a **https://stat.fastrepo.org/save/run/tlauncher/unique/month**,
 aunque no sabemos qué tipo de información se ha enviado a dicha URL. Puntualizar que estas peticiones las hace el binario **`javaw.exe`**
 
-Extraño que un binario oficial de Java haga esas peticiones, lo normal sería que hiciera peticiones a servidores de **`Oracle`**, empresa propietaria de Java.
-Por tanto, este binario no es lo que dice ser...
-
 # Conclusiones
 
 Con estos análisis y pruebas, creo que ha quedado demostrado que **`TLauncher`** es un software potencialmente peligroso,
-al ser catalogado como malware; Especialmente considerado spyware. Sin duda los resultados obtenidos nos alertan de que
-debemos desinstalarlo cuanto antes de nuestro sistema operativo. El problema es que como hemos visto, deshacernos del malware no va a ser tan simple
+al ser catalogado como malware; Especialmente considerado spyware. Sin duda los resultados obtenidos nos alertan que
+deberíamos desinstalarlo cuanto antes de nuestro sistema operativo. El problema es que como hemos visto, deshacernos del malware no va a ser tan simple
 como desinstalar TLauncher, ya que hemos visto que utiliza técnicas de persistencia muy avanzadas. Esto significa que aunque elimines TLauncher,
 el malware seguirá en el sistema y por desgracia librarnos por completo no es algo que podamos hacer con dos clics.
-
 
 # Recomendaciones
 
@@ -591,13 +587,13 @@ Para ello es recomendable que previamente hagamos una copia de seguridad de todo
 
 Si quieres jugar a Minecraft, deberías adquirir el juego oficial comprándolo en Microsoft Store o tiendas autorizadas,
 aunque si esto no es posible por cualquier motivo, existen otros lanzadores de Minecraft como puede ser **`MultiMC`**,
-que es gratuito y además de código abierto. Un buen punto a favor de este lanzador,
+que también es gratuito y además de código abierto. Un buen punto a favor de este lanzador,
 ya que la comunidad puede analizar el código fuente del software en cualquier momento.
 
 Sin embargo, este tipo de lanzadores infringen los derechos de autor al utilizar un software privado como lo es Minecraft.
 Utilizarlos queda bajo tu entera responsabilidad...
 
-Bueno, eso ha sido todo por esta vez. Nos leeremos muy pronto.
+Bueno, eso ha sido todo por esta vez. Espero haber arrojado un poco de luz sobre este asunto.
 
 ### ¡Gracias por leer hasta el final!
 
