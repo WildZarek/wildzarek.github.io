@@ -18,7 +18,7 @@ tags: [AnyRun, Triage, VirusTotal]
 
 Antes de nada, me gustaría desearos a todos una feliz Navidad y un próspero año nuevo.
 <br>
-Sé que llevo tiempo sin crear contenido, pero en 2023 prometo volver a escribir WriteUps de máquinas.
+Sé que llevo tiempo sin crear contenido, pero en 2023 prometo volver a escribir WriteUps.
 
 Dicho esto, vamos al lío con lo que nos interesa en el día de hoy...
 
