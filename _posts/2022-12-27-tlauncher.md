@@ -64,8 +64,8 @@ Hasta aquí todo normal, hemos ejecutado el instalador y aún no ha sucedido nad
 
 ![Instalador](/assets/images/blog/tlauncher/tlauncher1.png)
 
-En esta nueva imagen, vemos que el instalador comienza a descargarse y depositar en una carpeta temporal de nuestro sistema varios archivos,
-entre ellos el binario **`irsetup.exe`**, todo esto sucede aunque no le hayamos dado al botón "Continue".
+En esta nueva imagen, vemos que el instalador comienza a descargar y depositar en una carpeta temporal de nuestro sistema varios archivos,
+entre ellos el binario **`irsetup.exe`**, todo esto sucede aunque no hagas clic en el botón "Continue".
 La descarga del archivo ejecutable se hace desde los servidores de TLauncher.
 Una vez se ejecuta, inmediatamente hace una petición GET a un servidor para descargarse otro binario llamado **`TLauncher-2.871.exe`**
 <br>
@@ -93,7 +93,7 @@ Yo no sé latín y no sé hasta que punto es de fiar la traducción, pero es una
 ¿Y qué hace este binario?
 <br>
 Pues bien, he pasado este archivo por [VirusTotal](https://www.virustotal.com/) y aunque a priori no es detectado como malware por ningún antivirus,
-si nos fijamos en la tabla Mitre vemos que este binario hace cosas muy extrañas y peligrosas. Os dejo el resultado del análisis [AQUÍ](https://www.virustotal.com/gui/file/765cab48564743844b057e21eab768d5d84194a635b09d02d9d2909f632f5714/detection)
+si nos fijamos en la tabla Mitre vemos que este binario hace cosas muy extrañas y peligrosas. Os dejo el resultado del análisis completo [AQUÍ](https://www.virustotal.com/gui/file/765cab48564743844b057e21eab768d5d84194a635b09d02d9d2909f632f5714/detection)
 
 Vamos a detallar algunos de los comportamientos sospechosos del binario:
 
