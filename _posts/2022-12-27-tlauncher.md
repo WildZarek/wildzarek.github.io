@@ -69,7 +69,7 @@ entre ellos el binario **`irsetup.exe`**, todo esto sucede aunque no hagas clic 
 La descarga del archivo ejecutable se hace desde los servidores de TLauncher.
 Una vez se ejecuta, inmediatamente hace una petición GET a un servidor para descargarse otro binario llamado **`TLauncher-2.871.exe`**
 <br>
-Lo que parece indicar que sobreescribe al binario original por uno infectado con malware. Tal y como veremos en las próximas líneas.
+Lo que parece indicar que sobreescribe al binario original por uno infectado con malware.
 
 ¿Pero a qué servidor hace la petición?
 <br>
@@ -115,7 +115,7 @@ Lo siguiente que vemos en el punto 2 es que se crea un proceso COM++ embebido, a
 ya que esto se utiliza con el propósito de ejecutar objetos COM aparte de los procesos originales que los solicitan.
 Para simplificarlo bastante más, digamos que es necesario para utilizar paralelismo (ejecutar dos acciones al mismo tiempo de forma independiente).
 <br>
-No vamos a entrar más en detalle respecto a esto, pues es algo más técnico de explicar. Lo que debemos tener en cuenta es que **`DllHost.exe`**,
+No vamos a entrar en detalle respecto a esto, pues es algo más técnico de explicar. Lo que debemos tener en cuenta es que **`DllHost.exe`**,
 un binario legítimo de Windows, es utilizado a menudo por diversos tipos de malware, llegando a ocupar el 100% de uso tanto de la RAM como de la CPU.
 
 Sigamos...
@@ -133,7 +133,7 @@ En las alertas de arriba a la derecha vemos que nos descarga dos archivos con la
 > Es un tipo de archivo **Abbyy Finereader Sprint File** creado para el software ABBYY FineReader desarrollado por ABBYY.
 > Estos archivos son muy populares entre los usuarios de **China**.
 
-Un poco raro...uno de ellos se llama **`Wow64.lmd`** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **`wow64.exe`**
+Un poco raro...uno de ellos se llama **`Wow64.lmd`** y podríamos pensar que tiene algo que ver con el binario legítimo de Windows **`wow64.exe`** pero no tengo pruebas de ello.
 
 ¿Qué es WOW64 en Windows?
 
@@ -145,7 +145,7 @@ Sin duda se trata de un binario crítico de Windows. Pero sigamos con el anális
 ![Instalador](/assets/images/blog/tlauncher/tlauncher4.png)
 
 Aquí termina la instalación y como vemos en la imagen, lo primero que hace es ejecutar el binario **`TLauncher-2.871.exe`** descargado previamente,
-el cual vimos que contiene una serie de comportamientos de dudosa fiabilidad. Aquí en este punto ya estaríamos infectados.
+el cual vimos que tiene una serie de comportamientos de dudosa fiabilidad. Llegados a este punto ya estaríamos infectados.
 
 Veamos algunas de las peticiones HTTP que se han realizado durante el proceso de instalación:
 
@@ -553,8 +553,8 @@ Si eres ruso te ofrecen instalar Yandex y lo descargan de la web oficial (o eso 
 al resto nos ofrecen Opera y lo descargan del servidor de TLauncher con nombre **`installer-2.exe`**
 
 
-Extraño, si no existiesen rumores de que todo esto lo ha orquestado un grupo de ciberdelincuentes
-rusos que ha engañado a todo el mundo. Cada detalle que encuentro apunta a Rusia.
+Si no existiesen rumores sobre que este malware lo ha orquestado un grupo de ciberdelincuentes
+rusos que ha engañado a todo el mundo, cada detalle que encuentro parece confirmar que todo apunta en efecto a Rusia.
 
 Por desgracia no he podido descargarme el binario del supuesto Opera para analizarlo:
 
