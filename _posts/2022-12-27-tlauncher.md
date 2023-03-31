@@ -33,7 +33,7 @@ Y a raíz de todo ello han surgido diferentes análisis, dando como resultado lo
 **Sí, ¡TLauncher contiene malware y spyware!**
 
 Afirmar esto sin pruebas sería algo estúpido, por ello voy a ir explicando los resultados de las mismas, 
-al mismo tiempo que analizamos cada acción realizada por el instalador oficial del software mencionado.
+al mismo tiempo que analizamos cada acción realizada por el instalador oficial de TLauncher.
 
 ## Análisis de TLauncher
 

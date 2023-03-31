@@ -28,7 +28,7 @@ Si alguno de estos documentos te ayudó, considera darme Respect en la plataform
 | [Horizontall](/htb/horizontall) | [Bolt](/htb/bolt)               | ---                             | ---    |
 | [Secret](/htb/secret)           | [Devzat](/htb/devzat)           | ---                             | ---    |
 | [Pandora](/htb/pandora)         | [Shibboleth](/htb/shibboleth)   | ---                             | ---    |
-| ---                             | [Timing](/htb/timing)           | ---                             | ---    |
+| [Paper](/htb/paper)             | [Timing](/htb/timing)           | ---                             | ---    |
 | ---                             | [Meta](/htb/meta)               | ---                             | ---    |
 
 ## Máquinas Windows
@@ -48,6 +48,4 @@ Si alguno de estos documentos te ayudó, considera darme Respect en la plataform
 
 ## CTF's
 
-### CyberApocalypse 2022
-
-Muy pronto :)
+### Tal vez en un futuro cercano...
